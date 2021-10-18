@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\Kampus\\Alternative Internship\\E-Butler FLutter\\e-butler-main\\ebutler\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-night-v8\\values-night-v8.xml",
+            "outputFile": "D:\\Github\\E-Butler\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-night-v8\\values-night-v8.xml",
             "map": [
                 {
-                    "source": "D:\\Kampus\\Alternative Internship\\E-Butler FLutter\\e-butler-main\\ebutler\\android\\app\\src\\main\\res\\values-night\\styles.xml",
+                    "source": "D:\\Github\\E-Butler\\android\\app\\src\\main\\res\\values-night\\styles.xml",
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",

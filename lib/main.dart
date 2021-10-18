@@ -4,6 +4,13 @@ import 'package:ebutler/Services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '/Screens/Home/product_detail_screen.dart';
+import '/Screens/Home/cart_screen.dart';
+import 'Screens/Home/order_screen.dart';
+import '/providers/products.dart';
+import '/providers/cart.dart';
+import '/providers/orders.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -17,8 +24,30 @@ class MyApp extends StatelessWidget {
     return StreamProvider<User>.value(
       initialData: null,
       value: AuthService().user,
-      child: MaterialApp(
-        home: Wrapper(),
+      child: MultiProvider(
+        providers: [
+          ChangeNotifierProvider(
+            create: (ctx) => Products(),
+          ),
+          ChangeNotifierProvider(
+            create: (ctx) => Cart(),
+          ),
+          ChangeNotifierProvider(
+            create: (ctx) => Orders(),
+          ),
+        ],
+        child: MaterialApp(
+            theme: ThemeData(
+              primarySwatch: Colors.purple,
+              accentColor: Colors.white,
+              fontFamily: 'Lato',
+            ),
+            home: Wrapper(),
+            routes: {
+              ProductDetailScreen.routeName: (ctx) => ProductDetailScreen(),
+              CartScreen.routeName: (ctx) => CartScreen(),
+              OrderScreen.routeName: (ctx) => OrderScreen(),
+            }),
       ),
     );
   }
