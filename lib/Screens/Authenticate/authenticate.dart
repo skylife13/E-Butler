@@ -1,0 +1,25 @@
+import 'package:ebutler/Screens/Authenticate/sign_in.dart';
+import 'package:flutter/material.dart';
+
+class Authenticate extends StatefulWidget {
+  @override
+  _AuthenticateState createState() => _AuthenticateState();
+}
+
+class _AuthenticateState extends State<Authenticate> {
+  bool showSignIn = true;
+  void toggleview() {
+    setState(() => showSignIn = !showSignIn);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return SignIn(toggleView: toggleview);
+  }
+}
+
+// if (showSignIn) {
+//       return SignIn(toggleView: toggleview);
+//     } else {
+//       return Register(toggleView: toggleview);
+//     }
