@@ -42,11 +42,12 @@ class MyApp extends StatelessWidget {
               accentColor: Colors.white,
               fontFamily: 'Lato',
             ),
-            home: Wrapper(),
+            home: const Wrapper(),
             routes: {
-              ProductDetailScreen.routeName: (ctx) => ProductDetailScreen(),
-              CartScreen.routeName: (ctx) => CartScreen(),
-              OrderScreen.routeName: (ctx) => OrderScreen(),
+              ProductDetailScreen.routeName: (ctx) =>
+                  const ProductDetailScreen(),
+              CartScreen.routeName: (ctx) => const CartScreen(),
+              OrderScreen.routeName: (ctx) => const OrderScreen(),
             }),
       ),
     );

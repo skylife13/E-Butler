@@ -6,6 +6,8 @@ import '/providers/cart.dart';
 import '/Screens/Home/product_detail_screen.dart';
 
 class ProductItem extends StatelessWidget {
+  const ProductItem({Key key}) : super(key: key);
+
   // final String id;
   // final String title;
   // final String imageUrl;
@@ -47,7 +49,7 @@ class ProductItem extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
           trailing: IconButton(
-            icon: Icon(
+            icon: const Icon(
               Icons.shopping_cart,
             ),
             onPressed: () {
@@ -55,11 +57,11 @@ class ProductItem extends StatelessWidget {
               ScaffoldMessenger.of(context).hideCurrentSnackBar();
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
-                  content: Text(
+                  content: const Text(
                     'Added item to cart!',
                     textAlign: TextAlign.center,
                   ),
-                  duration: Duration(seconds: 1),
+                  duration: const Duration(seconds: 1),
                   action: SnackBarAction(
                     label: 'Undo',
                     onPressed: () {

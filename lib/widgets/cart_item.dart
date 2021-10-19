@@ -10,21 +10,23 @@ class CartItem extends StatelessWidget {
   final int quantity;
   final String title;
 
-  CartItem({this.productId, this.id, this.price, this.quantity, this.title});
+  const CartItem(
+      {Key key, this.productId, this.id, this.price, this.quantity, this.title})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Dismissible(
       key: ValueKey(id),
       background: Container(
           color: Theme.of(context).errorColor,
-          child: Icon(
+          child: const Icon(
             Icons.delete,
             color: Colors.white,
             size: 40,
           ),
           alignment: Alignment.centerRight,
-          padding: EdgeInsets.only(right: 20),
-          margin: EdgeInsets.symmetric(
+          padding: const EdgeInsets.only(right: 20),
+          margin: const EdgeInsets.symmetric(
             horizontal: 15,
             vertical: 4,
           )),
@@ -33,14 +35,15 @@ class CartItem extends StatelessWidget {
         return showDialog(
           context: context,
           builder: (ctx) => AlertDialog(
-            title: Text('Are you sure?'),
-            content: Text('Do you want to remove the item from the cart?'),
+            title: const Text('Are you sure?'),
+            content:
+                const Text('Do you want to remove the item from the cart?'),
             actions: <Widget>[
               TextButton(
                 onPressed: () {
                   Navigator.of(ctx).pop(false);
                 },
-                child: Text(
+                child: const Text(
                   'No',
                   style: TextStyle(color: Colors.black),
                 ),
@@ -49,7 +52,7 @@ class CartItem extends StatelessWidget {
                 onPressed: () {
                   Navigator.of(ctx).pop(true);
                 },
-                child: Text(
+                child: const Text(
                   'Yes',
                   style: TextStyle(color: Colors.black),
                 ),
@@ -62,16 +65,16 @@ class CartItem extends StatelessWidget {
         Provider.of<Cart>(context, listen: false).removeItem(productId);
       },
       child: Card(
-        margin: EdgeInsets.symmetric(
+        margin: const EdgeInsets.symmetric(
           horizontal: 15,
           vertical: 4,
         ),
         child: Padding(
-          padding: EdgeInsets.all(8),
+          padding: const EdgeInsets.all(8),
           child: ListTile(
             leading: CircleAvatar(
               child: Padding(
-                padding: EdgeInsets.all(5),
+                padding: const EdgeInsets.all(5),
                 child: FittedBox(
                   child: Text('\$$price'),
                 ),

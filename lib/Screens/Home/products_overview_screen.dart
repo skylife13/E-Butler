@@ -13,11 +13,13 @@ import '/Model/user.dart';
 // import '/providers/products.dart';
 
 enum FilterOptions {
-  Favorites,
-  All,
+  favorites,
+  all,
 }
 
 class ProductsOverviewScreen extends StatefulWidget {
+  const ProductsOverviewScreen({Key key}) : super(key: key);
+
   @override
   _ProductsOverviewScreenState createState() => _ProductsOverviewScreenState();
 }
@@ -30,16 +32,18 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
   Widget build(BuildContext context) {
     // final productsContainer = Provider.of<Products>(context, listen: false);
     return StreamProvider<List<User>>.value(
+      initialData: null,
+      value: null,
       child: Scaffold(
         appBar: AppBar(
-          title: Text('MyShop'),
+          title: const Text('MyShop'),
           actions: <Widget>[
             TextButton.icon(
-              icon: Icon(Icons.person, color: Colors.white),
+              icon: const Icon(Icons.person, color: Colors.white),
               onPressed: () async {
                 await _auth.signOut();
               },
-              label: Text(
+              label: const Text(
                 'Logout',
                 style: TextStyle(color: Colors.white),
               ),
@@ -47,7 +51,7 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
             PopupMenuButton(
               onSelected: (FilterOptions selectedValue) {
                 setState(() {
-                  if (selectedValue == FilterOptions.Favorites) {
+                  if (selectedValue == FilterOptions.favorites) {
                     // productsContainer.showFavoritesOnly();
                     _showOnlyFavorites = true;
                   } else {
@@ -56,14 +60,14 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
                   }
                 });
               },
-              icon: Icon(
+              icon: const Icon(
                 Icons.more_vert,
               ),
               itemBuilder: (_) => [
-                PopupMenuItem(
-                    child: Text('Favorites'), value: FilterOptions.Favorites),
-                PopupMenuItem(
-                    child: Text('Show All'), value: FilterOptions.All),
+                const PopupMenuItem(
+                    child: Text('Favorites'), value: FilterOptions.favorites),
+                const PopupMenuItem(
+                    child: Text('Show All'), value: FilterOptions.all),
               ],
             ),
             Consumer<Cart>(
@@ -72,7 +76,7 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
                       value: cart.itemCount.toString(),
                     ),
                 child: IconButton(
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.shopping_cart,
                   ),
                   onPressed: () {
@@ -81,7 +85,7 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
                 ))
           ],
         ),
-        drawer: AppDrawer(),
+        drawer: const AppDrawer(),
         body: ProductsGrid(_showOnlyFavorites),
       ),
     );
