@@ -48,6 +48,9 @@ class ProductItem extends StatelessWidget {
             product.title,
             textAlign: TextAlign.center,
           ),
+          subtitle: Text(
+            'Rp.${product.price.toString()}',
+          ),
           trailing: IconButton(
             icon: const Icon(
               Icons.shopping_cart,
