@@ -25,7 +25,7 @@ class ProductsOverviewScreen extends StatefulWidget {
 }
 
 class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
-  var _showOnlyFavorites = false;
+  // var _showOnlyFavorites = false;
   final AuthService _auth = AuthService();
 
   @override
@@ -48,28 +48,28 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
                 style: TextStyle(color: Colors.white),
               ),
             ),
-            PopupMenuButton(
-              onSelected: (FilterOptions selectedValue) {
-                setState(() {
-                  if (selectedValue == FilterOptions.favorites) {
-                    // productsContainer.showFavoritesOnly();
-                    _showOnlyFavorites = true;
-                  } else {
-                    // productsContainer.showAll();
-                    _showOnlyFavorites = false;
-                  }
-                });
-              },
-              icon: const Icon(
-                Icons.more_vert,
-              ),
-              itemBuilder: (_) => [
-                const PopupMenuItem(
-                    child: Text('Favorites'), value: FilterOptions.favorites),
-                const PopupMenuItem(
-                    child: Text('Show All'), value: FilterOptions.all),
-              ],
-            ),
+            // PopupMenuButton(
+            //   // onSelected: (FilterOptions selectedValue) {
+            //   //   setState(() {
+            //   //     if (selectedValue == FilterOptions.favorites) {
+            //   //       // productsContainer.showFavoritesOnly();
+            //   //       _showOnlyFavorites = true;
+            //   //     } else {
+            //   //       // productsContainer.showAll();
+            //   //       _showOnlyFavorites = false;
+            //   //     }
+            //   //   });
+            //   // },
+            //   icon: const Icon(
+            //     Icons.more_vert,
+            //   ),
+            //   itemBuilder: (_) => [
+            //     const PopupMenuItem(
+            //         child: Text('Favorites'), value: FilterOptions.favorites),
+            //     const PopupMenuItem(
+            //         child: Text('Show All'), value: FilterOptions.all),
+            //   ],
+            // ),
             Consumer<Cart>(
                 builder: (_, cart, ch) => Badge(
                       child: ch,
@@ -86,7 +86,7 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
           ],
         ),
         drawer: const AppDrawer(),
-        body: ProductsGrid(_showOnlyFavorites),
+        body: ProductsGrid(),
       ),
     );
   }

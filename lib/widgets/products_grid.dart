@@ -5,13 +5,13 @@ import '/providers/products.dart';
 import './product_item.dart';
 
 class ProductsGrid extends StatelessWidget {
-  final bool showFavs;
+  // final bool showFavs;
 
-  const ProductsGrid(this.showFavs, {Key key}) : super(key: key);
+  // const ProductsGrid(this.showFavs, {Key key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     final productsData = Provider.of<Products>(context);
-    final products = showFavs ? productsData.favoriteItems : productsData.items;
+    final products = productsData.items;
     return GridView.builder(
       gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
         maxCrossAxisExtent: 200,
