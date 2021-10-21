@@ -7,7 +7,6 @@ import '/Screens/Home/product_detail_screen.dart';
 
 class ProductItem extends StatelessWidget {
   const ProductItem({Key key}) : super(key: key);
-
   // final String id;
   // final String title;
   // final String imageUrl;
@@ -18,10 +17,21 @@ class ProductItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final product = Provider.of<Product>(context, listen: false);
     final cart = Provider.of<Cart>(context, listen: false);
+    int quantity = 0;
+
+    // bool buttonState = false;
+
     //print('it rebuilds'); //just to check consumer
     return ClipRRect(
       borderRadius: BorderRadius.circular(20),
       child: GridTile(
+        header: GridTileBar(
+          title: Text(
+            product.title,
+            textAlign: TextAlign.center,
+          ),
+          backgroundColor: Colors.black54,
+        ),
         child: GestureDetector(
           onTap: () {
             Navigator.of(context).pushNamed(ProductDetailScreen.routeName,
@@ -29,7 +39,7 @@ class ProductItem extends StatelessWidget {
           },
           child: Image.network(
             product.imageUrl,
-            fit: BoxFit.cover,
+            fit: BoxFit.contain,
           ),
         ),
         footer: GridTileBar(
@@ -44,16 +54,58 @@ class ProductItem extends StatelessWidget {
           //   ),
           // ),
           backgroundColor: Colors.black54,
-          title: Text(
-            product.title,
-            textAlign: TextAlign.center,
+          title: Consumer<Cart>(
+            builder: (_, cart, child) => Stack(
+              children: [
+                Center(
+                  child: Text(
+                    quantity.toString(),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ],
+            ),
           ),
           subtitle: Text(
             'Rp.${product.price.toString()}',
           ),
+          leading: IconButton(
+            icon: const Icon(Icons.remove),
+            onPressed: () {
+              cart.removeSingleItem(product.id); //ganti jadi remove item
+              ScaffoldMessenger.of(context).hideCurrentSnackBar();
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: quantity != 0
+                      ? const Text(
+                          'Removed Item From Cart',
+                          textAlign: TextAlign.center,
+                        )
+                      : const Text(
+                          'Add Item First',
+                          textAlign: TextAlign.center,
+                        ),
+                  duration: const Duration(seconds: 1),
+                  // action: SnackBarAction(
+                  //   label: 'Undo',
+                  //   onPressed: () {
+                  //     cart.removeSingleItem(
+                  //         product.id);
+                  //   },
+                  // ),
+                ),
+              );
+              if (quantity < 1) {
+                quantity = 0;
+              } else {
+                quantity -= 1;
+              }
+            },
+            color: Theme.of(context).accentColor,
+          ),
           trailing: IconButton(
             icon: const Icon(
-              Icons.shopping_cart,
+              Icons.add,
             ),
             onPressed: () {
               cart.addItem(product.id, product.price, product.title);
@@ -65,14 +117,16 @@ class ProductItem extends StatelessWidget {
                     textAlign: TextAlign.center,
                   ),
                   duration: const Duration(seconds: 1),
-                  action: SnackBarAction(
-                    label: 'Undo',
-                    onPressed: () {
-                      cart.removeSingleItem(product.id);
-                    },
-                  ),
+                  // action: SnackBarAction(
+                  //   label: 'Undo',
+                  //   onPressed: () {
+                  //     cart.removeSingleItem(product.id);
+                  //     quantity -= 1;
+                  //   },
+                  // ),
                 ),
               );
+              quantity += 1;
             },
             color: Theme.of(context).accentColor,
           ),

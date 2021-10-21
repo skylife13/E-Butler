@@ -15,7 +15,7 @@ class ProductsGrid extends StatelessWidget {
     return GridView.builder(
       gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
         maxCrossAxisExtent: 200,
-        childAspectRatio: 3 / 2,
+        childAspectRatio: 3 / 4,
         crossAxisSpacing: 10,
         mainAxisSpacing: 10,
       ),
