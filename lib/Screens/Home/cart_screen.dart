@@ -4,6 +4,7 @@ import '/providers/cart.dart' show Cart;
 //show buat ngasi tau cm butuh Cart class
 import '/widgets/cart_item.dart';
 import '/providers/orders.dart';
+import 'order_screen.dart';
 
 class CartScreen extends StatelessWidget {
   static const routeName = '/cart';
@@ -49,6 +50,7 @@ class CartScreen extends StatelessWidget {
                         cart.totalAmount,
                       );
                       cart.clear();
+                      Navigator.of(context).pushNamed(OrderScreen.routeName);
                     },
                   )
                 ],

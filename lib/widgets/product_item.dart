@@ -67,7 +67,7 @@ class ProductItem extends StatelessWidget {
             ),
           ),
           subtitle: Text(
-            'Rp.${product.price.toString()}',
+            'Rp.${product.price.toStringAsFixed(0)}',
           ),
           leading: IconButton(
             icon: const Icon(Icons.remove),
