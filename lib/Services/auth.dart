@@ -1,4 +1,5 @@
 import 'package:ebutler/Model/user.dart';
+import 'package:ebutler/Services/database.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthService {
@@ -24,6 +25,8 @@ class AuthService {
       AuthResult result = await _auth.signInWithEmailAndPassword(
           email: email, password: password);
       FirebaseUser user = result.user;
+      await DatabaseService(uid: user.uid)
+          .updateUserData('new user', 0, 0, 0, 0);
       return _userFromFirebaseUser(user);
     } catch (e) {
       print(e.toString());
