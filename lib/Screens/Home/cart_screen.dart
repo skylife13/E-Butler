@@ -61,16 +61,30 @@ class CartScreen extends StatelessWidget {
                         color: Theme.of(context).primaryColor,
                       ),
                     ),
-                    onPressed: () async {
-                      updatedb();
-                      Provider.of<Orders>(context, listen: false).addOrder(
-                        cart.items.values.toList(),
-                        cart.totalAmount,
-                      );
-                      cart.clear();
-                      Navigator.of(context).pushNamed(OrderScreen.routeName);
-                      // cobacoba();
-                    },
+                    onPressed: cart.totalAmount > 0
+                        ? () async {
+                            updatedb();
+                            Provider.of<Orders>(context, listen: false)
+                                .addOrder(
+                              cart.items.values.toList(),
+                              cart.totalAmount,
+                            );
+                            cart.clear();
+                            Navigator.of(context)
+                                .pushNamed(OrderScreen.routeName);
+                            // cobacoba();
+                          }
+                        : () {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text(
+                                  'Please Add an Item First',
+                                  textAlign: TextAlign.center,
+                                ),
+                                duration: Duration(seconds: 1),
+                              ),
+                            );
+                          },
                   ),
                 ],
               ),
