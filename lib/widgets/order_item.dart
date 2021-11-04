@@ -1,8 +1,13 @@
+//mau coba jadiin stateless nanti
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'dart:math';
+import 'package:provider/provider.dart';
 
 import '/providers/orders.dart' as ord;
+import '/Services/database.dart';
+import '/Model/user.dart';
 //as dipake buat ngasi tau orderitem yang mana, soalnya bentrok
 
 class OrderItem extends StatefulWidget {
@@ -19,6 +24,7 @@ class _OrderItemState extends State<OrderItem> {
 
   @override
   Widget build(BuildContext context) {
+    final user = Provider.of<User>(context);
     return Card(
       margin: const EdgeInsets.all(10),
       child: Column(
@@ -27,6 +33,27 @@ class _OrderItemState extends State<OrderItem> {
             title: Text('Rp. ${widget.order.amount}'),
             subtitle: Text(
               DateFormat('dd/MM/yyyy hh:mm').format(widget.order.dateTime),
+            ),
+            leading: TextButton(
+              child: widget.order.status
+                  ? Text(
+                      'On Delivery',
+                      style: TextStyle(
+                        color: Theme.of(context).primaryColor,
+                      ),
+                    )
+                  : Text(
+                      'Order Delivered',
+                      style: TextStyle(
+                        color: Theme.of(context).primaryColor,
+                      ),
+                    ),
+              onPressed: () {
+                setState(() {
+                  widget.order.status = false;
+                });
+                DatabaseService(uid: user.uid).updateUserData(0);
+              },
             ),
             trailing: IconButton(
               icon: Icon(_expanded ? Icons.expand_less : Icons.expand_more),

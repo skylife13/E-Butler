@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+
 import 'cart.dart';
 
 class OrderItem {
@@ -6,12 +7,14 @@ class OrderItem {
   final double amount;
   final List<CartItem> products;
   final DateTime dateTime;
+  bool status;
 
   OrderItem(
       {@required this.id,
       @required this.amount,
       @required this.products,
-      @required this.dateTime});
+      @required this.dateTime,
+      this.status});
 }
 
 class Orders with ChangeNotifier {
@@ -24,12 +27,20 @@ class Orders with ChangeNotifier {
     _orders.insert(
       0,
       OrderItem(
-        id: DateTime.now().toString(),
-        amount: total,
-        products: cartProducts,
-        dateTime: DateTime.now(),
-      ),
+          id: DateTime.now().toString(),
+          amount: total,
+          products: cartProducts,
+          dateTime: DateTime.now(),
+          status: true),
     );
+    // DatabaseService(uid: user.uid).updateUserData(
+    //   DateTime.now().toString(),
+    //   total,
+    //   cartProducts,
+    //   DateTime.now(),
+    // );
+    //kalo taro sini, nanti bakal bikin document baru tiap dia order dengan uid unik khusus order itu
+    //jadi bisa bikin kayak history page bwt admin, bikin datany jadi ada data user dkk
     notifyListeners();
   }
 }
