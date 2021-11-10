@@ -23,6 +23,10 @@ class Orders with ChangeNotifier {
     return [..._orders];
   }
 
+  int get itemCount {
+    return _orders.length;
+  }
+
   void addOrder(List<CartItem> cartProducts, double total) {
     _orders.insert(
       0,
@@ -31,7 +35,7 @@ class Orders with ChangeNotifier {
           amount: total,
           products: cartProducts,
           dateTime: DateTime.now(),
-          status: true),
+          status: false),
     );
     // DatabaseService(uid: user.uid).updateUserData(
     //   DateTime.now().toString(),

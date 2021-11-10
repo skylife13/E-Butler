@@ -37,22 +37,22 @@ class _OrderItemState extends State<OrderItem> {
             leading: TextButton(
               child: widget.order.status
                   ? Text(
-                      'On Delivery',
+                      'Order Delivered',
                       style: TextStyle(
                         color: Theme.of(context).primaryColor,
                       ),
                     )
                   : Text(
-                      'Order Delivered',
+                      'On Delivery',
                       style: TextStyle(
                         color: Theme.of(context).primaryColor,
                       ),
                     ),
               onPressed: () {
                 setState(() {
-                  widget.order.status = false;
+                  widget.order.status = true;
                 });
-                DatabaseService(uid: user.uid).updateUserData(0);
+                DatabaseService(uid: user.uid).updateUserData();
               },
             ),
             trailing: IconButton(

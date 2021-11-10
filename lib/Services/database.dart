@@ -7,12 +7,8 @@ class DatabaseService {
   final CollectionReference cartCollection =
       Firestore.instance.collection('Cart');
 
-  Future updateUserData(double amount) async {
-    return await cartCollection.document(uid).setData({
-      'id': DateTime.now().toString(),
-      'amount': amount,
-      'dateTime': DateTime.now(),
-    });
+  Future updateUserData() async {
+    return await cartCollection.document(uid).setData({});
   }
 
   Future updateUserCart(
@@ -24,13 +20,14 @@ class DatabaseService {
     int quantity,
   ) async {
     Map<String, Object> products = {
-      'price': price,
-      'quantity': quantity,
-      'total': total,
-      'title': title,
+      'Title': title,
+      'Price': price,
+      'Quantity': quantity,
+      'Total': total,
+      'Time': DateTime.now()
     };
     await cartCollection
         .document(uid)
-        .updateData({'Products $id': products, 'amount': amount});
+        .updateData({'Products $id': products, 'Total Price': amount});
   }
 }
