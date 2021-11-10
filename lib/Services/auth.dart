@@ -1,6 +1,7 @@
-import 'package:ebutler/Model/user.dart';
-import 'package:ebutler/Services/database.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+
+import '/Model/user.dart';
+import '/Services/database.dart';
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;

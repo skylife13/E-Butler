@@ -62,7 +62,7 @@ class CartScreen extends StatelessWidget {
                       ),
                     ),
                     onPressed: cart.totalAmount > 0
-                        ? () async {
+                        ? () {
                             updatedb();
                             Provider.of<Orders>(context, listen: false)
                                 .addOrder(
@@ -72,7 +72,6 @@ class CartScreen extends StatelessWidget {
                             cart.clear();
                             Navigator.of(context)
                                 .pushNamed(OrderScreen.routeName);
-                            // cobacoba();
                           }
                         : () {
                             ScaffoldMessenger.of(context).showSnackBar(

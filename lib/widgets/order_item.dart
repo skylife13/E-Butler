@@ -1,5 +1,3 @@
-//mau coba jadiin stateless nanti
-
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'dart:math';

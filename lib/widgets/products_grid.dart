@@ -5,9 +5,7 @@ import '/providers/products.dart';
 import './product_item.dart';
 
 class ProductsGrid extends StatelessWidget {
-  // final bool showFavs;
-
-  // const ProductsGrid(this.showFavs, {Key key}) : super(key: key);
+  const ProductsGrid({Key key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     final productsData = Provider.of<Products>(context);
@@ -20,14 +18,8 @@ class ProductsGrid extends StatelessWidget {
         mainAxisSpacing: 10,
       ),
       itemBuilder: (ctx, i) => ChangeNotifierProvider.value(
-        //create: (c) => products[i],
-        //use value constructor in this scenario
         value: products[i],
-        child: const ProductItem(
-            // products[i].id,
-            // products[i].title,
-            // products[i].imageUrl,
-            ),
+        child: const ProductItem(),
       ),
       padding: const EdgeInsets.all(10.0),
       itemCount: products.length,

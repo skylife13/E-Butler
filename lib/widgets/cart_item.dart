@@ -13,55 +13,6 @@ class CartItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      key: ValueKey(id),
-      // background: Container(
-      //     color: Theme.of(context).errorColor,
-      //     child: const Icon(
-      //       Icons.delete,
-      //       color: Colors.white,
-      //       size: 40,
-      //     ),
-      //     alignment: Alignment.centerRight,
-      //     padding: const EdgeInsets.only(right: 20),
-      //     margin: const EdgeInsets.symmetric(
-      //       horizontal: 15,
-      //       vertical: 4,
-      //     )),
-      // direction: DismissDirection.endToStart,
-      // confirmDismiss: (direction) {
-      //   return showDialog(
-      //     context: context,
-      //     builder: (ctx) => AlertDialog(
-      //       title: const Text('Are you sure?'),
-      //       content:
-      //           const Text('Do you want to remove the item from the cart?'),
-      //       actions: <Widget>[
-      //         TextButton(
-      //           onPressed: () {
-      //             Navigator.of(ctx).pop(false);
-      //           },
-      //           child: const Text(
-      //             'No',
-      //             style: TextStyle(color: Colors.black),
-      //           ),
-      //         ),
-      //         TextButton(
-      //           onPressed: () {
-      //             Navigator.of(ctx).pop(true);
-      //           },
-      //           child: const Text(
-      //             'Yes',
-      //             style: TextStyle(color: Colors.black),
-      //           ),
-      //         )
-      //       ],
-      //     ),
-      //   );
-      // },
-      // onDismissed: (direction) {
-      //   Provider.of<Cart>(context, listen: false).removeItem(productId);
-      // },
-      // child: Card(
       margin: const EdgeInsets.symmetric(
         horizontal: 15,
         vertical: 4,
@@ -83,6 +34,5 @@ class CartItem extends StatelessWidget {
         ),
       ),
     );
-    // );
   }
 }

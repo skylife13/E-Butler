@@ -24,10 +24,11 @@ class DatabaseService {
       'Price': price,
       'Quantity': quantity,
       'Total': total,
-      'Time': DateTime.now()
     };
-    await cartCollection
-        .document(uid)
-        .updateData({'Products $id': products, 'Total Price': amount});
+    await cartCollection.document(uid).updateData({
+      'Products $id': products,
+      'Total Price': amount,
+      'Time': DateTime.now()
+    });
   }
 }

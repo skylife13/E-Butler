@@ -31,14 +31,6 @@ class _SignInState extends State<SignIn> {
               backgroundColor: Colors.purple,
               elevation: 0.0,
               title: const Text("Sign in to BINUS Hotel"),
-              // actions: <Widget>[
-              //   TextButton.icon(
-              //       onPressed: () {
-              //         widget.toggleView();
-              //       },
-              //       icon: const Icon(Icons.person),
-              //       label: const Text('Sign Up'))
-              // ],
             ),
             body: Container(
                 padding: const EdgeInsets.symmetric(
@@ -100,17 +92,3 @@ class _SignInState extends State<SignIn> {
           );
   }
 }
-
-//sign in anon
-// RaisedButton(
-//             child: Text("Sign in anon"),
-//             onPressed: () async {
-//               dynamic result = await _auth.signInAnon();
-
-//               if (result == null) {
-//                 print('error signing in');
-//               } else {
-//                 print('signed in ');
-//                 print(result.uid);
-//               }
-//             }),

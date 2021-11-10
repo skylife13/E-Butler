@@ -19,9 +19,3 @@ class _AuthenticateState extends State<Authenticate> {
     return SignIn(toggleView: toggleview);
   }
 }
-
-// if (showSignIn) {
-//       return SignIn(toggleView: toggleview);
-//     } else {
-//       return Register(toggleView: toggleview);
-//     }

@@ -37,35 +37,12 @@ class Products with ChangeNotifier {
       imageUrl: 'https://cdn1.productnation.co/stg/sites/5/5d93142e2a796.jpeg',
     ),
   ];
-  // var _showFavoritesOnly = false;
 
   List<Product> get items {
-    // if (_showFavoritesOnly) {
-    //   return _items.where((prodItem) => prodItem.isFavorite).toList();
-    // }
     return [..._items];
   }
 
-  // List<Product> get favoriteItems {
-  //   return _items.where((prodItem) => prodItem.isFavorite).toList();
-  // }
-
   Product findById(String id) {
     return _items.firstWhere((prod) => prod.id == id);
-  }
-
-  // void showFavoritesOnly() {
-  //   _showFavoritesOnly = true;
-  //   notifyListeners();
-  // }
-
-  // void showAll() {
-  //   _showFavoritesOnly = false;
-  //   notifyListeners();
-  // }
-
-  void addProduct() {
-    //_items.add(value);
-    notifyListeners();
   }
 }
