@@ -1,3 +1,4 @@
+import 'package:ebutler/Screens/Home/information.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -47,6 +48,7 @@ class MyApp extends StatelessWidget {
                   const ProductDetailScreen(),
               CartScreen.routeName: (ctx) => const CartScreen(),
               OrderScreen.routeName: (ctx) => const OrderScreen(),
+              Information.routeName: (ctx) => const Information()
             }),
       ),
     );

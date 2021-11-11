@@ -1,3 +1,4 @@
+import 'package:ebutler/Screens/Home/information.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -55,6 +56,14 @@ class AppDrawer extends StatelessWidget {
             title: const Text('Orders'),
             onTap: () {
               Navigator.of(context).pushReplacementNamed(OrderScreen.routeName);
+            },
+          ),
+          const Divider(),
+          ListTile(
+            leading: const Icon(Icons.book),
+            title: const Text('Information'),
+            onTap: () {
+              Navigator.of(context).pushReplacementNamed(Information.routeName);
             },
           ),
         ],
