@@ -63,7 +63,7 @@ class AppDrawer extends StatelessWidget {
             leading: const Icon(Icons.book),
             title: const Text('Information'),
             onTap: () {
-              Navigator.of(context).pushReplacementNamed(Information.routeName);
+              Navigator.of(context).pushNamed(Information.routeName);
             },
           ),
         ],
