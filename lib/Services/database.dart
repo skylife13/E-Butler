@@ -13,10 +13,10 @@ class DatabaseService {
 
   Future updateUserCart(
     String id,
-    double amount,
+    int amount,
     String title,
-    double total,
-    double price,
+    int total,
+    int price,
     int quantity,
   ) async {
     Map<String, Object> products = {
