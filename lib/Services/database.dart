@@ -12,6 +12,8 @@ class DatabaseService {
   }
 
   Future updateUserCart(
+    int roomNumber,
+    int index,
     String id,
     int amount,
     String title,
@@ -20,15 +22,15 @@ class DatabaseService {
     int quantity,
   ) async {
     Map<String, Object> products = {
+      'Room Number': roomNumber,
+      'Item Id': id,
       'Title': title,
       'Price': price,
       'Quantity': quantity,
       'Total': total,
-    };
-    await cartCollection.document(uid).updateData({
-      'Products $id': products,
       'Total Price': amount,
       'Time': DateTime.now()
-    });
+    };
+    await cartCollection.document(uid).updateData({'$index': products});
   }
 }
