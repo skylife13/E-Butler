@@ -4,6 +4,8 @@ import '/Model/user.dart';
 import '/Screens/Authenticate/authenticate.dart';
 import '/Screens/Home/products_overview_screen.dart';
 import 'package:provider/provider.dart';
+import '/providers/product.dart';
+import '/Services/productdatabase.dart';
 
 class Wrapper extends StatelessWidget {
   const Wrapper({Key key}) : super(key: key);
@@ -14,7 +16,11 @@ class Wrapper extends StatelessWidget {
     if (user == null) {
       return const Authenticate();
     } else {
-      return const ProductsOverviewScreen();
+      return StreamProvider<List<Product>>.value(
+        child: const ProductsOverviewScreen(),
+        value: ProductDatabase().productsStream,
+        initialData: [],
+      );
     }
   }
 }

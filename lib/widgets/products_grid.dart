@@ -3,12 +3,19 @@ import 'package:provider/provider.dart';
 
 import '/providers/products.dart';
 import './product_item.dart';
+import '/providers/product.dart';
 
 class ProductsGrid extends StatelessWidget {
   const ProductsGrid({Key key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     final productsData = Provider.of<Products>(context);
+    final testing = Provider.of<List<Product>>(context);
+    productsData.clear();
+    testing.forEach((test) {
+      productsData.addProduct(
+          test.id, test.title, test.description, test.price, test.imageUrl);
+    });
     final products = productsData.items;
     return GridView.builder(
       gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(

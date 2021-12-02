@@ -20,6 +20,7 @@ class CartScreen extends StatelessWidget {
     final _formKey = GlobalKey<FormState>();
     String roomNumberData;
     final cart = Provider.of<Cart>(context);
+
     final user = Provider.of<User>(context);
     void updatedb() {
       for (int i = 0; i < cart.itemCount; i++) {
@@ -96,6 +97,7 @@ class CartScreen extends StatelessWidget {
                                       cart.totalAmount,
                                     );
                                     cart.clear();
+
                                     Navigator.of(context)
                                         .pushNamed(OrderScreen.routeName);
                                   } else {
