@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 import '/Shared/constants.dart';
@@ -53,6 +54,10 @@ class CartScreen extends StatelessWidget {
                   child: TextFormField(
                     decoration: textInputDecoration.copyWith(
                         hintText: 'Enter Room Number'),
+                    keyboardType: TextInputType.number,
+                    inputFormatters: <TextInputFormatter>[
+                      FilteringTextInputFormatter.digitsOnly
+                    ],
                     onChanged: (val) {
                       roomNumberData = val;
                     },

@@ -3,9 +3,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import '/providers/product.dart';
 
 class ProductDatabase {
-  final String title;
-  ProductDatabase({this.title});
-
   final CollectionReference cartCollection =
       Firestore.instance.collection('Items');
 
