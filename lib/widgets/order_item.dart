@@ -52,7 +52,7 @@ class _OrderItemState extends State<OrderItem> {
                 setState(() {
                   widget.order.status = true;
                 });
-                DatabaseService(uid: user.uid).setUserData();
+
                 Firestore.instance.collection('Cart').document('$uid').delete();
               },
             ),
