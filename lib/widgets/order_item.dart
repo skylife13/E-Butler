@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:intl/intl.dart';
 import 'dart:math';
 import 'package:provider/provider.dart';
@@ -23,6 +24,7 @@ class _OrderItemState extends State<OrderItem> {
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<User>(context);
+    String uid = user.uid;
     return Card(
       margin: const EdgeInsets.all(10),
       child: Column(
@@ -50,7 +52,8 @@ class _OrderItemState extends State<OrderItem> {
                 setState(() {
                   widget.order.status = true;
                 });
-                DatabaseService(uid: user.uid).updateUserData();
+                DatabaseService(uid: user.uid).setUserData();
+                Firestore.instance.collection('Cart').document('$uid').delete();
               },
             ),
             trailing: IconButton(

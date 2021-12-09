@@ -7,7 +7,7 @@ class DatabaseService {
   final CollectionReference cartCollection =
       Firestore.instance.collection('Cart');
 
-  Future updateUserData() async {
+  Future setUserData() async {
     return await cartCollection.document(uid).setData({});
   }
 

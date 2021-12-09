@@ -92,9 +92,11 @@ class CartScreen extends StatelessWidget {
                               color: Theme.of(context).primaryColor,
                             ),
                           ),
-                          onPressed: cart.totalAmount > 0
+                          onPressed: cart.itemCount > 0
                               ? () {
                                   if (_formKey.currentState.validate()) {
+                                    DatabaseService(uid: user.uid)
+                                        .setUserData();
                                     updatedb();
                                     Provider.of<Orders>(context, listen: false)
                                         .addOrder(
