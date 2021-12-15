@@ -1,3 +1,6 @@
+import 'package:ebutler/Screens/Notifications/components/default_backbutton.dart';
+import 'package:ebutler/Services/productdatabase.dart';
+import 'package:ebutler/providers/product.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -11,7 +14,7 @@ import '/Model/user.dart';
 
 class ProductsOverviewScreen extends StatefulWidget {
   const ProductsOverviewScreen({Key key}) : super(key: key);
-
+  static const routeName = '/ProductOverviewScreen';
   @override
   _ProductsOverviewScreenState createState() => _ProductsOverviewScreenState();
 }
@@ -21,11 +24,12 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return StreamProvider<List<User>>.value(
-      initialData: null,
-      value: null,
+    return StreamProvider<List<Product>>.value(
+      initialData: [],
+      value: ProductDatabase().productsStream,
       child: Scaffold(
         appBar: AppBar(
+          leading: DefaultBackButton(),
           title: const Text('MyShop'),
           actions: <Widget>[
             TextButton.icon(
