@@ -8,7 +8,7 @@ class DatabaseService {
       Firestore.instance.collection('Cart');
 
   Future setUserData() async {
-    return await cartCollection.document(uid).setData({});
+    return await cartCollection.document('1').setData({});
   }
 
   Future updateUserCart(
@@ -31,6 +31,8 @@ class DatabaseService {
       'Total Price': amount,
       'Time': DateTime.now()
     };
-    await cartCollection.document(uid).updateData({'$index': products});
+    await cartCollection
+        .document(uid)
+        .setData({'$index': products}, merge: true);
   }
 }

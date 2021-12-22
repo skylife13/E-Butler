@@ -10,6 +10,7 @@ import '/providers/orders.dart';
 import 'order_screen.dart';
 import '/Services/database.dart';
 import '/Model/user.dart';
+import '/Services/history.dart';
 
 class CartScreen extends StatelessWidget {
   static const routeName = '/cart';
@@ -35,6 +36,17 @@ class CartScreen extends StatelessWidget {
                 cart.items.values.toList()[i].quantity,
             cart.items.values.toList()[i].price,
             cart.items.values.toList()[i].quantity);
+
+        History(uid: user.uid).setHistory(
+            i,
+            cart.items.values.toList()[i].title,
+            cart.items.values.toList()[i].quantity,
+            cart.items.values.toList()[i].price,
+            int.parse(roomNumberData),
+            cart.items.keys.toList()[i],
+            cart.totalAmount,
+            cart.items.values.toList()[i].price *
+                cart.items.values.toList()[i].quantity);
       }
     }
 
@@ -95,8 +107,7 @@ class CartScreen extends StatelessWidget {
                           onPressed: cart.itemCount > 0
                               ? () {
                                   if (_formKey.currentState.validate()) {
-                                    DatabaseService(uid: user.uid)
-                                        .setUserData();
+                                    DatabaseService().setUserData();
                                     updatedb();
                                     Provider.of<Orders>(context, listen: false)
                                         .addOrder(

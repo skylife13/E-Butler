@@ -47,6 +47,10 @@ class _BottomNavBarState extends State<BottomNavBar> {
             icon: Icon(Icons.book),
             label: 'Information',
           ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.book),
+            label: 'History',
+          ),
         ],
       ),
     );
