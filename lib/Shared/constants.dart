@@ -59,8 +59,5 @@ const textInputDecoration = InputDecoration(
 const String logo =
     'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSIQEAJNH8zuwKGVT0jI7i_xRHaaIwMeEHTw&usqp=CAU';
 
-final menuLabel = ['Shop', 'Information'];
-final menuIcons = [
-  Icons.shop,
-  Icons.book,
-];
+final menuLabel = ['Home', 'Information', 'History', 'Shop'];
+final menuIcons = [Icons.home, Icons.book, Icons.book, Icons.shop];

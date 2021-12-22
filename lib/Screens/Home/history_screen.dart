@@ -13,6 +13,9 @@ class HistoryScreen extends StatefulWidget {
   State<HistoryScreen> createState() => _HistoryScreenState();
 }
 
+//Masih ga optimal soalnya kalo tiap detik beda document, karena loop butuh
+//waktu milisecond, kalau user pesen misal tepat 1ms sblm pindah detik
+//nanti document kebikin jadi 2x
 class _HistoryScreenState extends State<HistoryScreen> {
   @override
   Widget build(BuildContext context) {

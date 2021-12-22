@@ -1,7 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:intl/intl.dart';
 
-//database.dart sama ini jadi setdata ga pake update data lagi
+//Masih ga optimal soalnya kalo tiap detik beda document, karena loop butuh
+//waktu milisecond, kalau user pesen misal tepat 1ms sblm pindah detik
+//nanti document kebikin jadi 2x
 
 class History {
   final String uid;
