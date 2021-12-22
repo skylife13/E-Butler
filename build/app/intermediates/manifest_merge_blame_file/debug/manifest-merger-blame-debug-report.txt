@@ -23,7 +23,7 @@
 19    <application
 19-->C:\Users\Dell\OneDrive - Bina Nusantara University\Documents\GitHub\E-Butler\android\app\src\main\AndroidManifest.xml:3:4-40:19
 20        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-20-->[androidx.core:core:1.1.0] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\3c8fd1bfddb99a7a7e21faa1397acdb4\core-1.1.0\AndroidManifest.xml:24:18-86
+20-->[androidx.core:core:1.6.0] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\8ec5a4192b12a309556d408337153575\core-1.6.0\AndroidManifest.xml:24:18-86
 21        android:debuggable="true"
 22        android:icon="@mipmap/ic_launcher"
 22-->C:\Users\Dell\OneDrive - Bina Nusantara University\Documents\GitHub\E-Butler\android\app\src\main\AndroidManifest.xml:5:9-43

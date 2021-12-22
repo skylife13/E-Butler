@@ -1,3 +1,4 @@
+import 'package:ebutler/Shared/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -16,13 +17,14 @@ class ProductItem extends StatelessWidget {
     return ClipRRect(
       borderRadius: BorderRadius.circular(20),
       child: GridTile(
-        header: GridTileBar(
-          title: Text(
-            product.title,
-            textAlign: TextAlign.center,
-          ),
-          backgroundColor: Colors.black54,
-        ),
+        // header: GridTileBar(
+        //   title: Text(
+        //     product.title,
+        //     textAlign: TextAlign.center,
+        //   ),
+        //   backgroundColor: Colors.black12,
+        // ),
+
         child: GestureDetector(
           onTap: () {
             Navigator.of(context).pushNamed(ProductDetailScreen.routeName,
@@ -30,74 +32,83 @@ class ProductItem extends StatelessWidget {
           },
           child: Image.network(
             product.imageUrl,
-            fit: BoxFit.contain,
+            fit: BoxFit.cover,
           ),
         ),
         footer: GridTileBar(
-          backgroundColor: Colors.black54,
-          title: Consumer<Cart>(
-            builder: (_, cart, child) => Stack(
-              children: [
-                Center(
-                  child: Text(
-                    quantity.toString(),
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-              ],
-            ),
+          title: Text(
+            product.title,
+            textAlign: TextAlign.center,
+            style: TextStyle(color: Colors.white),
           ),
-          subtitle: Text(
-            'Rp.${product.price.toStringAsFixed(0)}',
-          ),
-          leading: IconButton(
-            icon: const Icon(Icons.remove),
-            onPressed: () {
-              cart.removeSingleItem(product.id); //ganti jadi remove item
-              ScaffoldMessenger.of(context).hideCurrentSnackBar();
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: quantity != 0
-                      ? const Text(
-                          'Removed Item From Cart',
-                          textAlign: TextAlign.center,
-                        )
-                      : const Text(
-                          'Add Item First',
-                          textAlign: TextAlign.center,
-                        ),
-                  duration: const Duration(seconds: 1),
-                ),
-              );
-              if (quantity < 1) {
-                quantity = 0;
-              } else {
-                quantity -= 1;
-              }
-            },
-            color: Theme.of(context).accentColor,
-          ),
-          trailing: IconButton(
-            icon: const Icon(
-              Icons.add,
-            ),
-            onPressed: () {
-              cart.addItem(product.id, product.price, product.title);
-              ScaffoldMessenger.of(context).hideCurrentSnackBar();
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
-                  content: Text(
-                    'Added item to cart!',
-                    textAlign: TextAlign.center,
-                  ),
-                  duration: Duration(seconds: 1),
-                ),
-              );
-              quantity += 1;
-            },
-            color: Theme.of(context).accentColor,
-          ),
+          backgroundColor: Colors.black45,
         ),
+
+        // GridTileBar(
+        //   backgroundColor: Colors.black54,
+        //   title: Consumer<Cart>(
+        //     builder: (_, cart, child) => Stack(
+        //       children: [
+        //         Center(
+        //           child: Text(
+        //             quantity.toString(),
+        //             textAlign: TextAlign.center,
+        //           ),
+        //         ),
+        //       ],
+        //     ),
+        //   ),
+        //   subtitle: Text(
+        //     'Rp.${product.price.toStringAsFixed(0)}',
+        //   ),
+        //   leading: IconButton(
+        //     icon: const Icon(Icons.remove),
+        //     onPressed: () {
+        //       cart.removeSingleItem(product.id); //ganti jadi remove item
+        //       ScaffoldMessenger.of(context).hideCurrentSnackBar();
+        //       ScaffoldMessenger.of(context).showSnackBar(
+        //         SnackBar(
+        //           content: quantity != 0
+        //               ? const Text(
+        //                   'Removed Item From Cart',
+        //                   textAlign: TextAlign.center,
+        //                 )
+        //               : const Text(
+        //                   'Add Item First',
+        //                   textAlign: TextAlign.center,
+        //                 ),
+        //           duration: const Duration(seconds: 1),
+        //         ),
+        //       );
+        //       if (quantity < 1) {
+        //         quantity = 0;
+        //       } else {
+        //         quantity -= 1;
+        //       }
+        //     },
+        //     color: Theme.of(context).accentColor,
+        //   ),
+        //   trailing: IconButton(
+        //     icon: const Icon(
+        //       Icons.add,
+        //     ),
+        //     onPressed: () {
+        //       cart.addItem(product.id, product.price, product.title);
+        //       ScaffoldMessenger.of(context).hideCurrentSnackBar();
+        //       ScaffoldMessenger.of(context).showSnackBar(
+        //         const SnackBar(
+        //           content: Text(
+        //             'Added item to cart!',
+        //             textAlign: TextAlign.center,
+        //           ),
+        //           duration: Duration(seconds: 1),
+        //         ),
+        //       );
+        //       quantity += 1;
+        //     },
+        //     color: Theme.of(context).accentColor,
+        //   ),
+        // ),
       ),
     );
   }
