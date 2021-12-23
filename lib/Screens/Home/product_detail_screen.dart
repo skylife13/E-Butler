@@ -1,5 +1,7 @@
+import 'package:ebutler/Screens/Home/cart_screen.dart';
 import 'package:ebutler/providers/cart.dart';
 import 'package:ebutler/providers/product.dart';
+import 'package:ebutler/widgets/badge.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -22,6 +24,21 @@ class ProductDetailScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(loadedProduct.title),
+        actions: <Widget>[
+          Consumer<Cart>(
+              builder: (_, cart, ch) => Badge(
+                    child: ch,
+                    value: cart.itemCount.toString(),
+                  ),
+              child: IconButton(
+                icon: const Icon(
+                  Icons.shopping_cart,
+                ),
+                onPressed: () {
+                  Navigator.of(context).pushNamed(CartScreen.routeName);
+                },
+              ))
+        ],
       ),
       body: SingleChildScrollView(
         child: Column(

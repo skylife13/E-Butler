@@ -1,4 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:ebutler/Screens/Notifications/components/default_appbar.dart';
+import 'package:ebutler/Screens/Notifications/components/default_backbutton.dart';
 import 'package:intl/intl.dart';
 
 import '/Model/user.dart';
@@ -30,9 +32,9 @@ class _HistoryScreenState extends State<HistoryScreen> {
 
     var streamSnapshot = Firestore.instance.collection(uid).snapshots();
     return Scaffold(
-      drawer: const AppDrawer(),
-      appBar: AppBar(
-        title: Text('History'),
+      appBar: DefaultAppBar(
+        title: 'History',
+        child: DefaultBackButton(),
       ),
       body: StreamBuilder<QuerySnapshot>(
         stream: streamSnapshot,

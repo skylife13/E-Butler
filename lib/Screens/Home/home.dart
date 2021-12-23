@@ -21,16 +21,20 @@ class _HomeState extends State<Home> {
       backgroundColor: kWhiteColor,
       appBar: AppBar(
         elevation: 0.0,
-        title: const Text('BINUS Hotel'),
+        automaticallyImplyLeading: false,
+        title: const Text(
+          'BINUS Hotel',
+          style: TextStyle(color: kWhiteColor),
+        ),
         actions: <Widget>[
           TextButton.icon(
-            icon: const Icon(Icons.person, color: Colors.white),
+            icon: const Icon(Icons.person, color: kWhiteColor),
             onPressed: () async {
               await _auth.signOut();
             },
             label: const Text(
               'Logout',
-              style: TextStyle(color: Colors.white),
+              style: TextStyle(color: kWhiteColor),
             ),
           ),
           IconButton(

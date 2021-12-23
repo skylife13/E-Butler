@@ -1,5 +1,6 @@
 import 'package:ebutler/Screens/Notifications/components/default_backbutton.dart';
 import 'package:ebutler/Services/productdatabase.dart';
+import 'package:ebutler/Shared/constants.dart';
 import 'package:ebutler/providers/product.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -29,17 +30,21 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
       value: ProductDatabase().productsStream,
       child: Scaffold(
         appBar: AppBar(
+          title: const Text(
+            'MyShop',
+            style: TextStyle(color: kPrimaryColor),
+          ),
+          backgroundColor: kWhiteColor,
           leading: DefaultBackButton(),
-          title: const Text('MyShop'),
           actions: <Widget>[
             TextButton.icon(
-              icon: const Icon(Icons.person, color: Colors.white),
+              icon: const Icon(Icons.person, color: kPrimaryColor),
               onPressed: () async {
                 await _auth.signOut();
               },
               label: const Text(
                 'Logout',
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(color: kPrimaryColor),
               ),
             ),
             Consumer<Cart>(
@@ -48,9 +53,7 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
                       value: cart.itemCount.toString(),
                     ),
                 child: IconButton(
-                  icon: const Icon(
-                    Icons.shopping_cart,
-                  ),
+                  icon: const Icon(Icons.shopping_cart, color: kPrimaryColor),
                   onPressed: () {
                     Navigator.of(context).pushNamed(CartScreen.routeName);
                   },

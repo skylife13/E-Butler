@@ -1,3 +1,4 @@
+import 'package:ebutler/Screens/Notifications/components/default_appbar.dart';
 import 'package:ebutler/Services/auth.dart';
 import 'package:ebutler/Shared/constants.dart';
 import 'package:ebutler/Shared/loading.dart';
@@ -27,11 +28,14 @@ class _SignInState extends State<SignIn> {
         ? const Loading()
         : Scaffold(
             backgroundColor: Colors.purple[100],
-            appBar: AppBar(
-              backgroundColor: Colors.purple,
-              elevation: 0.0,
-              title: const Text("Sign in to BINUS Hotel"),
+            appBar: DefaultAppBar(
+              title: 'Sign in to BINUS Hotel',
             ),
+            // AppBar(
+            //   backgroundColor: Colors.purple,
+            //   elevation: 0.0,
+            //   title: const Text("Sign in to BINUS Hotel"),
+            // ),
             body: Container(
                 padding: const EdgeInsets.symmetric(
                     vertical: 20.0, horizontal: 50.0),

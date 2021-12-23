@@ -1,5 +1,7 @@
 import 'package:ebutler/Screens/Home/information.dart';
+import 'package:ebutler/Shared/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 import '/Screens/wrapper.dart';
@@ -14,6 +16,11 @@ import '/providers/orders.dart';
 import 'Screens/Home/products_overview_screen.dart';
 
 void main() {
+  SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+    ),
+  );
   runApp(const MyApp());
 }
 
@@ -38,8 +45,9 @@ class MyApp extends StatelessWidget {
           ),
         ],
         child: MaterialApp(
+            debugShowCheckedModeBanner: false,
             theme: ThemeData(
-              primarySwatch: Colors.purple,
+              primarySwatch: kPrimaryColor,
               accentColor: Colors.white,
               fontFamily: 'Lato',
             ),

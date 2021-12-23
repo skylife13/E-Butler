@@ -1,11 +1,39 @@
 import 'package:flutter/material.dart';
 
-const kPrimaryColor = Color(0xFFFF8084);
-const kAccentColor = Color(0xFFF1F1F1);
+const MaterialColor kPrimaryColor = MaterialColor(
+  0xFFFF8084,
+  <int, Color>{
+    50: Color(0xFFFF8084),
+    100: Color(0xFFFF8084),
+    200: Color(0xFFFF8084),
+    300: Color(0xFFFF8084),
+    400: Color(0xFFFF8084),
+    500: Color(0xFFFF8084),
+    600: Color(0xFFFF8084),
+    700: Color(0xFFFF8084),
+    800: Color(0xFFFF8084),
+    900: Color(0xFFFF8084),
+  },
+);
+const MaterialColor kAccentColor = MaterialColor(
+  0xFFF1F1F1,
+  <int, Color>{
+    50: Color(0xFFF1F1F1),
+    100: Color(0xFFF1F1F1),
+    200: Color(0xFFF1F1F1),
+    300: Color(0xFFF1F1F1),
+    400: Color(0xFFF1F1F1),
+    500: Color(0xFFF1F1F1),
+    600: Color(0xFFF1F1F1),
+    700: Color(0xFFF1F1F1),
+    800: Color(0xFFF1F1F1),
+    900: Color(0xFFF1F1F1),
+  },
+);
+
 const kWhiteColor = Color(0xFFFFFFFF);
 const kLightColor = Color(0xFF808080);
 const kDarkColor = Color(0xFF303030);
-const kTransparent = Colors.transparent;
 
 const kDefaultPadding = 24.0;
 const kLessPadding = 10.0;
@@ -50,10 +78,10 @@ const textInputDecoration = InputDecoration(
   fillColor: Colors.white,
   filled: true,
   enabledBorder: OutlineInputBorder(
-    borderSide: BorderSide(color: Colors.white, width: 2.0),
+    borderSide: BorderSide(color: kWhiteColor, width: 2.0),
   ),
   focusedBorder: OutlineInputBorder(
-    borderSide: BorderSide(color: Colors.purple, width: 2.0),
+    borderSide: BorderSide(color: kPrimaryColor, width: 2.0),
   ),
 );
 const String logo =
