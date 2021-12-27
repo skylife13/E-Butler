@@ -19,7 +19,6 @@ class Information extends StatelessWidget {
         appBar: DefaultAppBar(
           title: 'Information',
           child: DefaultBackButton(),
-          
         ),
         // appBar: AppBar(
         //   title: const Text('Information'),

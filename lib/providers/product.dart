@@ -5,7 +5,7 @@ class Product with ChangeNotifier {
   final String title;
   final String description;
   final int price;
-
+  int quantity = 0;
   final String imageUrl;
 
   Product({
