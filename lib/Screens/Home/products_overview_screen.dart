@@ -3,7 +3,6 @@ import 'package:ebutler/Screens/Notifications/components/shopbackbutton.dart';
 import 'package:ebutler/Services/productdatabase.dart';
 import 'package:ebutler/Shared/constants.dart';
 import 'package:ebutler/providers/product.dart';
-import 'package:ebutler/providers/products.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -31,7 +30,6 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
 
     Future<bool> showExitPopup() async {
       // final cart = Provider.of<Cart>(context, listen: false);
-      // final cartcount = Provider.of<Cart>(context, listen: false);
 
       return await showDialog(
             //show confirm dialogue
@@ -48,7 +46,7 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    Navigator.of(context).pushNamed('/');
+                    Navigator.of(context).pop(true);
                     cart.clear();
                   },
                   //return true when click on "Yes"
@@ -57,13 +55,11 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
               ],
             ),
           ) ??
-          false;
-
-      //if showDialouge had returned null, then return false
+          false; //if showDialouge had returned null, then return false
     }
 
     return WillPopScope(
-      onWillPop: cart.itemCount > 0 ? () => showExitPopup() : null,
+      onWillPop: cart.itemCount > 0 ? showExitPopup : null,
       child: StreamProvider<List<Product>>.value(
         initialData: [],
         value: ProductDatabase().productsStream,
