@@ -1,4 +1,5 @@
 import 'package:ebutler/Screens/Notifications/components/default_backbutton.dart';
+import 'package:ebutler/Screens/Notifications/components/shopbackbutton.dart';
 import 'package:ebutler/Services/productdatabase.dart';
 import 'package:ebutler/Shared/constants.dart';
 import 'package:ebutler/providers/product.dart';
@@ -25,8 +26,11 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final cart = Provider.of<Cart>(context);
+
     Future<bool> showExitPopup() async {
-      final cart = Provider.of<Cart>(context, listen: false);
+      // final cart = Provider.of<Cart>(context, listen: false);
+
       return await showDialog(
             //show confirm dialogue
             //the return value will be from "Yes" or "No" options
@@ -54,11 +58,11 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
           false; //if showDialouge had returned null, then return false
     }
 
-    return StreamProvider<List<Product>>.value(
-      initialData: [],
-      value: ProductDatabase().productsStream,
-      child: WillPopScope(
-        onWillPop: showExitPopup,
+    return WillPopScope(
+      onWillPop: cart.itemCount > 0 ? showExitPopup : null,
+      child: StreamProvider<List<Product>>.value(
+        initialData: [],
+        value: ProductDatabase().productsStream,
         child: Scaffold(
           appBar: AppBar(
             title: const Text(
@@ -66,7 +70,7 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
               style: TextStyle(color: kPrimaryColor),
             ),
             backgroundColor: kWhiteColor,
-            // leading: DefaultBackButton(),
+            // leading: ShopBackButton(),
             actions: <Widget>[
               TextButton.icon(
                 icon: const Icon(Icons.person, color: kPrimaryColor),
