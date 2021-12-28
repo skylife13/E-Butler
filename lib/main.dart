@@ -1,3 +1,4 @@
+import 'package:ebutler/Screens/Home/history_screen.dart';
 import 'package:ebutler/Screens/Home/information.dart';
 import 'package:ebutler/Shared/constants.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +15,7 @@ import '/providers/products.dart';
 import '/providers/cart.dart';
 import '/providers/orders.dart';
 import 'Screens/Home/products_overview_screen.dart';
+import 'Screens/Home/history_screen.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(
@@ -59,7 +61,8 @@ class MyApp extends StatelessWidget {
                   const ProductDetailScreen(),
               CartScreen.routeName: (ctx) => const CartScreen(),
               OrderScreen.routeName: (ctx) => const OrderScreen(),
-              Information.routeName: (ctx) => const Information()
+              Information.routeName: (ctx) => const Information(),
+              HistoryScreen.routeName: (ctx) => const HistoryScreen(),
             }),
       ),
     );

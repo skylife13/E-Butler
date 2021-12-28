@@ -1,3 +1,5 @@
+import 'package:ebutler/Screens/Home/history_screen.dart';
+import 'package:ebutler/Screens/Home/information.dart';
 import 'package:ebutler/Screens/Home/products_overview_screen.dart';
 import 'package:ebutler/Screens/Notifications/notification_list.dart';
 import 'package:ebutler/Services/auth.dart';
@@ -68,8 +70,18 @@ class _HomeState extends State<Home> {
                       IconButton(
                           icon: Icon(menuIcons[index],
                               color: kPrimaryColor, size: 34.0),
-                          onPressed: () => Navigator.of(context)
-                              .pushNamed(ProductsOverviewScreen.routeName)),
+                          onPressed: () {
+                            if (index == 0) {
+                              Navigator.of(context)
+                                  .pushNamed(Information.routeName);
+                            } else if (index == 1) {
+                              Navigator.of(context)
+                                  .pushNamed(HistoryScreen.routeName);
+                            } else {
+                              Navigator.of(context)
+                                  .pushNamed(ProductsOverviewScreen.routeName);
+                            }
+                          }),
                       Text(
                         menuLabel[index],
                         style:

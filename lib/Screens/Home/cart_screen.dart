@@ -73,9 +73,9 @@ class CartScreen extends StatelessWidget {
                     onChanged: (val) {
                       roomNumberData = val;
                     },
-                    // validator: (val) => val.isEmpty
-                    //     ? 'Ga guna... gr gr bkn stateful, eman eman tapi kalo jadi stateful'
-                    //     : null,
+                    validator: (val) => val.isEmpty
+                        ? 'Ga guna... gr gr bkn stateful, eman eman tapi kalo jadi stateful'
+                        : null,
                   ),
                 ),
                 Card(

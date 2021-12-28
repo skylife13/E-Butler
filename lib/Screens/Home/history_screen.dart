@@ -10,6 +10,7 @@ import '/widgets/app_drawer.dart';
 
 class HistoryScreen extends StatefulWidget {
   const HistoryScreen({Key key}) : super(key: key);
+  static const routeName = 'historyScreen';
 
   @override
   State<HistoryScreen> createState() => _HistoryScreenState();

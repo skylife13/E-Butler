@@ -31,15 +31,10 @@ class ProductItem extends StatelessWidget {
           },
           child: Image.network(
             product.imageUrl,
-            fit: BoxFit.contain,
+            fit: BoxFit.cover,
           ),
         ),
-        footer: Container(
-          height: 20,
-          child: GridTileBar(
-            backgroundColor: Colors.black54,
-          ),
-        ),
+
         // footer: GridTileBar(
         //   backgroundColor: Colors.black54,
         //   title: Consumer<Cart>(
