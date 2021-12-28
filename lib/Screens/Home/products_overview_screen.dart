@@ -26,18 +26,18 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final cart = Provider.of<Cart>(context);
+    final cart = Provider.of<Cart>(context, listen: false);
 
     Future<bool> showExitPopup() async {
-      // final cart = Provider.of<Cart>(context, listen: false);
-
       return await showDialog(
             //show confirm dialogue
             //the return value will be from "Yes" or "No" options
+
             context: context,
             builder: (context) => AlertDialog(
-              title: Text('You Still have items in cart'),
-              content: Text('Do you want to go back?'),
+              title: Text('Exit'),
+              content: Text(
+                  'Are you sure you want to exit? the items in the cart will be lost'),
               actions: [
                 ElevatedButton(
                   onPressed: () => Navigator.of(context).pop(false),
@@ -46,20 +46,52 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    Navigator.of(context).pop(true);
+                    Navigator.of(context).pushNamed('/');
                     cart.clear();
                   },
                   //return true when click on "Yes"
-                  child: Text('Yes, clear cart'),
+                  child: Text('Yes'),
                 ),
               ],
             ),
           ) ??
-          false; //if showDialouge had returned null, then return false
+          () => Navigator.of(context).pop(true);
+
+      //if showDialouge had returned null, then return false
+    }
+
+    Future<bool> showExitPopupzero() async {
+      return await showDialog(
+            //show confirm dialogue
+            //the return value will be from "Yes" or "No" options
+
+            context: context,
+            builder: (context) => AlertDialog(
+              title: Text('Exit'),
+              content: Text('If you choose yes then the cart will be cleared'),
+              actions: [
+                ElevatedButton(
+                  onPressed: () => Navigator.of(context).pop(false),
+                  //return false when click on "NO"
+                  child: Text("'No,i'll stay"),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.of(context).pushNamed('/');
+                  },
+                  //return true when click on "Yes"
+                  child: Text('Yes'),
+                ),
+              ],
+            ),
+          ) ??
+          () => Navigator.of(context).pop(true);
+
+      //if showDialouge had returned null, then return false
     }
 
     return WillPopScope(
-      onWillPop: cart.itemCount > 0 ? showExitPopup : null,
+      onWillPop: showExitPopup,
       child: StreamProvider<List<Product>>.value(
         initialData: [],
         value: ProductDatabase().productsStream,
@@ -70,7 +102,7 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
               style: TextStyle(color: kPrimaryColor),
             ),
             backgroundColor: kWhiteColor,
-            // leading: ShopBackButton(),
+            //leading: ShopBackButton(),
             actions: <Widget>[
               TextButton.icon(
                 icon: const Icon(Icons.person, color: kPrimaryColor),
@@ -99,6 +131,10 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
           body: ProductsGrid(),
         ),
       ),
+
+      // onWillPop: cart.itemCount > 0
+      //     ? () => showExitPopup()
+      //     : () => showExitPopupzero(),
     );
   }
 }

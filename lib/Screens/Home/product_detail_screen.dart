@@ -13,7 +13,7 @@ import 'package:provider/provider.dart';
 
 import '/providers/products.dart';
 
-class ProductDetailScreen extends StatelessWidget {
+class ProductDetailScreen extends StatefulWidget {
   static const routeName = '/product-detail';
 
   const ProductDetailScreen({
@@ -21,11 +21,14 @@ class ProductDetailScreen extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  State<ProductDetailScreen> createState() => _ProductDetailScreenState();
+}
+
+class _ProductDetailScreenState extends State<ProductDetailScreen> {
+  @override
   Widget build(BuildContext context) {
     final AuthService _auth = AuthService();
-    final ProductItem pi = new ProductItem();
 
-    int quantity = 0;
     final _formKey = GlobalKey<FormState>();
 
     final cart = Provider.of<Cart>(context, listen: false);
@@ -35,6 +38,7 @@ class ProductDetailScreen extends StatelessWidget {
       context,
       listen: false,
     ).findById(productId);
+
     return Scaffold(
       appBar: DefaultAppBar(
         title: loadedProduct.title,
@@ -139,6 +143,7 @@ class ProductDetailScreen extends StatelessWidget {
                         duration: const Duration(seconds: 1),
                       ),
                     );
+
                     if (loadedProduct.quantity < 1) {
                       loadedProduct.quantity = 0;
                     } else {
@@ -153,7 +158,7 @@ class ProductDetailScreen extends StatelessWidget {
                   ),
                   onPressed: () {
                     cart.addItem(loadedProduct.id, loadedProduct.price,
-                        loadedProduct.title, loadedProduct.quantity);
+                        loadedProduct.title);
                     ScaffoldMessenger.of(context).hideCurrentSnackBar();
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(
