@@ -21,7 +21,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
     const Home(),
     const Information(),
     const HistoryScreen(),
-    const ProductsOverviewScreen(),
+    // const ProductsOverviewScreen(),
   ];
 
   void onTapTapped(int index) {
@@ -58,10 +58,10 @@ class _BottomNavBarState extends State<BottomNavBar> {
             icon: Icon(Icons.book),
             label: 'History',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.shop),
-            label: 'Shop',
-          ),
+          // BottomNavigationBarItem(
+          //   icon: Icon(Icons.shop),
+          //   label: 'Shop',
+          // ),
         ],
       ),
     );
