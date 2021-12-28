@@ -1,4 +1,5 @@
 import 'package:ebutler/Shared/constants.dart';
+import 'package:ebutler/providers/products.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -7,7 +8,6 @@ import '/providers/cart.dart';
 import '/Screens/Home/product_detail_screen.dart';
 
 class ProductItem extends StatelessWidget {
-  int quantity = 0;
   ProductItem({Key key}) : super(key: key);
 
   @override
@@ -49,9 +49,9 @@ class ProductItem extends StatelessWidget {
               ],
             ),
           ),
-          subtitle: Text(
-            'Rp.${product.price.toStringAsFixed(0)}',
-          ),
+          // subtitle: Text(
+          //   'Rp.${product.price.toStringAsFixed(0)}',
+          // ),
           leading: IconButton(
             icon: const Icon(Icons.remove),
             onPressed: () {
@@ -74,7 +74,7 @@ class ProductItem extends StatelessWidget {
               if (product.quantity < 1) {
                 product.quantity = 0;
               } else {
-                quantity -= 1;
+                product.quantity -= 1;
               }
             },
             color: Theme.of(context).accentColor,
@@ -96,7 +96,7 @@ class ProductItem extends StatelessWidget {
                   duration: Duration(seconds: 1),
                 ),
               );
-              product.quantity++;
+              product.quantity += 1;
             },
             color: Theme.of(context).accentColor,
           ),
