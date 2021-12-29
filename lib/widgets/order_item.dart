@@ -1,3 +1,5 @@
+import 'package:ebutler/Screens/Home/order_screen.dart';
+import 'package:ebutler/providers/orders.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:intl/intl.dart';
@@ -24,7 +26,9 @@ class _OrderItemState extends State<OrderItem> {
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<User>(context);
+
     String uid = user.uid;
+
     return Card(
       margin: const EdgeInsets.all(10),
       child: Column(
@@ -54,6 +58,7 @@ class _OrderItemState extends State<OrderItem> {
                 });
 
                 Firestore.instance.collection('Cart').document('$uid').delete();
+                Navigator.of(context).pushNamed('/');
               },
             ),
             trailing: IconButton(

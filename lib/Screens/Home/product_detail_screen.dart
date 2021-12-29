@@ -1,13 +1,10 @@
-import 'package:ebutler/Screens/Home/cart_screen.dart';
 import 'package:ebutler/Screens/Notifications/components/default_appbar.dart';
-import 'package:ebutler/Screens/Notifications/components/default_appbar2.dart';
+
 import 'package:ebutler/Screens/Notifications/components/default_backbutton2.dart';
 import 'package:ebutler/Services/auth.dart';
 import 'package:ebutler/Shared/constants.dart';
 import 'package:ebutler/providers/cart.dart';
-import 'package:ebutler/providers/product.dart';
-import 'package:ebutler/widgets/badge.dart';
-import 'package:ebutler/widgets/product_item.dart';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -56,24 +53,6 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
           ),
         ],
       ),
-      //  AppBar(
-      //   title: Text(loadedProduct.title),
-      //   actions: <Widget>[
-      //     Consumer<Cart>(
-      //         builder: (_, cart, ch) => Badge(
-      //               child: ch,
-      //               value: cart.itemCount.toString(),
-      //             ),
-      //         child: IconButton(
-      //           icon: const Icon(
-      //             Icons.shopping_cart,
-      //           ),
-      //           onPressed: () {
-      //             Navigator.of(context).pushNamed(CartScreen.routeName);
-      //           },
-      //         ))
-      //   ],
-      // ),
       body: Column(
         children: <Widget>[
           Form(

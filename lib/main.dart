@@ -1,5 +1,6 @@
 import 'package:ebutler/Screens/Home/history_screen.dart';
 import 'package:ebutler/Screens/Home/information.dart';
+import 'package:ebutler/Screens/Home/payment_screen.dart';
 import 'package:ebutler/Shared/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -63,6 +64,7 @@ class MyApp extends StatelessWidget {
               OrderScreen.routeName: (ctx) => const OrderScreen(),
               Information.routeName: (ctx) => const Information(),
               HistoryScreen.routeName: (ctx) => const HistoryScreen(),
+              PaymentScreen.routeName: (ctx) => const PaymentScreen(),
             }),
       ),
     );

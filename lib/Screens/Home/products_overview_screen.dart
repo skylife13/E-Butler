@@ -1,5 +1,3 @@
-import 'package:ebutler/Screens/Notifications/components/default_backbutton.dart';
-import 'package:ebutler/Screens/Notifications/components/shopbackbutton.dart';
 import 'package:ebutler/Services/productdatabase.dart';
 import 'package:ebutler/Shared/constants.dart';
 import 'package:ebutler/providers/product.dart';
@@ -10,9 +8,7 @@ import '/Services/auth.dart';
 import '/widgets/products_grid.dart';
 import '/providers/cart.dart';
 import '/Screens/Home/cart_screen.dart';
-import '/widgets/app_drawer.dart';
 import '/widgets/badge.dart';
-import '/Model/user.dart';
 
 class ProductsOverviewScreen extends StatefulWidget {
   const ProductsOverviewScreen({Key key}) : super(key: key);

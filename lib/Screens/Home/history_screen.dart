@@ -6,7 +6,6 @@ import 'package:intl/intl.dart';
 import '/Model/user.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
-import '/widgets/app_drawer.dart';
 
 class HistoryScreen extends StatefulWidget {
   const HistoryScreen({Key key}) : super(key: key);

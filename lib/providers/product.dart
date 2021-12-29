@@ -1,4 +1,3 @@
-import 'package:ebutler/providers/cart.dart';
 import 'package:flutter/foundation.dart';
 
 class Product with ChangeNotifier {

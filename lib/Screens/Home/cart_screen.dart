@@ -1,3 +1,4 @@
+import 'package:ebutler/Screens/Home/payment_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -6,11 +7,7 @@ import '/Shared/constants.dart';
 import '/providers/cart.dart' show Cart;
 //show buat ngasi tau cm butuh Cart class
 import '/widgets/cart_item.dart';
-import '/providers/orders.dart';
-import 'order_screen.dart';
 import '/Services/database.dart';
-import '/Model/user.dart';
-import '/Services/history.dart';
 
 class CartScreen extends StatelessWidget {
   static const routeName = '/cart';
@@ -23,31 +20,41 @@ class CartScreen extends StatelessWidget {
     String roomNumberData;
     final cart = Provider.of<Cart>(context);
 
-    final user = Provider.of<User>(context);
-    void updatedb() {
-      for (int i = 0; i < cart.itemCount; i++) {
-        DatabaseService(uid: user.uid).updateUserCart(
-            int.parse(roomNumberData),
-            i,
-            cart.items.keys.toList()[i],
-            cart.totalAmount,
-            cart.items.values.toList()[i].title,
-            cart.items.values.toList()[i].price *
-                cart.items.values.toList()[i].quantity,
-            cart.items.values.toList()[i].price,
-            cart.items.values.toList()[i].quantity);
+    Future<bool> alert() async {
+      return await showDialog(
+        context: context,
+        builder: (ctx) => AlertDialog(
+          title: const Text('Are you sure?'),
+          content: const Text('You cannot edit your order if you proceed'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(ctx).pop(false);
+              },
+              child: const Text(
+                'No',
+                style: TextStyle(color: Colors.black),
+              ),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.of(ctx).pop(true);
+                DatabaseService().setUserData();
 
-        History(uid: user.uid).setHistory(
-            i,
-            cart.items.values.toList()[i].title,
-            cart.items.values.toList()[i].quantity,
-            cart.items.values.toList()[i].price,
-            int.parse(roomNumberData),
-            cart.items.keys.toList()[i],
-            cart.totalAmount,
-            cart.items.values.toList()[i].price *
-                cart.items.values.toList()[i].quantity);
-      }
+                Navigator.of(context).pushNamed(PaymentScreen.routeName,
+                    arguments: roomNumberData);
+                // Navigator.of(context).pushNamedAndRemoveUntil(
+                //     PaymentScreen.routeName, (route) => false,
+                //     arguments: roomNumberData);
+              },
+              child: const Text(
+                'Yes',
+                style: TextStyle(color: Colors.black),
+              ),
+            )
+          ],
+        ),
+      );
     }
 
     return Scaffold(
@@ -74,7 +81,7 @@ class CartScreen extends StatelessWidget {
                       roomNumberData = val;
                     },
                     validator: (val) => val.isEmpty
-                        ? 'Ga guna... gr gr bkn stateful, eman eman tapi kalo jadi stateful'
+                        ? 'Ga guna... gr gr bkn stateful, eman eman tapi kalo jadi stateful, ttp butuh bwt snackbar'
                         : null,
                   ),
                 ),
@@ -107,17 +114,7 @@ class CartScreen extends StatelessWidget {
                           onPressed: cart.itemCount > 0
                               ? () {
                                   if (_formKey.currentState.validate()) {
-                                    DatabaseService().setUserData();
-                                    updatedb();
-                                    Provider.of<Orders>(context, listen: false)
-                                        .addOrder(
-                                      cart.items.values.toList(),
-                                      cart.totalAmount,
-                                    );
-                                    cart.clear();
-
-                                    Navigator.of(context)
-                                        .pushNamed(OrderScreen.routeName);
+                                    alert();
                                   } else {
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       const SnackBar(

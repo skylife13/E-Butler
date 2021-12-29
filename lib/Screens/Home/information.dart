@@ -3,8 +3,6 @@ import 'package:ebutler/Model/user.dart';
 import 'package:ebutler/Screens/Notifications/components/default_appbar.dart';
 import 'package:ebutler/Screens/Notifications/components/default_backbutton.dart';
 import 'package:ebutler/Services/auth.dart';
-import 'package:ebutler/Shared/constants.dart';
-import 'package:ebutler/widgets/app_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

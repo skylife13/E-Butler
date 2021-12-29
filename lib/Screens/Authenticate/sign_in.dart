@@ -27,7 +27,7 @@ class _SignInState extends State<SignIn> {
     return loading
         ? const Loading()
         : Scaffold(
-            backgroundColor: Colors.purple[100],
+            backgroundColor: Color(0xFFFF9999),
             appBar: DefaultAppBar(
               title: 'Sign in to BINUS Hotel',
             ),
@@ -67,7 +67,7 @@ class _SignInState extends State<SignIn> {
                       ),
                       const SizedBox(height: 20.0),
                       RaisedButton(
-                          color: Colors.purple,
+                          color: Color(0xFFFF6070),
                           child: const Text(
                             'Sign in',
                             style: TextStyle(color: Colors.white),

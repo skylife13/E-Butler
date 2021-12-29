@@ -1,11 +1,9 @@
 import 'package:ebutler/Screens/Home/history_screen.dart';
 import 'package:ebutler/Screens/Home/home.dart';
 import 'package:ebutler/Screens/Home/information.dart';
-import 'package:ebutler/Screens/Home/products_overview_screen.dart';
+import 'package:ebutler/Screens/Home/order_screen.dart';
 import 'package:ebutler/Shared/constants.dart';
-import 'package:ebutler/providers/orders.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class BottomNavBar extends StatefulWidget {
   int currentIndex = 0;
@@ -21,7 +19,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
     const Home(),
     const Information(),
     const HistoryScreen(),
-    // const ProductsOverviewScreen(),
+    const OrderScreen(),
   ];
 
   void onTapTapped(int index) {
@@ -58,10 +56,10 @@ class _BottomNavBarState extends State<BottomNavBar> {
             icon: Icon(Icons.book),
             label: 'History',
           ),
-          // BottomNavigationBarItem(
-          //   icon: Icon(Icons.shop),
-          //   label: 'Shop',
-          // ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.book),
+            label: 'Order',
+          ),
         ],
       ),
     );
