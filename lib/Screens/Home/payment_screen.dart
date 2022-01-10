@@ -1,4 +1,6 @@
 import 'package:ebutler/Screens/Home/order_screen.dart';
+import 'package:ebutler/Screens/Home/status_screen.dart';
+import 'package:ebutler/Services/statusdatabase.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -19,7 +21,9 @@ class PaymentScreen extends StatelessWidget {
     final roomNumberData = ModalRoute.of(context).settings.arguments as String;
     String total = cart.totalAmount.toString();
     void updatedb() {
-      // History().setHistory();
+      StatusDatabase().setStatus;
+      StatusDatabase(uid: user.uid).updateUserStatus(int.parse(roomNumberData));
+      DatabaseService().setUserData();
       DatabaseService().setUserData();
       for (int i = 0; i < cart.itemCount; i++) {
         DatabaseService(uid: user.uid).updateUserCart(
@@ -142,7 +146,7 @@ class PaymentScreen extends StatelessWidget {
                     );
                     updatedb();
                     cart.clear();
-                    Navigator.of(context).pushNamed(OrderScreen.routeName);
+                    Navigator.of(context).pushNamed(StatusScreen.routeName);
                   },
                   child: const Text('I have Completed Payment'),
                 ),
