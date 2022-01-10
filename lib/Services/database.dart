@@ -22,6 +22,7 @@ class DatabaseService {
     int quantity,
   ) async {
     Map<String, Object> products = {
+      'User Id': uid,
       'Room Number': roomNumber,
       'Item Id': id,
       'Title': title,
