@@ -3,7 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import '/providers/product.dart';
 
 class ProductDatabase {
-  final CollectionReference cartCollection =
+  final CollectionReference productCollection =
       Firestore.instance.collection('product');
 
   List<Product> _productsSnapshot(QuerySnapshot snapshot) {
@@ -19,6 +19,6 @@ class ProductDatabase {
   }
 
   Stream<List<Product>> get productsStream {
-    return cartCollection.snapshots().map(_productsSnapshot);
+    return productCollection.snapshots().map(_productsSnapshot);
   }
 }
