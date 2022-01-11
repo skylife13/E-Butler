@@ -1,7 +1,7 @@
 import 'package:ebutler/Screens/Home/history_screen.dart';
 import 'package:ebutler/Screens/Home/home.dart';
 import 'package:ebutler/Screens/Home/information.dart';
-import 'package:ebutler/Screens/Home/order_screen.dart';
+
 import 'package:ebutler/Shared/constants.dart';
 import 'package:flutter/material.dart';
 
@@ -19,7 +19,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
     const Home(),
     const Information(),
     const HistoryScreen(),
-    const OrderScreen(),
+    // const OrderScreen(),
   ];
 
   void onTapTapped(int index) {
@@ -56,10 +56,10 @@ class _BottomNavBarState extends State<BottomNavBar> {
             icon: Icon(Icons.book),
             label: 'History',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.book),
-            label: 'Order',
-          ),
+          // BottomNavigationBarItem(
+          //   icon: Icon(Icons.book),
+          //   label: 'Order',
+          // ),
         ],
       ),
     );

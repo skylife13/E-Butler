@@ -18,46 +18,58 @@ class _StatusScreenState extends State<StatusScreen> {
     final user = Provider.of<User>(context);
     String uid = user.uid;
     return Scaffold(
-      body: Column(
-        children: [
-          Container(
-            child: Lottie.network(
-                'https://assets5.lottiefiles.com/packages/lf20_x62chJ.json'),
-          ),
-          StreamBuilder<DocumentSnapshot>(
-            stream: Firestore.instance
-                .collection('Status')
-                .document(uid)
-                .snapshots(),
-            builder: (BuildContext context,
-                AsyncSnapshot<DocumentSnapshot> snapshotStatus) {
-              if (!snapshotStatus.hasData) {
-                // Navigator.of(context).pushNamed('/');
-                return Container(
-                  child: Text('kosong'),
-                );
-              }
+      body: WillPopScope(
+        onWillPop: () async {
+          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+            content: Text(
+              'Please wait until your order has come to your room, then you can use the finish order button that will appear',
+              style: TextStyle(fontSize: 18),
+            ),
+            duration: Duration(seconds: 5),
+          ));
+          return false;
+        },
+        child: Column(
+          children: [
+            Container(
+              child: Lottie.network(
+                  'https://assets5.lottiefiles.com/packages/lf20_x62chJ.json'),
+            ),
+            StreamBuilder<DocumentSnapshot>(
+              stream: Firestore.instance
+                  .collection('Status')
+                  .document(uid)
+                  .snapshots(),
+              builder: (BuildContext context,
+                  AsyncSnapshot<DocumentSnapshot> snapshotStatus) {
+                if (!snapshotStatus.hasData) {
+                  // Navigator.of(context).pushNamed('/');
+                  return Container(
+                    child: Text('kosong'),
+                  );
+                }
 
-              return Column(
-                children: [
-                  if (snapshotStatus.data != null)
-                    Text(snapshotStatus.data['Status']),
-                  if (snapshotStatus.data['Status'] == 'Order is finished')
-                    ElevatedButton(
-                      onPressed: () {
-                        Firestore.instance
-                            .collection('Status')
-                            .document(uid)
-                            .delete();
-                        Navigator.of(context).pushNamed('/');
-                      },
-                      child: Text('Finish Order'),
-                    ),
-                ],
-              );
-            },
-          )
-        ],
+                return Column(
+                  children: [
+                    if (snapshotStatus.data != null)
+                      Text(snapshotStatus.data['Status']),
+                    if (snapshotStatus.data['Status'] == 'Order is finished')
+                      ElevatedButton(
+                        onPressed: () {
+                          Firestore.instance
+                              .collection('Status')
+                              .document(uid)
+                              .delete();
+                          Navigator.of(context).pushNamed('/');
+                        },
+                        child: Text('Finish Order'),
+                      ),
+                  ],
+                );
+              },
+            )
+          ],
+        ),
       ),
     );
   }
