@@ -37,29 +37,6 @@ class _OrderItemState extends State<OrderItem> {
             subtitle: Text(
               DateFormat('dd/MM/yyyy hh:mm').format(widget.order.dateTime),
             ),
-            leading: TextButton(
-              child: widget.order.status
-                  ? Text(
-                      'Order Delivered',
-                      style: TextStyle(
-                        color: Theme.of(context).primaryColor,
-                      ),
-                    )
-                  : Text(
-                      'On Delivery',
-                      style: TextStyle(
-                        color: Theme.of(context).primaryColor,
-                      ),
-                    ),
-              onPressed: () {
-                setState(() {
-                  widget.order.status = true;
-                });
-
-                Firestore.instance.collection('Cart').document('$uid').delete();
-                Navigator.of(context).pushNamed('/');
-              },
-            ),
             trailing: IconButton(
               icon: Icon(_expanded ? Icons.expand_less : Icons.expand_more),
               onPressed: () {

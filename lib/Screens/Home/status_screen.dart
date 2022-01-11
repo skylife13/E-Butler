@@ -1,3 +1,7 @@
+import 'package:ebutler/providers/cart.dart' show Cart;
+import 'package:ebutler/providers/orders.dart' show Orders;
+import 'package:ebutler/widgets/cart_item.dart';
+import 'package:ebutler/widgets/order_item.dart';
 import 'package:lottie/lottie.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -15,14 +19,17 @@ class StatusScreen extends StatefulWidget {
 class _StatusScreenState extends State<StatusScreen> {
   @override
   Widget build(BuildContext context) {
+    final orderData = Provider.of<Orders>(context);
     final user = Provider.of<User>(context);
+    final cart = Provider.of<Cart>(context);
     String uid = user.uid;
+    final roomNumberData = ModalRoute.of(context).settings.arguments;
     return Scaffold(
       body: WillPopScope(
         onWillPop: () async {
           ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
             content: Text(
-              'Please wait until your order has come to your room, then you can use the finish order button that will appear',
+              'Please wait until your order comes to your room, then you can use the Finish Order button that will appear',
               style: TextStyle(fontSize: 18),
             ),
             duration: Duration(seconds: 5),
@@ -32,9 +39,83 @@ class _StatusScreenState extends State<StatusScreen> {
         child: Column(
           children: [
             Container(
-              child: Lottie.network(
-                  'https://assets5.lottiefiles.com/packages/lf20_x62chJ.json'),
+              padding: const EdgeInsets.only(top: 24),
+              child: Text(
+                'Your Room Number: $roomNumberData',
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
+              ),
             ),
+            Container(
+              padding: const EdgeInsets.only(top: 24),
+              child: Text(
+                'Robot will appear from the Service Lift',
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+              ),
+            ),
+            if (int.parse(roomNumberData) > 199 &&
+                int.parse(roomNumberData) < 300)
+              Container(
+                width: MediaQuery.of(context).size.width,
+                child: Image(
+                    image: AssetImage('assets/2nd_floor.png'),
+                    fit: BoxFit.fill),
+              ),
+            if (int.parse(roomNumberData) > 299 &&
+                int.parse(roomNumberData) < 400)
+              Container(
+                height: 400,
+                width: MediaQuery.of(context).size.width,
+                child: Image(
+                    image: AssetImage('assets/3rd_floor.png'),
+                    fit: BoxFit.fill),
+              ),
+            if (int.parse(roomNumberData) > 599 &&
+                int.parse(roomNumberData) < 700)
+              Container(
+                height: 400,
+                width: MediaQuery.of(context).size.width,
+                child: Image(
+                    image: AssetImage('assets/6th_floor.png'),
+                    fit: BoxFit.fill),
+              ),
+            if (int.parse(roomNumberData) > 699 &&
+                int.parse(roomNumberData) < 800)
+              Container(
+                height: 400,
+                width: MediaQuery.of(context).size.width,
+                child: Image(
+                    image: AssetImage('assets/7th_floor.png'),
+                    fit: BoxFit.fill),
+              ),
+            if (int.parse(roomNumberData) > 799 &&
+                int.parse(roomNumberData) < 900)
+              Container(
+                height: 400,
+                width: MediaQuery.of(context).size.width,
+                child: Image(
+                    image: AssetImage('assets/8th_floor.png'),
+                    fit: BoxFit.fill),
+              ),
+            if (int.parse(roomNumberData) > 999 &&
+                int.parse(roomNumberData) < 1100)
+              Container(
+                height: 400,
+                width: MediaQuery.of(context).size.width,
+                child: Image(
+                    image: AssetImage('assets/10th_floor.png'),
+                    fit: BoxFit.fill),
+              ),
+            if (int.parse(roomNumberData) > 1099 &&
+                int.parse(roomNumberData) < 1200)
+              Container(
+                height: 400,
+                width: MediaQuery.of(context).size.width,
+                child: Image(
+                    image: AssetImage('assets/11th_floor.png'),
+                    fit: BoxFit.fill),
+              ),
             StreamBuilder<DocumentSnapshot>(
               stream: Firestore.instance
                   .collection('Status')
@@ -51,16 +132,52 @@ class _StatusScreenState extends State<StatusScreen> {
 
                 return Column(
                   children: [
+                    SizedBox(
+                      height: 175,
+                      child: Column(
+                        children: [
+                          // Expanded(
+                          //   child: ListView.builder(
+                          //     itemBuilder: (ctx, i) => CartItem(
+                          //         productId: cart.items.keys.toList()[i],
+                          //         id: cart.items.values.toList()[i].id,
+                          //         title: cart.items.values.toList()[i].title,
+                          //         quantity:
+                          //             cart.items.values.toList()[i].quantity,
+                          //         price: cart.items.values.toList()[i].price),
+                          //     itemCount: cart.itemCount,
+                          //   ),
+                          // ),
+                          Expanded(
+                            child: ListView.builder(
+                              itemBuilder: (ctx, i) => OrderItem(
+                                order: orderData.orders[i],
+                              ),
+                              itemCount: orderData.itemCount,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                     if (snapshotStatus.data != null)
-                      Text(snapshotStatus.data['Status']),
+                      Container(
+                        padding: const EdgeInsets.only(top: 10),
+                        child: Text(
+                          snapshotStatus.data['Status'],
+                          style: TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.w700),
+                        ),
+                      ),
                     if (snapshotStatus.data['Status'] == 'Order is finished')
                       ElevatedButton(
                         onPressed: () {
+                          Navigator.of(context).pushNamed('/');
                           Firestore.instance
                               .collection('Status')
                               .document(uid)
                               .delete();
-                          Navigator.of(context).pushNamed('/');
+                          cart.clear();
+                          orderData.clear();
                         },
                         child: Text('Finish Order'),
                       ),

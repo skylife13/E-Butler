@@ -73,7 +73,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                     shadowColor: Colors.black38,
                     child: ListTile(
                       leading: Text(
-                        'Room No. ' + roomNumber.toString() + '\n'+time,
+                        'Room No. ' + roomNumber.toString() + '\n' + time,
                       ),
 
                       trailing: Column(

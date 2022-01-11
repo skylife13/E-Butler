@@ -9,11 +9,16 @@ import '/providers/cart.dart' show Cart;
 import '/widgets/cart_item.dart';
 import '/Services/database.dart';
 
-class CartScreen extends StatelessWidget {
+class CartScreen extends StatefulWidget {
   static const routeName = '/cart';
 
   const CartScreen({Key key}) : super(key: key);
 
+  @override
+  State<CartScreen> createState() => _CartScreenState();
+}
+
+class _CartScreenState extends State<CartScreen> {
   @override
   Widget build(BuildContext context) {
     final _formKey = GlobalKey<FormState>();
@@ -80,8 +85,10 @@ class CartScreen extends StatelessWidget {
                     onChanged: (val) {
                       roomNumberData = val;
                     },
-                    validator: (val) => val.isEmpty
-                        ? 'Ga guna... gr gr bkn stateful, eman eman tapi kalo jadi stateful, ttp butuh bwt snackbar'
+                    validator: (val) => val.isEmpty ||
+                            int.parse(val) < 200 ||
+                            int.parse(val) > 1199
+                        ? 'Please enter room number, and the room number cannot exceed 1199 or less than 200'
                         : null,
                   ),
                 ),
@@ -119,7 +126,7 @@ class CartScreen extends StatelessWidget {
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       const SnackBar(
                                         content: Text(
-                                          'Please Enter Room Number',
+                                          'Please Enter the Room Number correctly',
                                           textAlign: TextAlign.center,
                                         ),
                                         duration: Duration(seconds: 1),

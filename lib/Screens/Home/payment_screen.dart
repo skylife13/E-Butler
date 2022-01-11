@@ -144,8 +144,9 @@ class PaymentScreen extends StatelessWidget {
                       cart.totalAmount,
                     );
                     updatedb();
-                    cart.clear();
-                    Navigator.of(context).pushNamed(StatusScreen.routeName);
+                    // cart.clear();
+                    Navigator.of(context).pushNamed(StatusScreen.routeName,
+                        arguments: roomNumberData);
                   },
                   child: const Text('I have Completed Payment'),
                 ),
