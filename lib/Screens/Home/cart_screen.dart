@@ -87,6 +87,7 @@ class _CartScreenState extends State<CartScreen> {
                     },
                     validator: (val) => val.isEmpty ||
                             int.parse(val) < 200 ||
+                            int.parse(val) > 399 && int.parse(val) < 600 ||
                             int.parse(val) > 1199
                         ? 'Please enter room number, and the room number cannot exceed 1199 or less than 200'
                         : null,

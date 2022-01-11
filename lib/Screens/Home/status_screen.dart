@@ -56,66 +56,32 @@ class _StatusScreenState extends State<StatusScreen> {
             ),
             if (int.parse(roomNumberData) > 199 &&
                 int.parse(roomNumberData) < 300)
-              Container(
-                width: MediaQuery.of(context).size.width,
-                child: Image(
-                    image: AssetImage('assets/2nd_floor.png'),
-                    fit: BoxFit.fill),
-              ),
+              Image(
+                  image: AssetImage('assets/2nd_floor.png'), fit: BoxFit.fill),
             if (int.parse(roomNumberData) > 299 &&
                 int.parse(roomNumberData) < 400)
-              Container(
-                height: 400,
-                width: MediaQuery.of(context).size.width,
-                child: Image(
-                    image: AssetImage('assets/3rd_floor.png'),
-                    fit: BoxFit.fill),
-              ),
+              Image(
+                  image: AssetImage('assets/3rd_floor.png'), fit: BoxFit.fill),
             if (int.parse(roomNumberData) > 599 &&
                 int.parse(roomNumberData) < 700)
-              Container(
-                height: 400,
-                width: MediaQuery.of(context).size.width,
-                child: Image(
-                    image: AssetImage('assets/6th_floor.png'),
-                    fit: BoxFit.fill),
-              ),
+              Image(
+                  image: AssetImage('assets/6th_floor.png'), fit: BoxFit.fill),
             if (int.parse(roomNumberData) > 699 &&
                 int.parse(roomNumberData) < 800)
-              Container(
-                height: 400,
-                width: MediaQuery.of(context).size.width,
-                child: Image(
-                    image: AssetImage('assets/7th_floor.png'),
-                    fit: BoxFit.fill),
-              ),
+              Image(
+                  image: AssetImage('assets/7th_floor.png'), fit: BoxFit.fill),
             if (int.parse(roomNumberData) > 799 &&
                 int.parse(roomNumberData) < 900)
-              Container(
-                height: 400,
-                width: MediaQuery.of(context).size.width,
-                child: Image(
-                    image: AssetImage('assets/8th_floor.png'),
-                    fit: BoxFit.fill),
-              ),
+              Image(
+                  image: AssetImage('assets/8th_floor.png'), fit: BoxFit.fill),
             if (int.parse(roomNumberData) > 999 &&
                 int.parse(roomNumberData) < 1100)
-              Container(
-                height: 400,
-                width: MediaQuery.of(context).size.width,
-                child: Image(
-                    image: AssetImage('assets/10th_floor.png'),
-                    fit: BoxFit.fill),
-              ),
+              Image(
+                  image: AssetImage('assets/10th_floor.png'), fit: BoxFit.fill),
             if (int.parse(roomNumberData) > 1099 &&
                 int.parse(roomNumberData) < 1200)
-              Container(
-                height: 400,
-                width: MediaQuery.of(context).size.width,
-                child: Image(
-                    image: AssetImage('assets/11th_floor.png'),
-                    fit: BoxFit.fill),
-              ),
+              Image(
+                  image: AssetImage('assets/11th_floor.png'), fit: BoxFit.fill),
             StreamBuilder<DocumentSnapshot>(
               stream: Firestore.instance
                   .collection('Status')
