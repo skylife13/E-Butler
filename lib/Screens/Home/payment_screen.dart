@@ -1,6 +1,10 @@
+import 'package:ebutler/Model/arguments.dart';
 import 'package:ebutler/Screens/Home/status_screen.dart';
+import 'package:ebutler/Services/scheduledstatus.dart';
 import 'package:ebutler/Services/statusdatabase.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 import '/providers/cart.dart';
@@ -8,25 +12,71 @@ import '/Services/history.dart';
 import '/Services/database.dart';
 import '/Model/user.dart';
 import '/providers/orders.dart';
+import '/Services/scheduled.dart';
 
-class PaymentScreen extends StatelessWidget {
+class PaymentScreen extends StatefulWidget {
   const PaymentScreen({Key key}) : super(key: key);
 
   static const routeName = '/paymentscreen';
+
+  @override
+  State<PaymentScreen> createState() => _PaymentScreenState();
+}
+
+class _PaymentScreenState extends State<PaymentScreen> {
+  // var _state = false;
+  var _enable = false;
   @override
   Widget build(BuildContext context) {
     final cart = Provider.of<Cart>(context);
     final user = Provider.of<User>(context);
-    final roomNumberData = ModalRoute.of(context).settings.arguments as String;
+    final argument = ModalRoute.of(context).settings.arguments as Arguments;
     String total = cart.totalAmount.toString();
+
+    void scheduleddb() {
+      String date = DateFormat('dd/MM/yyyy - kk:mm').format(
+        argument.scheduleData,
+      );
+
+      Scheduled().setUserData();
+      ScheduledStatus().setStatus;
+      ScheduledStatus(uid: user.uid)
+          .updateUserStatus(int.parse(argument.roomNumberData), date);
+      for (int i = 0; i < cart.itemCount; i++) {
+        Scheduled(uid: user.uid).updateUserCart(
+            int.parse(argument.roomNumberData),
+            i,
+            cart.items.keys.toList()[i],
+            cart.totalAmount,
+            cart.items.values.toList()[i].title,
+            cart.items.values.toList()[i].price *
+                cart.items.values.toList()[i].quantity,
+            cart.items.values.toList()[i].price,
+            cart.items.values.toList()[i].quantity,
+            date);
+
+        History(uid: user.uid).setHistory(
+            i,
+            cart.items.values.toList()[i].title,
+            cart.items.values.toList()[i].quantity,
+            cart.items.values.toList()[i].price,
+            int.parse(argument.roomNumberData),
+            cart.items.keys.toList()[i],
+            cart.totalAmount,
+            cart.items.values.toList()[i].price *
+                cart.items.values.toList()[i].quantity);
+      }
+    }
+
     void updatedb() {
       StatusDatabase().setStatus;
-      StatusDatabase(uid: user.uid).updateUserStatus(int.parse(roomNumberData));
+      StatusDatabase(uid: user.uid)
+          .updateUserStatus(int.parse(argument.roomNumberData));
       DatabaseService().setUserData();
-      DatabaseService().setUserData();
+
       for (int i = 0; i < cart.itemCount; i++) {
         DatabaseService(uid: user.uid).updateUserCart(
-            int.parse(roomNumberData),
+            int.parse(argument.roomNumberData),
             i,
             cart.items.keys.toList()[i],
             cart.totalAmount,
@@ -41,7 +91,7 @@ class PaymentScreen extends StatelessWidget {
             cart.items.values.toList()[i].title,
             cart.items.values.toList()[i].quantity,
             cart.items.values.toList()[i].price,
-            int.parse(roomNumberData),
+            int.parse(argument.roomNumberData),
             cart.items.keys.toList()[i],
             cart.totalAmount,
             cart.items.values.toList()[i].price *
@@ -138,15 +188,59 @@ class PaymentScreen extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(left: 24, right: 24),
                 child: ElevatedButton(
+                    onPressed: () {
+                      setState(() {
+                        _enable = !_enable;
+                      });
+                      if (_enable == false) {
+                        argument.scheduleData = null;
+                      }
+                    },
+                    child: _enable
+                        ? Text('Cancel Order for later')
+                        : Text('Order for later')),
+              ),
+              if (_enable)
+                Column(
+                  children: [
+                    Container(
+                      height: 150,
+                      child: CupertinoDatePicker(
+                        mode: CupertinoDatePickerMode.dateAndTime,
+                        onDateTimeChanged: (value) {
+                          argument.scheduleData = value;
+                        },
+                        minimumDate: DateTime.now(),
+                        maximumDate: DateTime.now().add(Duration(days: 1)),
+                        use24hFormat: true,
+                      ),
+                    ),
+                  ],
+                ),
+              Padding(
+                padding: const EdgeInsets.only(left: 24, right: 24),
+                child: ElevatedButton(
                   onPressed: () {
-                    Provider.of<Orders>(context, listen: false).addOrder(
-                      cart.items.values.toList(),
-                      cart.totalAmount,
-                    );
-                    updatedb();
-                    // cart.clear();
-                    Navigator.of(context).pushNamed(StatusScreen.routeName,
-                        arguments: roomNumberData);
+                    if (argument.scheduleData == null) {
+                      Provider.of<Orders>(context, listen: false).addOrder(
+                        cart.items.values.toList(),
+                        cart.totalAmount,
+                      );
+                      updatedb();
+                      Navigator.of(context).pushNamed(StatusScreen.routeName,
+                          arguments: Arguments(
+                              roomNumberData: argument.roomNumberData));
+                    } else {
+                      Provider.of<Orders>(context, listen: false).addOrder(
+                        cart.items.values.toList(),
+                        cart.totalAmount,
+                      );
+                      scheduleddb();
+                      Navigator.of(context).pushNamed(StatusScreen.routeName,
+                          arguments: Arguments(
+                              roomNumberData: argument.roomNumberData,
+                              scheduleData: argument.scheduleData));
+                    }
                   },
                   child: const Text('I have Completed Payment'),
                 ),

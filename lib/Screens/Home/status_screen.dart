@@ -1,3 +1,4 @@
+import 'package:ebutler/Model/arguments.dart';
 import 'package:ebutler/providers/cart.dart' show Cart;
 import 'package:ebutler/providers/orders.dart' show Orders;
 import 'package:ebutler/widgets/cart_item.dart';
@@ -23,13 +24,14 @@ class _StatusScreenState extends State<StatusScreen> {
     final user = Provider.of<User>(context);
     final cart = Provider.of<Cart>(context);
     String uid = user.uid;
-    final roomNumberData = ModalRoute.of(context).settings.arguments;
+    final argument = ModalRoute.of(context).settings.arguments as Arguments;
+
     return Scaffold(
       body: WillPopScope(
         onWillPop: () async {
           ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
             content: Text(
-              'Please wait until your order comes to your room, then you can use the Finish Order button that will appear',
+              'Please wait until your order has come to your room, then you can use the finish order button that will appear',
               style: TextStyle(fontSize: 18),
             ),
             duration: Duration(seconds: 5),
@@ -41,7 +43,7 @@ class _StatusScreenState extends State<StatusScreen> {
             Container(
               padding: const EdgeInsets.only(top: 24),
               child: Text(
-                'Your Room Number: $roomNumberData',
+                'Your Room Number: ' + argument.roomNumberData,
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
               ),
@@ -54,103 +56,205 @@ class _StatusScreenState extends State<StatusScreen> {
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
               ),
             ),
-            if (int.parse(roomNumberData) > 199 &&
-                int.parse(roomNumberData) < 300)
-              Image(
-                  image: AssetImage('assets/2nd_floor.png'), fit: BoxFit.fill),
-            if (int.parse(roomNumberData) > 299 &&
-                int.parse(roomNumberData) < 400)
-              Image(
-                  image: AssetImage('assets/3rd_floor.png'), fit: BoxFit.fill),
-            if (int.parse(roomNumberData) > 599 &&
-                int.parse(roomNumberData) < 700)
-              Image(
-                  image: AssetImage('assets/6th_floor.png'), fit: BoxFit.fill),
-            if (int.parse(roomNumberData) > 699 &&
-                int.parse(roomNumberData) < 800)
-              Image(
-                  image: AssetImage('assets/7th_floor.png'), fit: BoxFit.fill),
-            if (int.parse(roomNumberData) > 799 &&
-                int.parse(roomNumberData) < 900)
-              Image(
-                  image: AssetImage('assets/8th_floor.png'), fit: BoxFit.fill),
-            if (int.parse(roomNumberData) > 999 &&
-                int.parse(roomNumberData) < 1100)
-              Image(
-                  image: AssetImage('assets/10th_floor.png'), fit: BoxFit.fill),
-            if (int.parse(roomNumberData) > 1099 &&
-                int.parse(roomNumberData) < 1200)
-              Image(
-                  image: AssetImage('assets/11th_floor.png'), fit: BoxFit.fill),
-            StreamBuilder<DocumentSnapshot>(
-              stream: Firestore.instance
-                  .collection('Status')
-                  .document(uid)
-                  .snapshots(),
-              builder: (BuildContext context,
-                  AsyncSnapshot<DocumentSnapshot> snapshotStatus) {
-                if (!snapshotStatus.hasData) {
-                  // Navigator.of(context).pushNamed('/');
-                  return Container(
-                    child: Text('kosong'),
-                  );
-                }
+            if (int.parse(argument.roomNumberData) > 199 &&
+                int.parse(argument.roomNumberData) < 300)
+              Container(
+                width: MediaQuery.of(context).size.width,
+                child: Image(
+                    image: AssetImage('assets/2nd_floor.png'),
+                    fit: BoxFit.fill),
+              ),
+            if (int.parse(argument.roomNumberData) > 299 &&
+                int.parse(argument.roomNumberData) < 400)
+              Container(
+                width: MediaQuery.of(context).size.width,
+                child: Image(
+                    image: AssetImage('assets/3rd_floor.png'),
+                    fit: BoxFit.fill),
+              ),
+            if (int.parse(argument.roomNumberData) > 599 &&
+                int.parse(argument.roomNumberData) < 700)
+              Container(
+                width: MediaQuery.of(context).size.width,
+                child: Image(
+                    image: AssetImage('assets/6th_floor.png'),
+                    fit: BoxFit.fill),
+              ),
+            if (int.parse(argument.roomNumberData) > 699 &&
+                int.parse(argument.roomNumberData) < 800)
+              Container(
+                width: MediaQuery.of(context).size.width,
+                child: Image(
+                    image: AssetImage('assets/7th_floor.png'),
+                    fit: BoxFit.fill),
+              ),
+            if (int.parse(argument.roomNumberData) > 799 &&
+                int.parse(argument.roomNumberData) < 900)
+              Container(
+                width: MediaQuery.of(context).size.width,
+                child: Image(
+                    image: AssetImage('assets/8th_floor.png'),
+                    fit: BoxFit.fill),
+              ),
+            if (int.parse(argument.roomNumberData) > 999 &&
+                int.parse(argument.roomNumberData) < 1100)
+              Container(
+                width: MediaQuery.of(context).size.width,
+                child: Image(
+                    image: AssetImage('assets/10th_floor.png'),
+                    fit: BoxFit.fill),
+              ),
+            if (int.parse(argument.roomNumberData) > 1099 &&
+                int.parse(argument.roomNumberData) < 1200)
+              Container(
+                width: MediaQuery.of(context).size.width,
+                child: Image(
+                    image: AssetImage('assets/11th_floor.png'),
+                    fit: BoxFit.fill),
+              ),
+            if (argument.scheduleData == null)
+              StreamBuilder<DocumentSnapshot>(
+                stream: Firestore.instance
+                    .collection('Status')
+                    .document(uid)
+                    .snapshots(),
+                builder: (BuildContext context,
+                    AsyncSnapshot<DocumentSnapshot> snapshotStatus) {
+                  if (!snapshotStatus.hasData) {
+                    // Navigator.of(context).pushNamed('/');
+                    return Container(
+                      child: Text('kosong'),
+                    );
+                  }
 
-                return Column(
-                  children: [
-                    SizedBox(
-                      height: 175,
-                      child: Column(
-                        children: [
-                          // Expanded(
-                          //   child: ListView.builder(
-                          //     itemBuilder: (ctx, i) => CartItem(
-                          //         productId: cart.items.keys.toList()[i],
-                          //         id: cart.items.values.toList()[i].id,
-                          //         title: cart.items.values.toList()[i].title,
-                          //         quantity:
-                          //             cart.items.values.toList()[i].quantity,
-                          //         price: cart.items.values.toList()[i].price),
-                          //     itemCount: cart.itemCount,
-                          //   ),
-                          // ),
-                          Expanded(
-                            child: ListView.builder(
-                              itemBuilder: (ctx, i) => OrderItem(
-                                order: orderData.orders[i],
+                  return Column(
+                    children: [
+                      SizedBox(
+                        height: 175,
+                        child: Column(
+                          children: [
+                            // Expanded(
+                            //   child: ListView.builder(
+                            //     itemBuilder: (ctx, i) => CartItem(
+                            //         productId: cart.items.keys.toList()[i],
+                            //         id: cart.items.values.toList()[i].id,
+                            //         title: cart.items.values.toList()[i].title,
+                            //         quantity:
+                            //             cart.items.values.toList()[i].quantity,
+                            //         price: cart.items.values.toList()[i].price),
+                            //     itemCount: cart.itemCount,
+                            //   ),
+                            // ),
+                            Expanded(
+                              child: ListView.builder(
+                                itemBuilder: (ctx, i) => OrderItem(
+                                  order: orderData.orders[i],
+                                ),
+                                itemCount: orderData.itemCount,
                               ),
-                              itemCount: orderData.itemCount,
                             ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    if (snapshotStatus.data != null)
-                      Container(
-                        padding: const EdgeInsets.only(top: 10),
-                        child: Text(
-                          snapshotStatus.data['Status'],
-                          style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.w700),
+                          ],
                         ),
                       ),
-                    if (snapshotStatus.data['Status'] == 'Order is finished')
+                      if (snapshotStatus.data != null)
+                        Container(
+                          padding: const EdgeInsets.only(top: 10),
+                          child: Text(
+                            snapshotStatus.data['Status'],
+                            style: TextStyle(
+                                fontSize: 18, fontWeight: FontWeight.w700),
+                          ),
+                        ),
+                      if (snapshotStatus.data['Status'] == 'Order is finished')
+                        ElevatedButton(
+                          onPressed: () {
+                            Navigator.of(context).pushNamed('/');
+                            Firestore.instance
+                                .collection('Status')
+                                .document(uid)
+                                .delete();
+                            cart.clear();
+                            orderData.clear();
+                          },
+                          child: Text('Finish Order'),
+                        ),
+                    ],
+                  );
+                },
+              ),
+            if (argument.scheduleData != null)
+              StreamBuilder<DocumentSnapshot>(
+                stream: Firestore.instance
+                    .collection('Scheduled Status')
+                    .document(uid)
+                    .snapshots(),
+                builder: (BuildContext context,
+                    AsyncSnapshot<DocumentSnapshot> snapshotStatus) {
+                  if (!snapshotStatus.hasData) {
+                    // Navigator.of(context).pushNamed('/');
+                    return Container(
+                      child: Text('kosong'),
+                    );
+                  }
+
+                  return Column(
+                    children: [
+                      SizedBox(
+                        height: 175,
+                        child: Column(
+                          children: [
+                            // Expanded(
+                            //   child: ListView.builder(
+                            //     itemBuilder: (ctx, i) => CartItem(
+                            //         productId: cart.items.keys.toList()[i],
+                            //         id: cart.items.values.toList()[i].id,
+                            //         title: cart.items.values.toList()[i].title,
+                            //         quantity:
+                            //             cart.items.values.toList()[i].quantity,
+                            //         price: cart.items.values.toList()[i].price),
+                            //     itemCount: cart.itemCount,
+                            //   ),
+                            // ),
+                            Expanded(
+                              child: ListView.builder(
+                                itemBuilder: (ctx, i) => OrderItem(
+                                  order: orderData.orders[i],
+                                ),
+                                itemCount: orderData.itemCount,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      if (snapshotStatus.data != null)
+                        Column(
+                          children: [
+                            Container(
+                              padding: const EdgeInsets.only(top: 10),
+                              child: Text(
+                                snapshotStatus.data['Status'],
+                                style: TextStyle(
+                                    fontSize: 18, fontWeight: FontWeight.w700),
+                              ),
+                            ),
+                          ],
+                        ),
                       ElevatedButton(
                         onPressed: () {
                           Navigator.of(context).pushNamed('/');
                           Firestore.instance
-                              .collection('Status')
+                              .collection('Scheduled Status')
                               .document(uid)
                               .delete();
                           cart.clear();
                           orderData.clear();
                         },
-                        child: Text('Finish Order'),
+                        child: Text('Go to Home'),
                       ),
-                  ],
-                );
-              },
-            )
+                    ],
+                  );
+                },
+              ),
           ],
         ),
       ),

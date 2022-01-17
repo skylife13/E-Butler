@@ -1,9 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:intl/intl.dart';
 
 class DatabaseService {
   final String uid;
   DatabaseService({this.uid});
-
+  String date = DateFormat('dd/MM/yyyy - kk:mm').format(
+    DateTime.now(),
+  );
   final CollectionReference cartCollection =
       Firestore.instance.collection('Cart');
 
@@ -30,7 +33,7 @@ class DatabaseService {
       'Quantity': quantity,
       'Total': total,
       'Total Price': amount,
-      'Time': DateTime.now()
+      'Time': 'Ordered at $date'
     };
     await cartCollection
         .document(uid)

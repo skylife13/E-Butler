@@ -2,12 +2,14 @@ import 'package:ebutler/Screens/Home/payment_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+import 'package:intl/intl.dart';
 
 import '/Shared/constants.dart';
 import '/providers/cart.dart' show Cart;
 //show buat ngasi tau cm butuh Cart class
 import '/widgets/cart_item.dart';
 import '/Services/database.dart';
+import '/Model/arguments.dart';
 
 class CartScreen extends StatefulWidget {
   static const routeName = '/cart';
@@ -22,7 +24,8 @@ class _CartScreenState extends State<CartScreen> {
   @override
   Widget build(BuildContext context) {
     final _formKey = GlobalKey<FormState>();
-    String roomNumberData;
+    final argument = Arguments();
+
     final cart = Provider.of<Cart>(context);
 
     Future<bool> alert() async {
@@ -47,7 +50,9 @@ class _CartScreenState extends State<CartScreen> {
                 DatabaseService().setUserData();
 
                 Navigator.of(context).pushNamed(PaymentScreen.routeName,
-                    arguments: roomNumberData);
+                    arguments: Arguments(
+                      roomNumberData: argument.roomNumberData,
+                    ));
                 // Navigator.of(context).pushNamedAndRemoveUntil(
                 //     PaymentScreen.routeName, (route) => false,
                 //     arguments: roomNumberData);
@@ -83,11 +88,10 @@ class _CartScreenState extends State<CartScreen> {
                       FilteringTextInputFormatter.digitsOnly
                     ],
                     onChanged: (val) {
-                      roomNumberData = val;
+                      argument.roomNumberData = val;
                     },
                     validator: (val) => val.isEmpty ||
                             int.parse(val) < 200 ||
-                            int.parse(val) > 399 && int.parse(val) < 600 ||
                             int.parse(val) > 1199
                         ? 'Please enter room number, and the room number cannot exceed 1199 or less than 200'
                         : null,
@@ -127,7 +131,7 @@ class _CartScreenState extends State<CartScreen> {
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       const SnackBar(
                                         content: Text(
-                                          'Please Enter the Room Number correctly',
+                                          'Please input the data correctly',
                                           textAlign: TextAlign.center,
                                         ),
                                         duration: Duration(seconds: 1),
