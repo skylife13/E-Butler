@@ -1,9 +1,7 @@
 import 'package:ebutler/Model/arguments.dart';
 import 'package:ebutler/providers/cart.dart' show Cart;
 import 'package:ebutler/providers/orders.dart' show Orders;
-import 'package:ebutler/widgets/cart_item.dart';
 import 'package:ebutler/widgets/order_item.dart';
-import 'package:lottie/lottie.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:provider/provider.dart';
@@ -121,7 +119,6 @@ class _StatusScreenState extends State<StatusScreen> {
                 builder: (BuildContext context,
                     AsyncSnapshot<DocumentSnapshot> snapshotStatus) {
                   if (!snapshotStatus.hasData) {
-                    // Navigator.of(context).pushNamed('/');
                     return Container(
                       child: Text('kosong'),
                     );
@@ -133,18 +130,6 @@ class _StatusScreenState extends State<StatusScreen> {
                         height: 175,
                         child: Column(
                           children: [
-                            // Expanded(
-                            //   child: ListView.builder(
-                            //     itemBuilder: (ctx, i) => CartItem(
-                            //         productId: cart.items.keys.toList()[i],
-                            //         id: cart.items.values.toList()[i].id,
-                            //         title: cart.items.values.toList()[i].title,
-                            //         quantity:
-                            //             cart.items.values.toList()[i].quantity,
-                            //         price: cart.items.values.toList()[i].price),
-                            //     itemCount: cart.itemCount,
-                            //   ),
-                            // ),
                             Expanded(
                               child: ListView.builder(
                                 itemBuilder: (ctx, i) => OrderItem(
@@ -191,7 +176,6 @@ class _StatusScreenState extends State<StatusScreen> {
                 builder: (BuildContext context,
                     AsyncSnapshot<DocumentSnapshot> snapshotStatus) {
                   if (!snapshotStatus.hasData) {
-                    // Navigator.of(context).pushNamed('/');
                     return Container(
                       child: Text('kosong'),
                     );
@@ -203,18 +187,6 @@ class _StatusScreenState extends State<StatusScreen> {
                         height: 175,
                         child: Column(
                           children: [
-                            // Expanded(
-                            //   child: ListView.builder(
-                            //     itemBuilder: (ctx, i) => CartItem(
-                            //         productId: cart.items.keys.toList()[i],
-                            //         id: cart.items.values.toList()[i].id,
-                            //         title: cart.items.values.toList()[i].title,
-                            //         quantity:
-                            //             cart.items.values.toList()[i].quantity,
-                            //         price: cart.items.values.toList()[i].price),
-                            //     itemCount: cart.itemCount,
-                            //   ),
-                            // ),
                             Expanded(
                               child: ListView.builder(
                                 itemBuilder: (ctx, i) => OrderItem(
@@ -242,10 +214,7 @@ class _StatusScreenState extends State<StatusScreen> {
                       ElevatedButton(
                         onPressed: () {
                           Navigator.of(context).pushNamed('/');
-                          Firestore.instance
-                              .collection('Scheduled Status')
-                              .document(uid)
-                              .delete();
+
                           cart.clear();
                           orderData.clear();
                         },

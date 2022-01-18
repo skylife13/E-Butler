@@ -1,6 +1,7 @@
 import 'package:ebutler/Screens/Home/history_screen.dart';
 import 'package:ebutler/Screens/Home/information.dart';
 import 'package:ebutler/Screens/Home/products_overview_screen.dart';
+import 'package:ebutler/Screens/Home/scheduled_screen.dart';
 import 'package:ebutler/Screens/Notifications/notification_list.dart';
 import 'package:ebutler/Services/auth.dart';
 import 'package:ebutler/Shared/constants.dart';
@@ -77,6 +78,9 @@ class _HomeState extends State<Home> {
                             } else if (index == 1) {
                               Navigator.of(context)
                                   .pushNamed(HistoryScreen.routeName);
+                            } else if (index == 3) {
+                              Navigator.of(context)
+                                  .pushNamed(ScheduledScreen.routeName);
                             } else {
                               Navigator.of(context)
                                   .pushNamed(ProductsOverviewScreen.routeName);

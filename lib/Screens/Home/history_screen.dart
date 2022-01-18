@@ -29,7 +29,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
     Timestamp newTime;
     DateTime newDate;
     String time;
-    String title;
+
     int roomNumber;
 
     var streamSnapshot = Firestore.instance.collection(uid).snapshots();
@@ -46,7 +46,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
               child: Text('Kosong'),
             );
           }
-          title = '';
+
           newDate = null;
           time = '';
           quantity = null;
@@ -57,7 +57,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                 for (var i in doc.data.values) {
                   roomNumber = i['Room Number'];
                   newTime = i['Time'];
-                  title = i['Item'];
+
                   quantity = i['Quantity'];
                   newDate = newTime.toDate();
                   time = DateFormat('dd/MM/yyyy - kk:mm:ss').format(newDate);

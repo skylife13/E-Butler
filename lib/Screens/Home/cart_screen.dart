@@ -2,7 +2,6 @@ import 'package:ebutler/Screens/Home/payment_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-import 'package:intl/intl.dart';
 
 import '/Shared/constants.dart';
 import '/providers/cart.dart' show Cart;
@@ -53,9 +52,6 @@ class _CartScreenState extends State<CartScreen> {
                     arguments: Arguments(
                       roomNumberData: argument.roomNumberData,
                     ));
-                // Navigator.of(context).pushNamedAndRemoveUntil(
-                //     PaymentScreen.routeName, (route) => false,
-                //     arguments: roomNumberData);
               },
               child: const Text(
                 'Yes',
@@ -92,6 +88,7 @@ class _CartScreenState extends State<CartScreen> {
                     },
                     validator: (val) => val.isEmpty ||
                             int.parse(val) < 200 ||
+                            int.parse(val) > 399 && int.parse(val) < 700 ||
                             int.parse(val) > 1199
                         ? 'Please enter room number, and the room number cannot exceed 1199 or less than 200'
                         : null,

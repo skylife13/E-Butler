@@ -100,16 +100,6 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
             backgroundColor: kWhiteColor,
             //leading: ShopBackButton(),
             actions: <Widget>[
-              TextButton.icon(
-                icon: const Icon(Icons.person, color: kPrimaryColor),
-                onPressed: () async {
-                  await _auth.signOut();
-                },
-                label: const Text(
-                  'Logout',
-                  style: TextStyle(color: kPrimaryColor),
-                ),
-              ),
               Consumer<Cart>(
                   builder: (_, cart, ch) => Badge(
                         child: ch,

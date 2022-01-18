@@ -40,18 +40,6 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
       appBar: DefaultAppBar(
         title: loadedProduct.title,
         child: DefaultBackButton2(),
-        action: <Widget>[
-          TextButton.icon(
-            icon: const Icon(Icons.person, color: kPrimaryColor),
-            onPressed: () async {
-              await _auth.signOut();
-            },
-            label: const Text(
-              'Logout',
-              style: TextStyle(color: kPrimaryColor),
-            ),
-          ),
-        ],
       ),
       body: Column(
         children: <Widget>[
