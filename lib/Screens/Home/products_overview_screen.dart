@@ -1,3 +1,4 @@
+import 'package:ebutler/Screens/Notifications/components/default_backbutton.dart';
 import 'package:ebutler/Screens/Notifications/components/shopbackbutton.dart';
 import 'package:ebutler/Services/productdatabase.dart';
 import 'package:ebutler/Shared/constants.dart';
@@ -98,7 +99,11 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
               'MyShop',
               style: TextStyle(color: kPrimaryColor),
             ),
+            leading: BackButton(
+              color: kPrimaryColor,
+            ),
             backgroundColor: kWhiteColor,
+
             // leading: const ShopBackButton(),
             actions: <Widget>[
               Consumer<Cart>(
