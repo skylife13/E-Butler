@@ -1,3 +1,4 @@
+import 'package:ebutler/Screens/Notifications/components/shopbackbutton.dart';
 import 'package:ebutler/Services/productdatabase.dart';
 import 'package:ebutler/Shared/constants.dart';
 import 'package:ebutler/providers/product.dart';
@@ -98,7 +99,7 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
               style: TextStyle(color: kPrimaryColor),
             ),
             backgroundColor: kWhiteColor,
-            //leading: ShopBackButton(),
+            // leading: const ShopBackButton(),
             actions: <Widget>[
               Consumer<Cart>(
                   builder: (_, cart, ch) => Badge(

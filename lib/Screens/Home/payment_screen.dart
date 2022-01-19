@@ -116,6 +116,9 @@ class _PaymentScreenState extends State<PaymentScreen> {
                 .snapshots(),
             builder: (BuildContext context,
                 AsyncSnapshot<QuerySnapshot> snapshotScheduled) {
+              if (!snapshotScheduled.hasData) {
+                return const Center(child: Text('FeelsWeirdMan'));
+              }
               return Center(
                 child: ListView(
                   children: [

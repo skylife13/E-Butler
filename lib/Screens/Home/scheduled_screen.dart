@@ -33,6 +33,10 @@ class _ScheduledScreen extends State<ScheduledScreen> {
                     .snapshots(),
                 builder: (BuildContext context,
                     AsyncSnapshot<QuerySnapshot> snapshotScheduledCart) {
+                  if (!snapshotScheduledStatus.hasData &&
+                      !snapshotScheduledCart.hasData) {
+                    return Center(child: Text('FeelsWeirdMan'));
+                  }
                   if (snapshotScheduledCart.data.documents.isEmpty) {
                     // Navigator.of(context).pushNamed('/');
                     return Column(
