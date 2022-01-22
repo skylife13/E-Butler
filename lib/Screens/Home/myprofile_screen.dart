@@ -1,12 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ebutler/Model/user.dart';
 import 'package:ebutler/Screens/Home/history_screen.dart';
+import 'package:ebutler/Screens/Home/scheduled_screen.dart';
 import 'package:ebutler/Shared/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class MyProfile extends StatefulWidget {
-  const MyProfile ({ Key key }) : super(key: key);
+  const MyProfile({Key key}) : super(key: key);
   static const routeName = '/MyAccount';
 
   @override
@@ -25,6 +26,9 @@ class _State extends State<MyProfile> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         title: const Text("My Profile", style: TextStyle(color: kPrimaryColor)),
+        leading: BackButton(
+          color: kPrimaryColor,
+        ),
       ),
       body: Column(
         children: [
@@ -51,13 +55,13 @@ class _State extends State<MyProfile> {
             },
           ),
 
-          const SizedBox(height: 10),
+          // const SizedBox(height: 10),
           //text "Accounts"
-          Container(
-            alignment: Alignment.topLeft,
-            padding: EdgeInsets.all(7),
-            child: Text("Account", style: TextStyle(fontSize: 11)),
-          ),
+          // Container(
+          //   alignment: Alignment.topLeft,
+          //   padding: EdgeInsets.all(7),
+          //   child: Text("Account", style: TextStyle(fontSize: 11)),
+          // ),
           Expanded(
               child: ListView.builder(
                   padding: EdgeInsets.only(top: 88.0),
@@ -74,6 +78,9 @@ class _State extends State<MyProfile> {
                               switch (accountLabel[index]) {
                                 case 'History':
                                   return const HistoryScreen();
+                                  break;
+                                case 'Scheduled Order':
+                                  return const ScheduledScreen();
                                   break;
 
                                 default:

@@ -36,7 +36,7 @@ class _ScheduledScreen extends State<ScheduledScreen> {
                     AsyncSnapshot<QuerySnapshot> snapshotScheduledCart) {
                   if (!snapshotScheduledStatus.hasData &&
                       !snapshotScheduledCart.hasData) {
-                    return Center(child: Text('FeelsWeirdMan'));
+                    return Center(child: Text('Data kosong'));
                   }
                   if (snapshotScheduledCart.data.documents.isEmpty) {
                     // Navigator.of(context).pushNamed('/');

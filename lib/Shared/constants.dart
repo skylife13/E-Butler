@@ -87,7 +87,7 @@ const textInputDecoration = InputDecoration(
 const String logo =
     'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSIQEAJNH8zuwKGVT0jI7i_xRHaaIwMeEHTw&usqp=CAU';
 
-final menuLabel = ['Information', 'History', 'Shop', 'Scheduled', 'Account'];
-final menuIcons = [Icons.book, Icons.book, Icons.shop, Icons.schedule, Icons.person];
-final accountLabel = ['History'];
-final accountIcons = [Icons.book];
+final menuLabel = ['Information', 'Amenities', 'Account'];
+final menuIcons = [Icons.book, Icons.shop, Icons.person];
+final accountLabel = ['History', 'Scheduled Order'];
+final accountIcons = [Icons.book, Icons.schedule];

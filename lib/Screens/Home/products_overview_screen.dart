@@ -96,7 +96,7 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
         child: Scaffold(
           appBar: AppBar(
             title: const Text(
-              'MyShop',
+              'Amenities',
               style: TextStyle(color: kPrimaryColor),
             ),
             leading: BackButton(

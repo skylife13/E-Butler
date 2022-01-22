@@ -76,13 +76,7 @@ class _HomeState extends State<Home> {
                             if (index == 0) {
                               Navigator.of(context)
                                   .pushNamed(Information.routeName);
-                            } else if (index == 1) {
-                              Navigator.of(context)
-                                  .pushNamed(HistoryScreen.routeName);
-                            } else if (index == 3) {
-                              Navigator.of(context)
-                                  .pushNamed(ScheduledScreen.routeName);
-                            } else if (index == 4) {
+                            } else if (index == 2) {
                               Navigator.of(context)
                                   .pushNamed(MyProfile.routeName);
                             } else {

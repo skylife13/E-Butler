@@ -37,10 +37,15 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
     ).findById(productId);
 
     return Scaffold(
-      appBar: DefaultAppBar(
-        title: loadedProduct.title,
-        child: DefaultBackButton2(),
-      ),
+      appBar: AppBar(
+          title: const Text(
+            'Amenities',
+            style: TextStyle(color: kPrimaryColor),
+          ),
+          leading: BackButton(
+            color: kPrimaryColor,
+          ),
+          backgroundColor: kWhiteColor),
       body: Column(
         children: <Widget>[
           Form(
