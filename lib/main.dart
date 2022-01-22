@@ -1,5 +1,6 @@
 import 'package:ebutler/Screens/Home/history_screen.dart';
 import 'package:ebutler/Screens/Home/information.dart';
+import 'package:ebutler/Screens/Home/myprofile_screen.dart';
 import 'package:ebutler/Screens/Home/payment_screen.dart';
 import 'package:ebutler/Screens/Home/scheduled_screen.dart';
 import 'package:ebutler/Screens/Home/status_screen.dart';
@@ -67,6 +68,7 @@ class MyApp extends StatelessWidget {
               PaymentScreen.routeName: (ctx) => const PaymentScreen(),
               StatusScreen.routeName: (ctx) => const StatusScreen(),
               ScheduledScreen.routeName: (ctx) => const ScheduledScreen(),
+              MyProfile.routeName: (ctx) => const MyProfile(),
             }),
       ),
     );
