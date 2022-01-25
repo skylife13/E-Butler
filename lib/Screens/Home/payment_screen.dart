@@ -55,16 +55,16 @@ class _PaymentScreenState extends State<PaymentScreen> {
             cart.items.values.toList()[i].quantity,
             date);
 
-        History(uid: user.uid).setHistory(
-            i,
-            cart.items.values.toList()[i].title,
-            cart.items.values.toList()[i].quantity,
-            cart.items.values.toList()[i].price,
-            int.parse(argument.roomNumberData),
-            cart.items.keys.toList()[i],
-            cart.totalAmount,
-            cart.items.values.toList()[i].price *
-                cart.items.values.toList()[i].quantity);
+        // History(uid: user.uid).setHistory(
+        //     i,
+        //     cart.items.values.toList()[i].title,
+        //     cart.items.values.toList()[i].quantity,
+        //     cart.items.values.toList()[i].price,
+        //     int.parse(argument.roomNumberData),
+        //     cart.items.keys.toList()[i],
+        //     cart.totalAmount,
+        //     cart.items.values.toList()[i].price *
+        //         cart.items.values.toList()[i].quantity);
       }
     }
 
