@@ -32,6 +32,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
     final user = Provider.of<User>(context);
     final argument = ModalRoute.of(context).settings.arguments as Arguments;
     String total = cart.totalAmount.toString();
+    String timeOrdered;
 
     void scheduleddb() {
       String date = DateFormat('dd/MM/yyyy - kk:mm').format(
@@ -55,16 +56,16 @@ class _PaymentScreenState extends State<PaymentScreen> {
             cart.items.values.toList()[i].quantity,
             date);
 
-        // History(uid: user.uid).setHistory(
-        //     i,
-        //     cart.items.values.toList()[i].title,
-        //     cart.items.values.toList()[i].quantity,
-        //     cart.items.values.toList()[i].price,
-        //     int.parse(argument.roomNumberData),
-        //     cart.items.keys.toList()[i],
-        //     cart.totalAmount,
-        //     cart.items.values.toList()[i].price *
-        //         cart.items.values.toList()[i].quantity);
+        History(uid: user.uid).setHistory(
+            i,
+            cart.items.values.toList()[i].title,
+            cart.items.values.toList()[i].quantity,
+            cart.items.values.toList()[i].price,
+            int.parse(argument.roomNumberData),
+            cart.items.keys.toList()[i],
+            cart.totalAmount,
+            cart.items.values.toList()[i].price *
+                cart.items.values.toList()[i].quantity);
       }
     }
 
@@ -111,7 +112,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
       child: Scaffold(
         body: StreamBuilder<QuerySnapshot>(
             stream: Firestore.instance
-                .collection('Scheduled Status')
+                .collection('Scheduled Cart')
                 .where(FieldPath.documentId, isEqualTo: user.uid)
                 .snapshots(),
             builder: (BuildContext context,
@@ -119,6 +120,17 @@ class _PaymentScreenState extends State<PaymentScreen> {
               if (!snapshotScheduled.hasData) {
                 return const Center(child: Text('FeelsWeirdMan'));
               }
+
+              String time() {
+                snapshotScheduled.data.documents.map((doc) {
+                  for (var i in doc.data.values) {
+                    timeOrdered = i['Time Ordered'];
+                    break;
+                  }
+                }).toList();
+                return timeOrdered;
+              }
+
               return Center(
                 child: ListView(
                   children: [
@@ -225,6 +237,18 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                                       'Scheduled Status')
                                                   .document(user.uid)
                                                   .delete();
+                                              snapshotScheduled.data.documents
+                                                  .map((doc) {
+                                                for (var i in doc.data.values) {
+                                                  timeOrdered =
+                                                      i['Time Ordered'];
+                                                  break;
+                                                }
+                                                Firestore.instance
+                                                    .collection(user.uid)
+                                                    .document(timeOrdered)
+                                                    .delete();
+                                              }).toList();
                                               Navigator.of(ctx).pop(true);
                                             });
                                           },

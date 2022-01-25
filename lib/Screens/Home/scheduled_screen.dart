@@ -17,6 +17,7 @@ class _ScheduledScreen extends State<ScheduledScreen> {
   Widget build(BuildContext context) {
     final user = Provider.of<User>(context);
     String uid = user.uid;
+    String timeOrdered;
     int roomNumber;
 
     return Scaffold(
@@ -69,8 +70,10 @@ class _ScheduledScreen extends State<ScheduledScreen> {
                           children:
                               snapshotScheduledCart.data.documents.map((doc) {
                             roomNumber = null;
+                            timeOrdered = null;
                             for (var i in doc.data.values) {
                               roomNumber = i['Room Number'];
+                              timeOrdered = i['Time Ordered'];
                               break;
                             }
                             return Column(
@@ -80,7 +83,7 @@ class _ScheduledScreen extends State<ScheduledScreen> {
                                     padding: const EdgeInsets.only(
                                         top: 10, bottom: 10),
                                     child: Text(
-                                      roomNumber.toString(),
+                                      'Room: ' + roomNumber.toString(),
                                       style: TextStyle(
                                         fontSize: 18,
                                       ),
@@ -113,6 +116,17 @@ class _ScheduledScreen extends State<ScheduledScreen> {
                                         child: Padding(
                                           padding: const EdgeInsets.all(8.0),
                                           child: Text(
+                                            "Ordered at: " + timeOrdered,
+                                            style: TextStyle(
+                                              fontSize: 18,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      Center(
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Text(
                                             scheduledStatus,
                                             style: TextStyle(
                                               fontSize: 18,
@@ -131,6 +145,10 @@ class _ScheduledScreen extends State<ScheduledScreen> {
                                             Firestore.instance
                                                 .collection('Scheduled Status')
                                                 .document(uid)
+                                                .delete();
+                                            Firestore.instance
+                                                .collection(uid)
+                                                .document(timeOrdered)
                                                 .delete();
                                           },
                                           child: Text('Cancel Order'),

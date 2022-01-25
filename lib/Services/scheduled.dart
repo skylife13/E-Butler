@@ -1,8 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:intl/intl.dart';
 
 class Scheduled {
   final String uid;
   Scheduled({this.uid});
+
+  DateTime dateTime = DateTime.now();
+  String newTime;
 
   final CollectionReference scheduledCartCollection =
       Firestore.instance.collection('Scheduled Cart');
@@ -22,6 +26,8 @@ class Scheduled {
     int quantity,
     String time,
   ) async {
+    newTime = DateFormat('dd:MM:yy kk:mm:ss').format(dateTime);
+
     Map<String, Object> products = {
       'User Id': uid,
       'Room Number': roomNumber,
@@ -31,7 +37,8 @@ class Scheduled {
       'Quantity': quantity,
       'Total': total,
       'Total Price': amount,
-      'Time': time
+      'Time': time,
+      'Time Ordered': newTime,
     };
     await scheduledCartCollection
         .document(uid)

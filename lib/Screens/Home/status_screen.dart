@@ -145,7 +145,7 @@ class _StatusScreenState extends State<StatusScreen> {
                         Container(
                           padding: const EdgeInsets.only(top: 10),
                           child: Text(
-                            snapshotStatus.data['Status'],
+                            snapshotStatus.data['Status'] ?? 'no',
                             style: TextStyle(
                                 fontSize: 18, fontWeight: FontWeight.w700),
                           ),
@@ -204,7 +204,7 @@ class _StatusScreenState extends State<StatusScreen> {
                             Container(
                               padding: const EdgeInsets.only(top: 10),
                               child: Text(
-                                snapshotStatus.data['Status'],
+                                snapshotStatus.data['Status'] ?? 'No',
                                 style: TextStyle(
                                     fontSize: 18, fontWeight: FontWeight.w700),
                               ),
