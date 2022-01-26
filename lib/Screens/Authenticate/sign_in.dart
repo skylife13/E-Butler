@@ -3,6 +3,7 @@ import 'package:ebutler/Services/auth.dart';
 import 'package:ebutler/Shared/constants.dart';
 import 'package:ebutler/Shared/loading.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 class SignIn extends StatefulWidget {
   final Function toggleView;
@@ -28,8 +29,14 @@ class _SignInState extends State<SignIn> {
         ? const Loading()
         : Scaffold(
             backgroundColor: Color(0xFFFF9999),
-            appBar: DefaultAppBar(
-              title: 'Sign in to BINUS Hotel',
+            appBar: AppBar(
+              title: Center(
+                child: Text(
+                  'Sign in to BINUS Hotel',
+                  style: TextStyle(color: kPrimaryColor),
+                ),
+              ),
+              backgroundColor: Colors.white,
             ),
             // AppBar(
             //   backgroundColor: Colors.purple,
