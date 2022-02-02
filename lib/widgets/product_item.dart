@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import '/providers/product.dart';
 import '/providers/cart.dart';
 import '/Screens/Home/product_detail_screen.dart';
+import 'badge.dart';
 
 class ProductItem extends StatelessWidget {
   ProductItem({Key key}) : super(key: key);
@@ -25,14 +26,20 @@ class ProductItem extends StatelessWidget {
           ),
           backgroundColor: Colors.black54,
         ),
-        child: GestureDetector(
-          onTap: () {
-            Navigator.of(context).pushNamed(ProductDetailScreen.routeName,
-                arguments: product.id);
-          },
-          child: Image.network(
-            product.imageUrl,
-            fit: BoxFit.cover,
+        child: Consumer<Cart>(
+          builder: (_, cart, ch) => Badge(
+            child: ch,
+            value: 'Quantity: ' + product.quantity.toString() + 'x',
+          ),
+          child: GestureDetector(
+            onTap: () {
+              Navigator.of(context).pushNamed(ProductDetailScreen.routeName,
+                  arguments: product.id);
+            },
+            child: Image.network(
+              product.imageUrl,
+              fit: BoxFit.cover,
+            ),
           ),
         ),
 
