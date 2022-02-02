@@ -2,6 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ebutler/Model/user.dart';
 import 'package:ebutler/Screens/Home/history_screen.dart';
 import 'package:ebutler/Screens/Home/scheduled_screen.dart';
+import 'package:ebutler/Screens/Notifications/components/default_backbutton.dart';
+import 'package:ebutler/Services/auth.dart';
 import 'package:ebutler/Shared/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -16,9 +18,11 @@ class MyProfile extends StatefulWidget {
 
 class _State extends State<MyProfile> {
   int currentindex = 0;
+
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<User>(context);
+    final AuthService _auth = AuthService();
     String uid = user.uid;
 
     return Scaffold(
@@ -26,9 +30,7 @@ class _State extends State<MyProfile> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         title: const Text("My Profile", style: TextStyle(color: kPrimaryColor)),
-        leading: BackButton(
-          color: kPrimaryColor,
-        ),
+        leading: DefaultBackButton(),
       ),
       body: Column(
         children: [
@@ -72,7 +74,9 @@ class _State extends State<MyProfile> {
                           accountIcons[index],
                           color: kPrimaryColor,
                         ),
-                        title: Text(accountLabel[index]),
+                        title: Text(
+                          accountLabel[index],
+                        ),
                         onTap: () => Navigator.of(context)
                                 .push(MaterialPageRoute(builder: (context) {
                               switch (accountLabel[index]) {
@@ -87,7 +91,18 @@ class _State extends State<MyProfile> {
                                   return null;
                               }
                             })));
-                  }))
+                  })),
+
+          TextButton.icon(
+            icon: const Icon(Icons.exit_to_app, color: kPrimaryColor),
+            onPressed: () async {
+              await _auth.signOut();
+            },
+            label: const Text(
+              'Logout',
+              style: TextStyle(color: kDarkColor),
+            ),
+          ),
 
           // ListView.builder(
           //   itemCount: profileList.length,

@@ -30,26 +30,6 @@ class _HomeState extends State<Home> {
           'BINUS Hotel',
           style: TextStyle(color: kWhiteColor),
         ),
-        actions: <Widget>[
-          TextButton.icon(
-            icon: const Icon(Icons.person, color: kWhiteColor),
-            onPressed: () async {
-              await _auth.signOut();
-            },
-            label: const Text(
-              'Logout',
-              style: TextStyle(color: kWhiteColor),
-            ),
-          ),
-          IconButton(
-            icon: Icon(Icons.notifications, color: kWhiteColor),
-            onPressed: () => Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) => NotificationList(),
-              ),
-            ),
-          ),
-        ],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -75,13 +55,11 @@ class _HomeState extends State<Home> {
                           onPressed: () {
                             if (index == 0) {
                               Navigator.of(context)
-                                  .pushNamed(Information.routeName);
-                            } else if (index == 2) {
-                              Navigator.of(context)
-                                  .pushNamed(MyProfile.routeName);
-                            } else {
-                              Navigator.of(context)
                                   .pushNamed(ProductsOverviewScreen.routeName);
+                            }
+                            if (index == 1) {
+                              Navigator.of(context)
+                                  .pushNamed(Information.routeName);
                             }
                           }),
                       Text(

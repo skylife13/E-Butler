@@ -25,18 +25,6 @@ class DefaultAppBar extends StatelessWidget implements PreferredSizeWidget {
       automaticallyImplyLeading: false,
       iconTheme: IconThemeData(color: kPrimaryColor),
       leading: child,
-      actions: <Widget>[
-        TextButton.icon(
-          icon: const Icon(Icons.person, color: kPrimaryColor),
-          onPressed: () async {
-            await _auth.signOut();
-          },
-          label: const Text(
-            'Logout',
-            style: TextStyle(color: kPrimaryColor),
-          ),
-        ),
-      ],
     );
   }
 }

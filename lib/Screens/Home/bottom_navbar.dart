@@ -1,6 +1,7 @@
 import 'package:ebutler/Screens/Home/history_screen.dart';
 import 'package:ebutler/Screens/Home/home.dart';
 import 'package:ebutler/Screens/Home/information.dart';
+import 'package:ebutler/Screens/Home/myprofile_screen.dart';
 
 import 'package:ebutler/Shared/constants.dart';
 import 'package:flutter/material.dart';
@@ -17,8 +18,8 @@ class _BottomNavBarState extends State<BottomNavBar> {
 
   final List<Widget> _children = [
     const Home(),
-    const Information(),
-    const HistoryScreen(),
+
+    const MyProfile()
     // const OrderScreen(),
   ];
 
@@ -48,13 +49,10 @@ class _BottomNavBarState extends State<BottomNavBar> {
             icon: Icon(Icons.home),
             label: 'Home',
           ),
+
           BottomNavigationBarItem(
-            icon: Icon(Icons.book),
-            label: 'Information',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.book),
-            label: 'History',
+            icon: Icon(Icons.person),
+            label: 'Account',
           ),
           // BottomNavigationBarItem(
           //   icon: Icon(Icons.book),
