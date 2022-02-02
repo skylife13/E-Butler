@@ -120,15 +120,27 @@ class _CartScreenState extends State<CartScreen> {
                               color: Theme.of(context).primaryColor,
                             ),
                           ),
-                          onPressed: cart.itemCount > 0
+                          onPressed: cart.itemCount < 1 ||
+                                  cart.totalQuantity > 6
                               ? () {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    const SnackBar(
+                                      content: Text(
+                                        'You cannot order more than six items or no items at all',
+                                        textAlign: TextAlign.center,
+                                      ),
+                                      duration: Duration(seconds: 1),
+                                    ),
+                                  );
+                                }
+                              : () {
                                   if (_formKey.currentState.validate()) {
                                     alert();
                                   } else {
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       const SnackBar(
                                         content: Text(
-                                          'Please input the data correctly',
+                                          'Please input the room number correctly',
                                           textAlign: TextAlign.center,
                                         ),
                                         duration: Duration(seconds: 1),
@@ -136,17 +148,6 @@ class _CartScreenState extends State<CartScreen> {
                                     );
                                   }
                                   _formKey.currentState.reset();
-                                }
-                              : () {
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    const SnackBar(
-                                      content: Text(
-                                        'Please Add an Item First',
-                                        textAlign: TextAlign.center,
-                                      ),
-                                      duration: Duration(seconds: 1),
-                                    ),
-                                  );
                                 },
                         ),
                       ],
