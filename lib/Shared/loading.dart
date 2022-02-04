@@ -1,3 +1,4 @@
+import 'package:ebutler/Shared/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
@@ -7,10 +8,10 @@ class Loading extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Color(0xFFFF9999),
+      color: kPrimaryColor,
       child: const Center(
         child: SpinKitChasingDots(
-          color: Color(0xFFFF6070),
+          color: kYellowColor,
           size: 50.0,
         ),
       ),

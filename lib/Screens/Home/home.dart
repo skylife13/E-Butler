@@ -65,7 +65,7 @@ class _HomeState extends State<Home> {
                       Text(
                         menuLabel[index],
                         style:
-                            const TextStyle(color: kLightColor, fontSize: 10),
+                            const TextStyle(color: kPrimaryColor, fontSize: 10),
                       ),
                     ],
                   );

@@ -32,15 +32,14 @@ class _BottomNavBarState extends State<BottomNavBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: kWhiteColor,
       body: _children[widget.currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         onTap: onTapTapped,
         currentIndex: widget.currentIndex,
         elevation: kLess,
-        selectedItemColor: kPrimaryColor,
+        selectedItemColor: kYellowColor,
         unselectedItemColor: kLightColor,
-        backgroundColor: kWhiteColor,
+        backgroundColor: kPrimaryColor,
         // showSelectedLabels: true,
         showUnselectedLabels: true,
         type: BottomNavigationBarType.fixed,

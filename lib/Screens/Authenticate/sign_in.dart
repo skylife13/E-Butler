@@ -28,7 +28,7 @@ class _SignInState extends State<SignIn> {
     return loading
         ? const Loading()
         : Scaffold(
-            backgroundColor: Color(0xFFFF9999),
+            backgroundColor: kPrimaryColor,
             appBar: AppBar(
               title: Center(
                 child: Text(
@@ -38,11 +38,6 @@ class _SignInState extends State<SignIn> {
               ),
               backgroundColor: Colors.white,
             ),
-            // AppBar(
-            //   backgroundColor: Colors.purple,
-            //   elevation: 0.0,
-            //   title: const Text("Sign in to BINUS Hotel"),
-            // ),
             body: Container(
                 padding: const EdgeInsets.symmetric(
                     vertical: 20.0, horizontal: 50.0),
@@ -74,10 +69,10 @@ class _SignInState extends State<SignIn> {
                       ),
                       const SizedBox(height: 20.0),
                       RaisedButton(
-                          color: Color(0xFFFF6070),
+                          color: Color(0xFFFFC03D),
                           child: const Text(
                             'Sign in',
-                            style: TextStyle(color: Colors.white),
+                            style: TextStyle(color: kPrimaryColor),
                           ),
                           onPressed: () async {
                             if (_formkey.currentState.validate()) {

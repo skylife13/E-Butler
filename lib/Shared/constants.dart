@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 
 const MaterialColor kPrimaryColor = MaterialColor(
-  0xFFFF5722,
+  0xFF432344,
   <int, Color>{
-    50: Color(0xFFFF8084),
-    100: Color(0xFFFF8084),
-    200: Color(0xFFFF8084),
-    300: Color(0xFFFF8084),
-    400: Color(0xFFFF8084),
-    500: Color(0xFFFF8084),
-    600: Color(0xFFFF8084),
-    700: Color(0xFFFF8084),
-    800: Color(0xFFFF8084),
-    900: Color(0xFFFF8084),
+    50: Color(0xFF432344),
+    100: Color(0xFF432344),
+    200: Color(0xFF432344),
+    300: Color(0xFF432344),
+    400: Color(0xFF432344),
+    500: Color(0xFF432344),
+    600: Color(0xFF432344),
+    700: Color(0xFF432344),
+    800: Color(0xFF432344),
+    900: Color(0xFF432344),
   },
 );
 const MaterialColor kAccentColor = MaterialColor(
@@ -30,9 +30,9 @@ const MaterialColor kAccentColor = MaterialColor(
     900: Color(0xFFF1F1F1),
   },
 );
-
+const kYellowColor = Color(0xFFFFC03D);
 const kWhiteColor = Color(0xFFFFFFFF);
-const kLightColor = Color(0xFF808080);
+const kLightColor = Color(0xFFE7EEFB);
 const kDarkColor = Color(0xFF303030);
 
 const kDefaultPadding = 24.0;
