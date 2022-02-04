@@ -71,7 +71,7 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
                 ElevatedButton(
                   onPressed: () => Navigator.of(context).pop(false),
                   //return false when click on "NO"
-                  child: Text("'No,i'll stay"),
+                  child: Text("No,i'll stay"),
                 ),
                 ElevatedButton(
                   onPressed: () {
