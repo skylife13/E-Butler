@@ -28,7 +28,7 @@ class _HomeState extends State<Home> {
         automaticallyImplyLeading: false,
         title: const Text(
           'BINUS Hotel',
-          style: TextStyle(color: kWhiteColor),
+          style: TextStyle(color: kYellowColor),
         ),
       ),
       body: SingleChildScrollView(

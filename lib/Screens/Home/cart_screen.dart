@@ -34,16 +34,16 @@ class _CartScreenState extends State<CartScreen> {
           title: const Text('Are you sure?'),
           content: const Text('You cannot edit your order if you proceed'),
           actions: <Widget>[
-            TextButton(
+            ElevatedButton(
               onPressed: () {
                 Navigator.of(ctx).pop(false);
               },
               child: const Text(
                 'No',
-                style: TextStyle(color: Colors.black),
+                style: TextStyle(color: kYellowColor),
               ),
             ),
-            TextButton(
+            ElevatedButton(
               onPressed: () {
                 Navigator.of(ctx).pop(true);
                 DatabaseService().setUserData();
@@ -55,7 +55,7 @@ class _CartScreenState extends State<CartScreen> {
               },
               child: const Text(
                 'Yes',
-                style: TextStyle(color: Colors.black),
+                style: TextStyle(color: kYellowColor),
               ),
             )
           ],
@@ -65,7 +65,10 @@ class _CartScreenState extends State<CartScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Cart'),
+        title: const Text(
+          'Cart',
+          style: TextStyle(color: kYellowColor),
+        ),
       ),
       body: Column(
         children: <Widget>[

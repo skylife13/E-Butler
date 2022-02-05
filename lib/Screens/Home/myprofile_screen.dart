@@ -49,9 +49,9 @@ class _State extends State<MyProfile> {
                 child: ListTile(
                   title: Text(snapshot.data['name'],
                       style: TextStyle(
-                          fontWeight: FontWeight.bold, color: Colors.white)),
+                          fontWeight: FontWeight.bold, color: kYellowColor)),
                   subtitle: Text(snapshot.data['email'],
-                      style: TextStyle(color: Colors.white60)),
+                      style: TextStyle(color: kWhiteColor)),
                 ),
               );
             },

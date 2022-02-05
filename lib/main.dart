@@ -53,7 +53,7 @@ class MyApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             theme: ThemeData(
               primarySwatch: kPrimaryColor,
-              accentColor: Colors.white,
+              accentColor: kWhiteColor,
               fontFamily: 'Lato',
             ),
             home: const Wrapper(),

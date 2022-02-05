@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ebutler/Model/arguments.dart';
 import 'package:ebutler/Screens/Home/status_screen.dart';
 import 'package:ebutler/Services/statusdatabase.dart';
+import 'package:ebutler/Shared/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -324,7 +325,9 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                     scheduleData: argument.scheduleData));
                           }
                         },
-                        child: const Text('I have Completed Payment'),
+                        child: _enable
+                            ? const Text('Confirm Order')
+                            : const Text('I have Completed Payment'),
                       ),
                     ),
                     Padding(
@@ -338,16 +341,16 @@ class _PaymentScreenState extends State<PaymentScreen> {
                               content:
                                   const Text('Your order data will be cleared'),
                               actions: <Widget>[
-                                TextButton(
+                                ElevatedButton(
                                   onPressed: () {
                                     Navigator.of(ctx).pop(false);
                                   },
                                   child: const Text(
                                     'No',
-                                    style: TextStyle(color: Colors.black),
+                                    style: TextStyle(color: kYellowColor),
                                   ),
                                 ),
-                                TextButton(
+                                ElevatedButton(
                                   onPressed: () {
                                     Navigator.of(ctx).pop(true);
                                     cart.clear();
@@ -355,7 +358,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                   },
                                   child: const Text(
                                     'Yes',
-                                    style: TextStyle(color: Colors.black),
+                                    style: TextStyle(color: kYellowColor),
                                   ),
                                 )
                               ],

@@ -40,7 +40,8 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
                 ElevatedButton(
                   onPressed: () => Navigator.of(context).pop(false),
                   //return false when click on "NO"
-                  child: Text("'No,i'll stay"),
+                  child: Text("No,i'll stay",
+                      style: TextStyle(color: kYellowColor)),
                 ),
                 ElevatedButton(
                   onPressed: () {
@@ -48,7 +49,7 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
                     cart.clear();
                   },
                   //return true when click on "Yes"
-                  child: Text('Yes'),
+                  child: Text('Yes', style: TextStyle(color: kYellowColor)),
                 ),
               ],
             ),

@@ -33,7 +33,7 @@ class _SignInState extends State<SignIn> {
               title: Center(
                 child: Text(
                   'Sign in to BINUS Hotel',
-                  style: TextStyle(color: kPrimaryColor),
+                  style: TextStyle(color: kYellowColor),
                 ),
               ),
               backgroundColor: Colors.white,
