@@ -8,10 +8,10 @@ class DatabaseService {
     DateTime.now(),
   );
   final CollectionReference cartCollection =
-      Firestore.instance.collection('Cart');
+      FirebaseFirestore.instance.collection('Cart');
 
   Future setUserData() async {
-    return await cartCollection.document('1').setData({});
+    return await cartCollection.doc('1').set({});
   }
 
   Future updateUserCart(
@@ -36,7 +36,7 @@ class DatabaseService {
       'Time': 'Ordered at $date'
     };
     await cartCollection
-        .document(uid)
-        .setData({'$index': products}, merge: true);
+        .doc(uid)
+        .set({'$index': products}, SetOptions(merge: true));
   }
 }

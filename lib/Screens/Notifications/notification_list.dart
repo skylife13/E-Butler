@@ -1,13 +1,17 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:ebutler/Model/user.dart';
 import 'package:ebutler/Screens/Notifications/notification_page.dart';
 import 'package:ebutler/Shared/constants.dart';
-import 'components/default_backbutton.dart';
+
 import 'package:flutter/material.dart';
-import 'components/default_appbar.dart';
+import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
+
 import 'components/notification_tiles.dart';
 
 class NotificationList extends StatefulWidget {
-  NotificationList({Key key}) : super(key: key);
-
+  const NotificationList({Key key}) : super(key: key);
+  static const routeName = 'NotificationList';
   @override
   _NotificationListState createState() => _NotificationListState();
 }
@@ -15,27 +19,51 @@ class NotificationList extends StatefulWidget {
 class _NotificationListState extends State<NotificationList> {
   @override
   Widget build(BuildContext context) {
+    final user = Provider.of<User>(context);
+
+    String uid = user.uid;
+    String Status;
+    Timestamp newTime;
+    DateTime newDate;
+    String time;
+    int roomNumber;
+
     return Scaffold(
       backgroundColor: kWhiteColor,
-      appBar: DefaultAppBar(
-        title: 'Notifications',
-        child: DefaultBackButton(),
+      appBar: AppBar(
+        title: const Text(
+          'Notification',
+          style: TextStyle(color: kYellowColor),
+        ),
+        leading: const BackButton(
+          color: kYellowColor,
+        ),
       ),
-      body: ListView.separated(
-          physics: ClampingScrollPhysics(),
-          padding: EdgeInsets.zero,
-          itemCount: 12,
-          itemBuilder: (context, index) {
-            return NotificationTiles(
-              title: 'E-Commerce',
-              subtitle: 'Thanks for download E-Commerce app.',
-              enable: true,
-              onTap: () => Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => NotificationPage())),
+      body: StreamBuilder<DocumentSnapshot>(
+          stream: FirebaseFirestore.instance
+              .collection("Status")
+              .doc(uid)
+              .snapshots(),
+          builder: (BuildContext context,
+              AsyncSnapshot<DocumentSnapshot> snapshotStatus) {
+            if (!snapshotStatus.hasData) {
+              return Center(
+                child: Text('Kosong'),
+              );
+            }
+            newDate = null;
+            time = '';
+            Status = '';
+            roomNumber = null;
+
+            return Container(
+              padding: const EdgeInsets.only(top: 10),
+              child: Text(
+                snapshotStatus.data['Status'] ?? 'no',
+                style:
+                    const TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
+              ),
             );
-          },
-          separatorBuilder: (context, index) {
-            return Divider();
           }),
     );
   }

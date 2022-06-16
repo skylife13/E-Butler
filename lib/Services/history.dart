@@ -26,9 +26,9 @@ class History {
       'Time': DateTime.now()
     };
 
-    return await Firestore.instance
+    return await FirebaseFirestore.instance
         .collection(uid)
-        .document(newTime)
-        .setData({'$index': history}, merge: true);
+        .doc(newTime)
+        .set({'$index': history}, SetOptions(merge: true));
   }
 }

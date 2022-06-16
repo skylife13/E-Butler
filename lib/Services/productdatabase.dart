@@ -4,16 +4,16 @@ import '/providers/product.dart';
 
 class ProductDatabase {
   final CollectionReference productCollection =
-      Firestore.instance.collection('product');
+      FirebaseFirestore.instance.collection('product');
 
   List<Product> _productsSnapshot(QuerySnapshot snapshot) {
-    return snapshot.documents.map((doc) {
+    return snapshot.docs.map((doc) {
       return Product(
-        id: doc.data['id'] ?? 'id',
-        price: doc.data['price'] ?? 0,
-        description: doc.data['description'] ?? 'desc',
-        imageUrl: doc.data['url'] ?? 'url',
-        title: doc.data['name'] ?? 'title',
+        id: doc.data()['id'] ?? 'id',
+        price: doc.data()['price'] ?? 0,
+        description: doc.data()['description'] ?? 'desc',
+        imageUrl: doc.data()['url'] ?? 'url',
+        title: doc.data()['name'] ?? 'title',
       );
     }).toList();
   }

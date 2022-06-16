@@ -9,10 +9,10 @@ class Scheduled {
   String newTime;
 
   final CollectionReference scheduledCartCollection =
-      Firestore.instance.collection('Scheduled Cart');
+      FirebaseFirestore.instance.collection('Scheduled Cart');
 
   Future setUserData() async {
-    return await scheduledCartCollection.document('1').setData({});
+    return await scheduledCartCollection.doc('1').set({});
   }
 
   Future updateUserCart(
@@ -41,7 +41,7 @@ class Scheduled {
       'Time Ordered': newTime,
     };
     await scheduledCartCollection
-        .document(uid)
-        .setData({'$index': products}, merge: true);
+        .doc(uid)
+        .set({'$index': products}, SetOptions(merge: true));
   }
 }

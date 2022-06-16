@@ -1,20 +1,17 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:ebutler/Model/user.dart';
+
 import 'package:ebutler/Screens/Notifications/components/default_appbar.dart';
 import 'package:ebutler/Screens/Notifications/components/default_backbutton.dart';
-import 'package:ebutler/Services/auth.dart';
+
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class Information extends StatelessWidget {
   const Information({Key key}) : super(key: key);
   static const routeName = '/Information';
   @override
   Widget build(BuildContext context) {
-    final user = Provider.of<User>(context);
-    final AuthService _auth = AuthService();
     return Scaffold(
-        appBar: DefaultAppBar(
+        appBar: const DefaultAppBar(
           title: 'Information',
           child: DefaultBackButton(),
         ),
@@ -36,7 +33,7 @@ class Information extends StatelessWidget {
         // ),
         floatingActionButton: null,
         body: StreamBuilder(
-          stream: Firestore.instance
+          stream: FirebaseFirestore.instance
               .collection('Information')
               .orderBy(FieldPath.documentId)
               .snapshots(),
@@ -48,11 +45,11 @@ class Information extends StatelessWidget {
               );
             }
             return ListView(
-              children: snapshot.data.documents.map((document) {
+              children: snapshot.data.docs.map((document) {
                 return Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    for (var i in document.data.values)
+                    for (var i in document.data().values)
                       Text(
                         i['title'] + '\n' + i['description'],
                       ),

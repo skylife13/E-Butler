@@ -28,30 +28,34 @@ class _State extends State<MyProfile> {
     return Scaffold(
       backgroundColor: kWhiteColor,
       appBar: AppBar(
-        backgroundColor: Colors.white,
-        title: const Text("My Profile", style: TextStyle(color: kPrimaryColor)),
-        leading: DefaultBackButton(),
-      ),
+          backgroundColor: kPrimaryColor,
+          title: Center(
+            child: Text(
+              "My Profile",
+              style: TextStyle(color: kYellowColor),
+            ),
+          ),
+          automaticallyImplyLeading: false),
       body: Column(
         children: [
           StreamBuilder(
-            stream: Firestore.instance
+            stream: FirebaseFirestore.instance
                 .collection('users')
-                .document(uid)
+                .doc(uid)
                 .snapshots(),
             builder: (context, snapshot) {
               if (!snapshot.hasData) {
-                return Text('Data User tidak ada');
+                return const Text('Data User tidak ada');
               }
 
               return Card(
                 color: kPrimaryColor,
                 child: ListTile(
                   title: Text(snapshot.data['name'],
-                      style: TextStyle(
+                      style: const TextStyle(
                           fontWeight: FontWeight.bold, color: kYellowColor)),
                   subtitle: Text(snapshot.data['email'],
-                      style: TextStyle(color: kWhiteColor)),
+                      style: const TextStyle(color: kWhiteColor)),
                 ),
               );
             },
@@ -66,7 +70,7 @@ class _State extends State<MyProfile> {
           // ),
           Expanded(
               child: ListView.builder(
-                  padding: EdgeInsets.only(top: 88.0),
+                  padding: const EdgeInsets.only(top: 22.0),
                   itemCount: accountLabel.length,
                   itemBuilder: (context, index) {
                     return ListTile(

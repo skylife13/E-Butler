@@ -22,14 +22,14 @@ class _ScheduledScreen extends State<ScheduledScreen> {
 
     return Scaffold(
         body: StreamBuilder<QuerySnapshot>(
-            stream: Firestore.instance
+            stream: FirebaseFirestore.instance
                 .collection('Scheduled Status')
                 .where(FieldPath.documentId, isEqualTo: uid)
                 .snapshots(),
             builder: (BuildContext context,
                 AsyncSnapshot<QuerySnapshot> snapshotScheduledStatus) {
               return StreamBuilder<QuerySnapshot>(
-                stream: Firestore.instance
+                stream: FirebaseFirestore.instance
                     .collection('Scheduled Cart')
                     .where(FieldPath.documentId, isEqualTo: uid)
                     .snapshots(),
@@ -37,18 +37,24 @@ class _ScheduledScreen extends State<ScheduledScreen> {
                     AsyncSnapshot<QuerySnapshot> snapshotScheduledCart) {
                   if (!snapshotScheduledStatus.hasData &&
                       !snapshotScheduledCart.hasData) {
-                    return Center(child: Text('Data kosong'));
+                    return const Center(child: Text('Data kosong'));
                   }
-                  if (snapshotScheduledCart.data.documents.isEmpty) {
+                  if (snapshotScheduledCart.data.docs.isEmpty) {
                     // Navigator.of(context).pushNamed('/');
                     return Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         AppBar(
-                          title: Text('Current Scheduled Order'),
+                          title: Text(
+                            'Current Scheduled Order',
+                            style: TextStyle(color: kYellowColor),
+                          ),
+                          leading: BackButton(
+                            color: kYellowColor,
+                          ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 50),
+                        const Padding(
+                          padding: EdgeInsets.only(top: 50),
                           child: Text(
                             'There is no current scheduled order yet',
                             style: TextStyle(fontSize: 20),
@@ -57,21 +63,20 @@ class _ScheduledScreen extends State<ScheduledScreen> {
                       ],
                     );
                   }
-                  var scheduledStatus = snapshotScheduledStatus.data.documents
+                  var scheduledStatus = snapshotScheduledStatus.data.docs
                       .map((stat) => stat['Status'])
                       .toString();
                   return Column(
                     children: [
                       AppBar(
-                        title: Text('Current Scheduled Order'),
+                        title: const Text('Current Scheduled Order'),
                       ),
                       Expanded(
                         child: ListView(
-                          children:
-                              snapshotScheduledCart.data.documents.map((doc) {
+                          children: snapshotScheduledCart.data.docs.map((doc) {
                             roomNumber = null;
                             timeOrdered = null;
-                            for (var i in doc.data.values) {
+                            for (var i in doc.data().values) {
                               roomNumber = i['Room Number'];
                               timeOrdered = i['Time Ordered'];
                               break;
@@ -84,7 +89,7 @@ class _ScheduledScreen extends State<ScheduledScreen> {
                                         top: 10, bottom: 10),
                                     child: Text(
                                       'Room: ' + roomNumber.toString(),
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                         fontSize: 18,
                                       ),
                                     ),
@@ -94,7 +99,7 @@ class _ScheduledScreen extends State<ScheduledScreen> {
                                   height: MediaQuery.of(context).size.height,
                                   child: ListView(
                                     children: [
-                                      for (var i in doc.data.values)
+                                      for (var i in doc.data().values)
                                         Column(
                                           children: [
                                             Padding(
@@ -105,7 +110,7 @@ class _ScheduledScreen extends State<ScheduledScreen> {
                                                     ' ' +
                                                     i['Quantity'].toString() +
                                                     'x',
-                                                style: TextStyle(
+                                                style: const TextStyle(
                                                   fontSize: 18,
                                                 ),
                                               ),
@@ -117,7 +122,7 @@ class _ScheduledScreen extends State<ScheduledScreen> {
                                           padding: const EdgeInsets.all(8.0),
                                           child: Text(
                                             "Ordered at: " + timeOrdered,
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                               fontSize: 18,
                                             ),
                                           ),
@@ -128,7 +133,7 @@ class _ScheduledScreen extends State<ScheduledScreen> {
                                           padding: const EdgeInsets.all(8.0),
                                           child: Text(
                                             scheduledStatus,
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                               fontSize: 18,
                                             ),
                                           ),
@@ -138,20 +143,20 @@ class _ScheduledScreen extends State<ScheduledScreen> {
                                         padding: const EdgeInsets.all(10),
                                         child: ElevatedButton(
                                           onPressed: () {
-                                            Firestore.instance
+                                            FirebaseFirestore.instance
                                                 .collection('Scheduled Cart')
-                                                .document(uid)
+                                                .doc(uid)
                                                 .delete();
-                                            Firestore.instance
+                                            FirebaseFirestore.instance
                                                 .collection('Scheduled Status')
-                                                .document(uid)
+                                                .doc(uid)
                                                 .delete();
-                                            Firestore.instance
+                                            FirebaseFirestore.instance
                                                 .collection(uid)
-                                                .document(timeOrdered)
+                                                .doc(timeOrdered)
                                                 .delete();
                                           },
-                                          child: Text('Cancel Order'),
+                                          child: const Text('Cancel Order'),
                                         ),
                                       ),
                                     ],

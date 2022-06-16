@@ -1,10 +1,8 @@
-import 'package:ebutler/Screens/Home/history_screen.dart';
 import 'package:ebutler/Screens/Home/information.dart';
-import 'package:ebutler/Screens/Home/myprofile_screen.dart';
 import 'package:ebutler/Screens/Home/products_overview_screen.dart';
-import 'package:ebutler/Screens/Home/scheduled_screen.dart';
 import 'package:ebutler/Screens/Notifications/notification_list.dart';
-import 'package:ebutler/Services/auth.dart';
+
+// import 'package:ebutler/Services/auth.dart';
 import 'package:ebutler/Shared/constants.dart';
 import 'package:ebutler/widgets/sticky_label.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +16,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int currentIndex = 0;
-  final AuthService _auth = AuthService();
+  // final AuthService _auth = AuthService();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,6 +28,13 @@ class _HomeState extends State<Home> {
           'BINUS Hotel',
           style: TextStyle(color: kYellowColor),
         ),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.notifications, color: kYellowColor),
+            onPressed: () =>
+                Navigator.of(context).pushNamed(NotificationList.routeName),
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         child: Column(

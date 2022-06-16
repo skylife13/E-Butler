@@ -69,6 +69,9 @@ class _CartScreenState extends State<CartScreen> {
           'Cart',
           style: TextStyle(color: kYellowColor),
         ),
+        leading: BackButton(
+          color: kYellowColor,
+        ),
       ),
       body: Column(
         children: <Widget>[
@@ -112,16 +115,16 @@ class _CartScreenState extends State<CartScreen> {
                         Chip(
                           label: Text(
                             'Rp. ${cart.totalAmount.toStringAsFixed(2)}',
-                            style: const TextStyle(color: Colors.white),
+                            style: const TextStyle(color: kPrimaryColor),
                           ),
-                          backgroundColor: Theme.of(context).primaryColor,
+                          backgroundColor: kWhiteColor,
                         ),
-                        TextButton(
+                        ElevatedButton(
                           child: Text(
                             'Order Now',
                             style: TextStyle(
-                              color: Theme.of(context).primaryColor,
-                            ),
+                                color: kYellowColor,
+                                backgroundColor: kPrimaryColor),
                           ),
                           onPressed: cart.itemCount < 1 ||
                                   cart.totalQuantity > 6

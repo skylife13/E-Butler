@@ -20,7 +20,7 @@ class ProductsOverviewScreen extends StatefulWidget {
 }
 
 class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
-  final AuthService _auth = AuthService();
+  // final AuthService _auth = AuthService();
 
   @override
   Widget build(BuildContext context) {
@@ -33,14 +33,14 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
 
             context: context,
             builder: (context) => AlertDialog(
-              title: Text('Exit'),
-              content: Text(
+              title: const Text('Exit'),
+              content: const Text(
                   'Are you sure you want to exit? the items in the cart will be lost'),
               actions: [
                 ElevatedButton(
                   onPressed: () => Navigator.of(context).pop(false),
                   //return false when click on "NO"
-                  child: Text("No,i'll stay",
+                  child: const Text("No,i'll stay",
                       style: TextStyle(color: kYellowColor)),
                 ),
                 ElevatedButton(
@@ -49,7 +49,8 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
                     cart.clear();
                   },
                   //return true when click on "Yes"
-                  child: Text('Yes', style: TextStyle(color: kYellowColor)),
+                  child:
+                      const Text('Yes', style: TextStyle(color: kYellowColor)),
                 ),
               ],
             ),
@@ -66,20 +67,21 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
 
             context: context,
             builder: (context) => AlertDialog(
-              title: Text('Exit'),
-              content: Text('If you choose yes then the cart will be cleared'),
+              title: const Text('Exit'),
+              content:
+                  const Text('If you choose yes then the cart will be cleared'),
               actions: [
                 ElevatedButton(
                   onPressed: () => Navigator.of(context).pop(false),
                   //return false when click on "NO"
-                  child: Text("No,i'll stay"),
+                  child: const Text("No,i'll stay"),
                 ),
                 ElevatedButton(
                   onPressed: () {
                     Navigator.of(context).pushNamed('/');
                   },
                   //return true when click on "Yes"
-                  child: Text('Yes'),
+                  child: const Text('Yes'),
                 ),
               ],
             ),
@@ -98,12 +100,12 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
           appBar: AppBar(
             title: const Text(
               'Amenities',
-              style: TextStyle(color: kPrimaryColor),
+              style: TextStyle(color: kYellowColor),
             ),
-            leading: BackButton(
-              color: kPrimaryColor,
+            leading: const BackButton(
+              color: kYellowColor,
             ),
-            backgroundColor: kWhiteColor,
+            backgroundColor: kPrimaryColor,
 
             // leading: const ShopBackButton(),
             actions: <Widget>[
@@ -113,7 +115,7 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
                         value: cart.itemCount.toString(),
                       ),
                   child: IconButton(
-                    icon: const Icon(Icons.shopping_cart, color: kPrimaryColor),
+                    icon: const Icon(Icons.shopping_cart, color: kYellowColor),
                     onPressed: () {
                       Navigator.of(context).pushNamed(CartScreen.routeName);
                     },
@@ -121,7 +123,7 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
             ],
           ),
           // drawer: const AppDrawer(),
-          body: ProductsGrid(),
+          body: const ProductsGrid(),
         ),
       ),
 

@@ -5,14 +5,14 @@ class ScheduledStatus {
   ScheduledStatus({this.uid});
 
   final CollectionReference scheduledStatusCollection =
-      Firestore.instance.collection('Scheduled Status');
+      FirebaseFirestore.instance.collection('Scheduled Status');
 
   Future setStatus() async {
-    return await scheduledStatusCollection.document('1').setData({});
+    return await scheduledStatusCollection.doc('1').set({});
   }
 
   Future updateUserStatus(int roomNumber, String time) async {
-    await scheduledStatusCollection.document(uid).setData({
+    await scheduledStatusCollection.doc(uid).set({
       'Status': 'Scheduled for $time',
       'Room Number': roomNumber,
       'User Id': uid

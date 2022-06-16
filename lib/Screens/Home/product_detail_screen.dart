@@ -40,12 +40,12 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
       appBar: AppBar(
           title: const Text(
             'Amenities',
-            style: TextStyle(color: kPrimaryColor),
+            style: TextStyle(color: kYellowColor),
           ),
           leading: BackButton(
-            color: kPrimaryColor,
+            color: kYellowColor,
           ),
-          backgroundColor: kWhiteColor),
+          backgroundColor: kPrimaryColor),
       body: Column(
         children: <Widget>[
           Form(

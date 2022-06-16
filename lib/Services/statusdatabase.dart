@@ -10,14 +10,14 @@ class StatusDatabase {
   );
 
   final CollectionReference statusCollection =
-      Firestore.instance.collection('Status');
+      FirebaseFirestore.instance.collection('Status');
 
   Future setStatus() async {
-    return await statusCollection.document('1').setData({});
+    return await statusCollection.doc('1').set({});
   }
 
   Future updateUserStatus(int roomNumber) async {
-    await statusCollection.document(uid).setData({
+    await statusCollection.doc(uid).set({
       'Status': 'Order received',
       'Room Number': roomNumber,
       'User Id': uid,

@@ -4,7 +4,9 @@ import 'package:ebutler/Screens/Home/myprofile_screen.dart';
 import 'package:ebutler/Screens/Home/payment_screen.dart';
 import 'package:ebutler/Screens/Home/scheduled_screen.dart';
 import 'package:ebutler/Screens/Home/status_screen.dart';
+import 'package:ebutler/Screens/Notifications/notification_list.dart';
 import 'package:ebutler/Shared/constants.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -20,7 +22,9 @@ import '/providers/orders.dart';
 import 'Screens/Home/products_overview_screen.dart';
 import 'Screens/Home/history_screen.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
@@ -69,6 +73,7 @@ class MyApp extends StatelessWidget {
               StatusScreen.routeName: (ctx) => const StatusScreen(),
               ScheduledScreen.routeName: (ctx) => const ScheduledScreen(),
               MyProfile.routeName: (ctx) => const MyProfile(),
+              NotificationList.routeName: (ctx) => const NotificationList(),
             }),
       ),
     );

@@ -14,11 +14,15 @@
 14    <uses-permission android:name="android.permission.INTERNET" />
 14-->C:\Users\Dell\OneDrive - Bina Nusantara University\Documents\GitHub\E-Butler\android\app\src\debug\AndroidManifest.xml:6:5-66
 14-->C:\Users\Dell\OneDrive - Bina Nusantara University\Documents\GitHub\E-Butler\android\app\src\debug\AndroidManifest.xml:6:22-64
-15    <!-- Although the *SdkVersion is captured in gradle build files, this is required for non gradle builds -->
-16    <!-- <uses-sdk android:minSdkVersion="14" /> -->
-17    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-17-->[com.google.firebase:firebase-firestore:21.3.0] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\e562c823a85763e642c7b6278b0d17ae\jetified-firebase-firestore-21.3.0\AndroidManifest.xml:13:5-79
-17-->[com.google.firebase:firebase-firestore:21.3.0] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\e562c823a85763e642c7b6278b0d17ae\jetified-firebase-firestore-21.3.0\AndroidManifest.xml:13:22-76
+15    <uses-permission android:name="android.permission.WAKE_LOCK" />
+15-->[:firebase_messaging] C:\Users\Dell\OneDrive - Bina Nusantara University\Documents\GitHub\E-Butler\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:8:5-68
+15-->[:firebase_messaging] C:\Users\Dell\OneDrive - Bina Nusantara University\Documents\GitHub\E-Butler\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:8:22-65
+16    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- Required by older versions of Google Play services to create IID tokens -->
+16-->[:firebase_messaging] C:\Users\Dell\OneDrive - Bina Nusantara University\Documents\GitHub\E-Butler\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:9:5-79
+16-->[:firebase_messaging] C:\Users\Dell\OneDrive - Bina Nusantara University\Documents\GitHub\E-Butler\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:9:22-76
+17    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+17-->[com.google.firebase:firebase-messaging:23.0.0] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\955be42cb0286a736ff6d4ee15b76099\jetified-firebase-messaging-23.0.0\AndroidManifest.xml:25:5-82
+17-->[com.google.firebase:firebase-messaging:23.0.0] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\955be42cb0286a736ff6d4ee15b76099\jetified-firebase-messaging-23.0.0\AndroidManifest.xml:25:22-79
 18
 19    <application
 19-->C:\Users\Dell\OneDrive - Bina Nusantara University\Documents\GitHub\E-Butler\android\app\src\main\AndroidManifest.xml:3:4-40:19
@@ -97,82 +101,297 @@
 67            android:name="com.google.firebase.components.ComponentDiscoveryService"
 67-->[:firebase_auth] C:\Users\Dell\OneDrive - Bina Nusantara University\Documents\GitHub\E-Butler\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:8:18-89
 68            android:directBootAware="true"
-68-->[com.google.firebase:firebase-common:19.3.0] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\7703ca5b88400769c9fad35f6220c81c\jetified-firebase-common-19.3.0\AndroidManifest.xml:34:13-43
+68-->[com.google.firebase:firebase-common:20.0.0] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\e8c12af64c0d197211b7d090cb61cdf8\jetified-firebase-common-20.0.0\AndroidManifest.xml:35:13-43
 69            android:exported="false" >
-69-->[com.google.firebase:firebase-auth:17.0.0] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\0264f64b8b556f387ee12efc03ebca93\jetified-firebase-auth-17.0.0\AndroidManifest.xml:35:13-37
+69-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\cb85e813550ceb859d5d8655b705694f\jetified-firebase-auth-21.0.1\AndroidManifest.xml:76:13-37
 70            <meta-data
 70-->[:firebase_auth] C:\Users\Dell\OneDrive - Bina Nusantara University\Documents\GitHub\E-Butler\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-11:85
-71                android:name="com.google.firebase.components:io.flutter.plugins.firebaseauth.FlutterFirebaseAppRegistrar"
-71-->[:firebase_auth] C:\Users\Dell\OneDrive - Bina Nusantara University\Documents\GitHub\E-Butler\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-122
+71                android:name="com.google.firebase.components:io.flutter.plugins.firebase.auth.FlutterFirebaseAuthRegistrar"
+71-->[:firebase_auth] C:\Users\Dell\OneDrive - Bina Nusantara University\Documents\GitHub\E-Butler\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-124
 72                android:value="com.google.firebase.components.ComponentRegistrar" />
 72-->[:firebase_auth] C:\Users\Dell\OneDrive - Bina Nusantara University\Documents\GitHub\E-Butler\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:11:17-82
 73            <meta-data
 73-->[:cloud_firestore] C:\Users\Dell\OneDrive - Bina Nusantara University\Documents\GitHub\E-Butler\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-11:85
-74                android:name="com.google.firebase.components:io.flutter.plugins.firebase.cloudfirestore.FlutterFirebaseAppRegistrar"
-74-->[:cloud_firestore] C:\Users\Dell\OneDrive - Bina Nusantara University\Documents\GitHub\E-Butler\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-133
+74                android:name="com.google.firebase.components:io.flutter.plugins.firebase.firestore.FlutterFirebaseFirestoreRegistrar"
+74-->[:cloud_firestore] C:\Users\Dell\OneDrive - Bina Nusantara University\Documents\GitHub\E-Butler\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-134
 75                android:value="com.google.firebase.components.ComponentRegistrar" />
 75-->[:cloud_firestore] C:\Users\Dell\OneDrive - Bina Nusantara University\Documents\GitHub\E-Butler\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:11:17-82
 76            <meta-data
-76-->[:firebase_core] C:\Users\Dell\OneDrive - Bina Nusantara University\Documents\GitHub\E-Butler\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-11:85
-77                android:name="com.google.firebase.components:io.flutter.plugins.firebase.core.FlutterFirebaseAppRegistrar"
-77-->[:firebase_core] C:\Users\Dell\OneDrive - Bina Nusantara University\Documents\GitHub\E-Butler\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-123
+76-->[:firebase_messaging] C:\Users\Dell\OneDrive - Bina Nusantara University\Documents\GitHub\E-Butler\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:34:13-36:85
+77                android:name="com.google.firebase.components:io.flutter.plugins.firebase.messaging.FlutterFirebaseAppRegistrar"
+77-->[:firebase_messaging] C:\Users\Dell\OneDrive - Bina Nusantara University\Documents\GitHub\E-Butler\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:35:17-128
 78                android:value="com.google.firebase.components.ComponentRegistrar" />
-78-->[:firebase_core] C:\Users\Dell\OneDrive - Bina Nusantara University\Documents\GitHub\E-Butler\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:11:17-82
+78-->[:firebase_messaging] C:\Users\Dell\OneDrive - Bina Nusantara University\Documents\GitHub\E-Butler\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:36:17-82
 79            <meta-data
-79-->[com.google.firebase:firebase-auth:17.0.0] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\0264f64b8b556f387ee12efc03ebca93\jetified-firebase-auth-17.0.0\AndroidManifest.xml:36:13-38:85
-80                android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
-80-->[com.google.firebase:firebase-auth:17.0.0] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\0264f64b8b556f387ee12efc03ebca93\jetified-firebase-auth-17.0.0\AndroidManifest.xml:37:17-109
+79-->[:firebase_core] C:\Users\Dell\OneDrive - Bina Nusantara University\Documents\GitHub\E-Butler\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-11:85
+80                android:name="com.google.firebase.components:io.flutter.plugins.firebase.core.FlutterFirebaseCoreRegistrar"
+80-->[:firebase_core] C:\Users\Dell\OneDrive - Bina Nusantara University\Documents\GitHub\E-Butler\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-124
 81                android:value="com.google.firebase.components.ComponentRegistrar" />
-81-->[com.google.firebase:firebase-auth:17.0.0] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\0264f64b8b556f387ee12efc03ebca93\jetified-firebase-auth-17.0.0\AndroidManifest.xml:38:17-82
+81-->[:firebase_core] C:\Users\Dell\OneDrive - Bina Nusantara University\Documents\GitHub\E-Butler\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:11:17-82
 82            <meta-data
-82-->[com.google.firebase:firebase-firestore:21.3.0] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\e562c823a85763e642c7b6278b0d17ae\jetified-firebase-firestore-21.3.0\AndroidManifest.xml:20:13-22:85
-83                android:name="com.google.firebase.components:com.google.firebase.firestore.FirestoreRegistrar"
-83-->[com.google.firebase:firebase-firestore:21.3.0] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\e562c823a85763e642c7b6278b0d17ae\jetified-firebase-firestore-21.3.0\AndroidManifest.xml:21:17-111
+82-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\cb85e813550ceb859d5d8655b705694f\jetified-firebase-auth-21.0.1\AndroidManifest.xml:77:13-79:85
+83                android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
+83-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\cb85e813550ceb859d5d8655b705694f\jetified-firebase-auth-21.0.1\AndroidManifest.xml:78:17-109
 84                android:value="com.google.firebase.components.ComponentRegistrar" />
-84-->[com.google.firebase:firebase-firestore:21.3.0] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\e562c823a85763e642c7b6278b0d17ae\jetified-firebase-firestore-21.3.0\AndroidManifest.xml:22:17-82
-85        </service>
-86
-87        <activity
-87-->[com.google.firebase:firebase-auth:17.0.0] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\0264f64b8b556f387ee12efc03ebca93\jetified-firebase-auth-17.0.0\AndroidManifest.xml:24:9-31:50
-88            android:name="com.google.firebase.auth.internal.FederatedSignInActivity"
-88-->[com.google.firebase:firebase-auth:17.0.0] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\0264f64b8b556f387ee12efc03ebca93\jetified-firebase-auth-17.0.0\AndroidManifest.xml:25:13-85
-89            android:excludeFromRecents="true"
-89-->[com.google.firebase:firebase-auth:17.0.0] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\0264f64b8b556f387ee12efc03ebca93\jetified-firebase-auth-17.0.0\AndroidManifest.xml:26:13-46
-90            android:exported="true"
-90-->[com.google.firebase:firebase-auth:17.0.0] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\0264f64b8b556f387ee12efc03ebca93\jetified-firebase-auth-17.0.0\AndroidManifest.xml:27:13-36
-91            android:launchMode="singleTask"
-91-->[com.google.firebase:firebase-auth:17.0.0] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\0264f64b8b556f387ee12efc03ebca93\jetified-firebase-auth-17.0.0\AndroidManifest.xml:28:13-44
-92            android:permission="com.google.firebase.auth.api.gms.permission.LAUNCH_FEDERATED_SIGN_IN"
-92-->[com.google.firebase:firebase-auth:17.0.0] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\0264f64b8b556f387ee12efc03ebca93\jetified-firebase-auth-17.0.0\AndroidManifest.xml:29:13-102
-93            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-93-->[com.google.firebase:firebase-auth:17.0.0] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\0264f64b8b556f387ee12efc03ebca93\jetified-firebase-auth-17.0.0\AndroidManifest.xml:30:13-72
-94
-95        <provider
-95-->[com.google.firebase:firebase-common:19.3.0] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\7703ca5b88400769c9fad35f6220c81c\jetified-firebase-common-19.3.0\AndroidManifest.xml:26:9-30:39
-96            android:name="com.google.firebase.provider.FirebaseInitProvider"
-96-->[com.google.firebase:firebase-common:19.3.0] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\7703ca5b88400769c9fad35f6220c81c\jetified-firebase-common-19.3.0\AndroidManifest.xml:27:13-77
-97            android:authorities="com.example.ebutler.firebaseinitprovider"
-97-->[com.google.firebase:firebase-common:19.3.0] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\7703ca5b88400769c9fad35f6220c81c\jetified-firebase-common-19.3.0\AndroidManifest.xml:28:13-72
-98            android:exported="false"
-98-->[com.google.firebase:firebase-common:19.3.0] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\7703ca5b88400769c9fad35f6220c81c\jetified-firebase-common-19.3.0\AndroidManifest.xml:29:13-37
-99            android:initOrder="100" />
-99-->[com.google.firebase:firebase-common:19.3.0] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\7703ca5b88400769c9fad35f6220c81c\jetified-firebase-common-19.3.0\AndroidManifest.xml:30:13-36
-100
-101        <activity
-101-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\ae66d64a96039d4c8dca038f4348340f\jetified-play-services-base-17.0.0\AndroidManifest.xml:23:9-26:75
-102            android:name="com.google.android.gms.common.api.GoogleApiActivity"
-102-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\ae66d64a96039d4c8dca038f4348340f\jetified-play-services-base-17.0.0\AndroidManifest.xml:24:13-79
-103            android:exported="false"
-103-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\ae66d64a96039d4c8dca038f4348340f\jetified-play-services-base-17.0.0\AndroidManifest.xml:25:13-37
-104            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-104-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\ae66d64a96039d4c8dca038f4348340f\jetified-play-services-base-17.0.0\AndroidManifest.xml:26:13-72
-105
-106        <meta-data
-106-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\e31537fb3ca3accaea0d4d9ddb9631cc\jetified-play-services-basement-17.0.0\AndroidManifest.xml:23:9-25:69
-107            android:name="com.google.android.gms.version"
-107-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\e31537fb3ca3accaea0d4d9ddb9631cc\jetified-play-services-basement-17.0.0\AndroidManifest.xml:24:13-58
-108            android:value="@integer/google_play_services_version" />
-108-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\e31537fb3ca3accaea0d4d9ddb9631cc\jetified-play-services-basement-17.0.0\AndroidManifest.xml:25:13-66
-109    </application>
-110
-111</manifest>
+84-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\cb85e813550ceb859d5d8655b705694f\jetified-firebase-auth-21.0.1\AndroidManifest.xml:79:17-82
+85            <meta-data
+85-->[com.google.firebase:firebase-firestore:24.0.1] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\fe8af9d207e66cd175b26baabd40e396\jetified-firebase-firestore-24.0.1\AndroidManifest.xml:20:13-22:85
+86                android:name="com.google.firebase.components:com.google.firebase.firestore.FirestoreRegistrar"
+86-->[com.google.firebase:firebase-firestore:24.0.1] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\fe8af9d207e66cd175b26baabd40e396\jetified-firebase-firestore-24.0.1\AndroidManifest.xml:21:17-111
+87                android:value="com.google.firebase.components.ComponentRegistrar" />
+87-->[com.google.firebase:firebase-firestore:24.0.1] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\fe8af9d207e66cd175b26baabd40e396\jetified-firebase-firestore-24.0.1\AndroidManifest.xml:22:17-82
+88            <meta-data
+88-->[com.google.firebase:firebase-messaging:23.0.0] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\955be42cb0286a736ff6d4ee15b76099\jetified-firebase-messaging-23.0.0\AndroidManifest.xml:52:13-54:85
+89                android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar"
+89-->[com.google.firebase:firebase-messaging:23.0.0] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\955be42cb0286a736ff6d4ee15b76099\jetified-firebase-messaging-23.0.0\AndroidManifest.xml:53:17-119
+90                android:value="com.google.firebase.components.ComponentRegistrar" />
+90-->[com.google.firebase:firebase-messaging:23.0.0] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\955be42cb0286a736ff6d4ee15b76099\jetified-firebase-messaging-23.0.0\AndroidManifest.xml:54:17-82
+91            <meta-data
+91-->[com.google.firebase:firebase-datatransport:18.0.0] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\f3c873c755e203057b76686840ab40d2\jetified-firebase-datatransport-18.0.0\AndroidManifest.xml:28:13-30:85
+92                android:name="com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar"
+92-->[com.google.firebase:firebase-datatransport:18.0.0] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\f3c873c755e203057b76686840ab40d2\jetified-firebase-datatransport-18.0.0\AndroidManifest.xml:29:17-115
+93                android:value="com.google.firebase.components.ComponentRegistrar" />
+93-->[com.google.firebase:firebase-datatransport:18.0.0] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\f3c873c755e203057b76686840ab40d2\jetified-firebase-datatransport-18.0.0\AndroidManifest.xml:30:17-82
+94            <meta-data
+94-->[com.google.firebase:firebase-installations:17.0.0] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\2b663374f2a3beef67e4fc09532fc190\jetified-firebase-installations-17.0.0\AndroidManifest.xml:18:13-20:85
+95                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar"
+95-->[com.google.firebase:firebase-installations:17.0.0] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\2b663374f2a3beef67e4fc09532fc190\jetified-firebase-installations-17.0.0\AndroidManifest.xml:19:17-127
+96                android:value="com.google.firebase.components.ComponentRegistrar" />
+96-->[com.google.firebase:firebase-installations:17.0.0] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\2b663374f2a3beef67e4fc09532fc190\jetified-firebase-installations-17.0.0\AndroidManifest.xml:20:17-82
+97        </service>
+98        <service
+98-->[:firebase_messaging] C:\Users\Dell\OneDrive - Bina Nusantara University\Documents\GitHub\E-Butler\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:12:9-15:72
+99            android:name="io.flutter.plugins.firebase.messaging.FlutterFirebaseMessagingBackgroundService"
+99-->[:firebase_messaging] C:\Users\Dell\OneDrive - Bina Nusantara University\Documents\GitHub\E-Butler\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:13:13-107
+100            android:exported="false"
+100-->[:firebase_messaging] C:\Users\Dell\OneDrive - Bina Nusantara University\Documents\GitHub\E-Butler\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:14:13-37
+101            android:permission="android.permission.BIND_JOB_SERVICE" />
+101-->[:firebase_messaging] C:\Users\Dell\OneDrive - Bina Nusantara University\Documents\GitHub\E-Butler\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:15:13-69
+102        <service
+102-->[:firebase_messaging] C:\Users\Dell\OneDrive - Bina Nusantara University\Documents\GitHub\E-Butler\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:16:9-22:19
+103            android:name="io.flutter.plugins.firebase.messaging.FlutterFirebaseMessagingService"
+103-->[:firebase_messaging] C:\Users\Dell\OneDrive - Bina Nusantara University\Documents\GitHub\E-Butler\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:17:13-97
+104            android:exported="false" >
+104-->[:firebase_messaging] C:\Users\Dell\OneDrive - Bina Nusantara University\Documents\GitHub\E-Butler\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:18:13-37
+105            <intent-filter>
+105-->[:firebase_messaging] C:\Users\Dell\OneDrive - Bina Nusantara University\Documents\GitHub\E-Butler\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:19:13-21:29
+106                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+106-->[:firebase_messaging] C:\Users\Dell\OneDrive - Bina Nusantara University\Documents\GitHub\E-Butler\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:20:17-78
+106-->[:firebase_messaging] C:\Users\Dell\OneDrive - Bina Nusantara University\Documents\GitHub\E-Butler\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:20:25-75
+107            </intent-filter>
+108        </service>
+109
+110        <receiver
+110-->[:firebase_messaging] C:\Users\Dell\OneDrive - Bina Nusantara University\Documents\GitHub\E-Butler\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:24:9-31:20
+111            android:name="io.flutter.plugins.firebase.messaging.FlutterFirebaseMessagingReceiver"
+111-->[:firebase_messaging] C:\Users\Dell\OneDrive - Bina Nusantara University\Documents\GitHub\E-Butler\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:25:13-98
+112            android:exported="true"
+112-->[:firebase_messaging] C:\Users\Dell\OneDrive - Bina Nusantara University\Documents\GitHub\E-Butler\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:26:13-36
+113            android:permission="com.google.android.c2dm.permission.SEND" >
+113-->[:firebase_messaging] C:\Users\Dell\OneDrive - Bina Nusantara University\Documents\GitHub\E-Butler\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:27:13-73
+114            <intent-filter>
+114-->[:firebase_messaging] C:\Users\Dell\OneDrive - Bina Nusantara University\Documents\GitHub\E-Butler\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:28:13-30:29
+115                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+115-->[:firebase_messaging] C:\Users\Dell\OneDrive - Bina Nusantara University\Documents\GitHub\E-Butler\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:29:17-81
+115-->[:firebase_messaging] C:\Users\Dell\OneDrive - Bina Nusantara University\Documents\GitHub\E-Butler\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:29:25-78
+116            </intent-filter>
+117        </receiver>
+118
+119        <provider
+119-->[:firebase_messaging] C:\Users\Dell\OneDrive - Bina Nusantara University\Documents\GitHub\E-Butler\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:39:9-43:38
+120            android:name="io.flutter.plugins.firebase.messaging.FlutterFirebaseMessagingInitProvider"
+120-->[:firebase_messaging] C:\Users\Dell\OneDrive - Bina Nusantara University\Documents\GitHub\E-Butler\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:40:13-102
+121            android:authorities="com.example.ebutler.flutterfirebasemessaginginitprovider"
+121-->[:firebase_messaging] C:\Users\Dell\OneDrive - Bina Nusantara University\Documents\GitHub\E-Butler\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:41:13-88
+122            android:exported="false"
+122-->[:firebase_messaging] C:\Users\Dell\OneDrive - Bina Nusantara University\Documents\GitHub\E-Butler\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:42:13-37
+123            android:initOrder="99" />
+123-->[:firebase_messaging] C:\Users\Dell\OneDrive - Bina Nusantara University\Documents\GitHub\E-Butler\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:43:13-35
+124
+125        <activity
+125-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\cb85e813550ceb859d5d8655b705694f\jetified-firebase-auth-21.0.1\AndroidManifest.xml:27:9-44:20
+126            android:name="com.google.firebase.auth.internal.GenericIdpActivity"
+126-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\cb85e813550ceb859d5d8655b705694f\jetified-firebase-auth-21.0.1\AndroidManifest.xml:28:13-80
+127            android:excludeFromRecents="true"
+127-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\cb85e813550ceb859d5d8655b705694f\jetified-firebase-auth-21.0.1\AndroidManifest.xml:29:13-46
+128            android:exported="true"
+128-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\cb85e813550ceb859d5d8655b705694f\jetified-firebase-auth-21.0.1\AndroidManifest.xml:30:13-36
+129            android:launchMode="singleTask"
+129-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\cb85e813550ceb859d5d8655b705694f\jetified-firebase-auth-21.0.1\AndroidManifest.xml:31:13-44
+130            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+130-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\cb85e813550ceb859d5d8655b705694f\jetified-firebase-auth-21.0.1\AndroidManifest.xml:32:13-72
+131            <intent-filter>
+131-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\cb85e813550ceb859d5d8655b705694f\jetified-firebase-auth-21.0.1\AndroidManifest.xml:33:13-43:29
+132                <action android:name="android.intent.action.VIEW" />
+132-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\cb85e813550ceb859d5d8655b705694f\jetified-firebase-auth-21.0.1\AndroidManifest.xml:34:17-69
+132-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\cb85e813550ceb859d5d8655b705694f\jetified-firebase-auth-21.0.1\AndroidManifest.xml:34:25-66
+133
+134                <category android:name="android.intent.category.DEFAULT" />
+134-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\cb85e813550ceb859d5d8655b705694f\jetified-firebase-auth-21.0.1\AndroidManifest.xml:36:17-76
+134-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\cb85e813550ceb859d5d8655b705694f\jetified-firebase-auth-21.0.1\AndroidManifest.xml:36:27-73
+135                <category android:name="android.intent.category.BROWSABLE" />
+135-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\cb85e813550ceb859d5d8655b705694f\jetified-firebase-auth-21.0.1\AndroidManifest.xml:37:17-78
+135-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\cb85e813550ceb859d5d8655b705694f\jetified-firebase-auth-21.0.1\AndroidManifest.xml:37:27-75
+136
+137                <data
+137-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\cb85e813550ceb859d5d8655b705694f\jetified-firebase-auth-21.0.1\AndroidManifest.xml:39:17-42:51
+138                    android:host="firebase.auth"
+138-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\cb85e813550ceb859d5d8655b705694f\jetified-firebase-auth-21.0.1\AndroidManifest.xml:40:21-49
+139                    android:path="/"
+139-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\cb85e813550ceb859d5d8655b705694f\jetified-firebase-auth-21.0.1\AndroidManifest.xml:41:21-37
+140                    android:scheme="genericidp" />
+140-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\cb85e813550ceb859d5d8655b705694f\jetified-firebase-auth-21.0.1\AndroidManifest.xml:42:21-48
+141            </intent-filter>
+142        </activity>
+143        <activity
+143-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\cb85e813550ceb859d5d8655b705694f\jetified-firebase-auth-21.0.1\AndroidManifest.xml:45:9-62:20
+144            android:name="com.google.firebase.auth.internal.RecaptchaActivity"
+144-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\cb85e813550ceb859d5d8655b705694f\jetified-firebase-auth-21.0.1\AndroidManifest.xml:46:13-79
+145            android:excludeFromRecents="true"
+145-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\cb85e813550ceb859d5d8655b705694f\jetified-firebase-auth-21.0.1\AndroidManifest.xml:47:13-46
+146            android:exported="true"
+146-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\cb85e813550ceb859d5d8655b705694f\jetified-firebase-auth-21.0.1\AndroidManifest.xml:48:13-36
+147            android:launchMode="singleTask"
+147-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\cb85e813550ceb859d5d8655b705694f\jetified-firebase-auth-21.0.1\AndroidManifest.xml:49:13-44
+148            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+148-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\cb85e813550ceb859d5d8655b705694f\jetified-firebase-auth-21.0.1\AndroidManifest.xml:50:13-72
+149            <intent-filter>
+149-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\cb85e813550ceb859d5d8655b705694f\jetified-firebase-auth-21.0.1\AndroidManifest.xml:51:13-61:29
+150                <action android:name="android.intent.action.VIEW" />
+150-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\cb85e813550ceb859d5d8655b705694f\jetified-firebase-auth-21.0.1\AndroidManifest.xml:34:17-69
+150-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\cb85e813550ceb859d5d8655b705694f\jetified-firebase-auth-21.0.1\AndroidManifest.xml:34:25-66
+151
+152                <category android:name="android.intent.category.DEFAULT" />
+152-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\cb85e813550ceb859d5d8655b705694f\jetified-firebase-auth-21.0.1\AndroidManifest.xml:36:17-76
+152-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\cb85e813550ceb859d5d8655b705694f\jetified-firebase-auth-21.0.1\AndroidManifest.xml:36:27-73
+153                <category android:name="android.intent.category.BROWSABLE" />
+153-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\cb85e813550ceb859d5d8655b705694f\jetified-firebase-auth-21.0.1\AndroidManifest.xml:37:17-78
+153-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\cb85e813550ceb859d5d8655b705694f\jetified-firebase-auth-21.0.1\AndroidManifest.xml:37:27-75
+154
+155                <data
+155-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\cb85e813550ceb859d5d8655b705694f\jetified-firebase-auth-21.0.1\AndroidManifest.xml:39:17-42:51
+156                    android:host="firebase.auth"
+156-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\cb85e813550ceb859d5d8655b705694f\jetified-firebase-auth-21.0.1\AndroidManifest.xml:40:21-49
+157                    android:path="/"
+157-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\cb85e813550ceb859d5d8655b705694f\jetified-firebase-auth-21.0.1\AndroidManifest.xml:41:21-37
+158                    android:scheme="recaptcha" />
+158-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\cb85e813550ceb859d5d8655b705694f\jetified-firebase-auth-21.0.1\AndroidManifest.xml:42:21-48
+159            </intent-filter>
+160        </activity>
+161
+162        <service
+162-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\cb85e813550ceb859d5d8655b705694f\jetified-firebase-auth-21.0.1\AndroidManifest.xml:64:9-73:19
+163            android:name="com.google.firebase.auth.api.fallback.service.FirebaseAuthFallbackService"
+163-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\cb85e813550ceb859d5d8655b705694f\jetified-firebase-auth-21.0.1\AndroidManifest.xml:65:13-101
+164            android:enabled="true"
+164-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\cb85e813550ceb859d5d8655b705694f\jetified-firebase-auth-21.0.1\AndroidManifest.xml:66:13-35
+165            android:exported="false" >
+165-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\cb85e813550ceb859d5d8655b705694f\jetified-firebase-auth-21.0.1\AndroidManifest.xml:67:13-37
+166            <intent-filter>
+166-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\cb85e813550ceb859d5d8655b705694f\jetified-firebase-auth-21.0.1\AndroidManifest.xml:68:13-72:29
+167                <action android:name="com.google.firebase.auth.api.gms.service.START" />
+167-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\cb85e813550ceb859d5d8655b705694f\jetified-firebase-auth-21.0.1\AndroidManifest.xml:69:17-89
+167-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\cb85e813550ceb859d5d8655b705694f\jetified-firebase-auth-21.0.1\AndroidManifest.xml:69:25-86
+168
+169                <category android:name="android.intent.category.DEFAULT" />
+169-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\cb85e813550ceb859d5d8655b705694f\jetified-firebase-auth-21.0.1\AndroidManifest.xml:36:17-76
+169-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\cb85e813550ceb859d5d8655b705694f\jetified-firebase-auth-21.0.1\AndroidManifest.xml:36:27-73
+170            </intent-filter>
+171        </service>
+172
+173        <receiver
+173-->[com.google.firebase:firebase-messaging:23.0.0] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\955be42cb0286a736ff6d4ee15b76099\jetified-firebase-messaging-23.0.0\AndroidManifest.xml:28:9-35:20
+174            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
+174-->[com.google.firebase:firebase-messaging:23.0.0] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\955be42cb0286a736ff6d4ee15b76099\jetified-firebase-messaging-23.0.0\AndroidManifest.xml:29:13-78
+175            android:exported="true"
+175-->[com.google.firebase:firebase-messaging:23.0.0] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\955be42cb0286a736ff6d4ee15b76099\jetified-firebase-messaging-23.0.0\AndroidManifest.xml:30:13-36
+176            android:permission="com.google.android.c2dm.permission.SEND" >
+176-->[com.google.firebase:firebase-messaging:23.0.0] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\955be42cb0286a736ff6d4ee15b76099\jetified-firebase-messaging-23.0.0\AndroidManifest.xml:31:13-73
+177            <intent-filter>
+177-->[:firebase_messaging] C:\Users\Dell\OneDrive - Bina Nusantara University\Documents\GitHub\E-Butler\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:28:13-30:29
+178                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+178-->[:firebase_messaging] C:\Users\Dell\OneDrive - Bina Nusantara University\Documents\GitHub\E-Butler\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:29:17-81
+178-->[:firebase_messaging] C:\Users\Dell\OneDrive - Bina Nusantara University\Documents\GitHub\E-Butler\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:29:25-78
+179            </intent-filter>
+180        </receiver>
+181        <!--
+182             FirebaseMessagingService performs security checks at runtime,
+183             but set to not exported to explicitly avoid allowing another app to call it.
+184        -->
+185        <service
+185-->[com.google.firebase:firebase-messaging:23.0.0] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\955be42cb0286a736ff6d4ee15b76099\jetified-firebase-messaging-23.0.0\AndroidManifest.xml:41:9-48:19
+186            android:name="com.google.firebase.messaging.FirebaseMessagingService"
+186-->[com.google.firebase:firebase-messaging:23.0.0] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\955be42cb0286a736ff6d4ee15b76099\jetified-firebase-messaging-23.0.0\AndroidManifest.xml:42:13-82
+187            android:directBootAware="true"
+187-->[com.google.firebase:firebase-messaging:23.0.0] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\955be42cb0286a736ff6d4ee15b76099\jetified-firebase-messaging-23.0.0\AndroidManifest.xml:43:13-43
+188            android:exported="false" >
+188-->[com.google.firebase:firebase-messaging:23.0.0] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\955be42cb0286a736ff6d4ee15b76099\jetified-firebase-messaging-23.0.0\AndroidManifest.xml:44:13-37
+189            <intent-filter android:priority="-500" >
+189-->[:firebase_messaging] C:\Users\Dell\OneDrive - Bina Nusantara University\Documents\GitHub\E-Butler\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:19:13-21:29
+190                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+190-->[:firebase_messaging] C:\Users\Dell\OneDrive - Bina Nusantara University\Documents\GitHub\E-Butler\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:20:17-78
+190-->[:firebase_messaging] C:\Users\Dell\OneDrive - Bina Nusantara University\Documents\GitHub\E-Butler\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:20:25-75
+191            </intent-filter>
+192        </service>
+193
+194        <provider
+194-->[com.google.firebase:firebase-common:20.0.0] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\e8c12af64c0d197211b7d090cb61cdf8\jetified-firebase-common-20.0.0\AndroidManifest.xml:26:9-31:39
+195            android:name="com.google.firebase.provider.FirebaseInitProvider"
+195-->[com.google.firebase:firebase-common:20.0.0] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\e8c12af64c0d197211b7d090cb61cdf8\jetified-firebase-common-20.0.0\AndroidManifest.xml:27:13-77
+196            android:authorities="com.example.ebutler.firebaseinitprovider"
+196-->[com.google.firebase:firebase-common:20.0.0] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\e8c12af64c0d197211b7d090cb61cdf8\jetified-firebase-common-20.0.0\AndroidManifest.xml:28:13-72
+197            android:directBootAware="true"
+197-->[com.google.firebase:firebase-common:20.0.0] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\e8c12af64c0d197211b7d090cb61cdf8\jetified-firebase-common-20.0.0\AndroidManifest.xml:29:13-43
+198            android:exported="false"
+198-->[com.google.firebase:firebase-common:20.0.0] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\e8c12af64c0d197211b7d090cb61cdf8\jetified-firebase-common-20.0.0\AndroidManifest.xml:30:13-37
+199            android:initOrder="100" />
+199-->[com.google.firebase:firebase-common:20.0.0] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\e8c12af64c0d197211b7d090cb61cdf8\jetified-firebase-common-20.0.0\AndroidManifest.xml:31:13-36
+200
+201        <activity
+201-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\0813e45a0b3806629b40dbeb70c75a60\jetified-play-services-base-17.1.0\AndroidManifest.xml:23:9-26:75
+202            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+202-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\0813e45a0b3806629b40dbeb70c75a60\jetified-play-services-base-17.1.0\AndroidManifest.xml:24:13-79
+203            android:exported="false"
+203-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\0813e45a0b3806629b40dbeb70c75a60\jetified-play-services-base-17.1.0\AndroidManifest.xml:25:13-37
+204            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+204-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\0813e45a0b3806629b40dbeb70c75a60\jetified-play-services-base-17.1.0\AndroidManifest.xml:26:13-72
+205
+206        <meta-data
+206-->[com.google.android.gms:play-services-basement:17.1.0] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\14e561dfe998324f0993f7eed2935f20\jetified-play-services-basement-17.1.0\AndroidManifest.xml:23:9-25:69
+207            android:name="com.google.android.gms.version"
+207-->[com.google.android.gms:play-services-basement:17.1.0] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\14e561dfe998324f0993f7eed2935f20\jetified-play-services-basement-17.1.0\AndroidManifest.xml:24:13-58
+208            android:value="@integer/google_play_services_version" />
+208-->[com.google.android.gms:play-services-basement:17.1.0] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\14e561dfe998324f0993f7eed2935f20\jetified-play-services-basement-17.1.0\AndroidManifest.xml:25:13-66
+209
+210        <service
+210-->[com.google.android.datatransport:transport-backend-cct:3.0.0] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\d505102d802196baf48f57dd07927d29\jetified-transport-backend-cct-3.0.0\AndroidManifest.xml:29:9-35:19
+211            android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery"
+211-->[com.google.android.datatransport:transport-backend-cct:3.0.0] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\d505102d802196baf48f57dd07927d29\jetified-transport-backend-cct-3.0.0\AndroidManifest.xml:30:13-103
+212            android:exported="false" >
+212-->[com.google.android.datatransport:transport-backend-cct:3.0.0] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\d505102d802196baf48f57dd07927d29\jetified-transport-backend-cct-3.0.0\AndroidManifest.xml:31:13-37
+213            <meta-data
+213-->[com.google.android.datatransport:transport-backend-cct:3.0.0] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\d505102d802196baf48f57dd07927d29\jetified-transport-backend-cct-3.0.0\AndroidManifest.xml:32:13-34:39
+214                android:name="backend:com.google.android.datatransport.cct.CctBackendFactory"
+214-->[com.google.android.datatransport:transport-backend-cct:3.0.0] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\d505102d802196baf48f57dd07927d29\jetified-transport-backend-cct-3.0.0\AndroidManifest.xml:33:17-94
+215                android:value="cct" />
+215-->[com.google.android.datatransport:transport-backend-cct:3.0.0] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\d505102d802196baf48f57dd07927d29\jetified-transport-backend-cct-3.0.0\AndroidManifest.xml:34:17-36
+216        </service>
+217        <service
+217-->[com.google.android.datatransport:transport-runtime:3.0.0] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\c5692f6811ef7c87c9b9d941d59ba249\jetified-transport-runtime-3.0.0\AndroidManifest.xml:26:9-30:19
+218            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService"
+218-->[com.google.android.datatransport:transport-runtime:3.0.0] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\c5692f6811ef7c87c9b9d941d59ba249\jetified-transport-runtime-3.0.0\AndroidManifest.xml:27:13-117
+219            android:exported="false"
+219-->[com.google.android.datatransport:transport-runtime:3.0.0] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\c5692f6811ef7c87c9b9d941d59ba249\jetified-transport-runtime-3.0.0\AndroidManifest.xml:28:13-37
+220            android:permission="android.permission.BIND_JOB_SERVICE" >
+220-->[com.google.android.datatransport:transport-runtime:3.0.0] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\c5692f6811ef7c87c9b9d941d59ba249\jetified-transport-runtime-3.0.0\AndroidManifest.xml:29:13-69
+221        </service>
+222
+223        <receiver
+223-->[com.google.android.datatransport:transport-runtime:3.0.0] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\c5692f6811ef7c87c9b9d941d59ba249\jetified-transport-runtime-3.0.0\AndroidManifest.xml:32:9-34:40
+224            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"
+224-->[com.google.android.datatransport:transport-runtime:3.0.0] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\c5692f6811ef7c87c9b9d941d59ba249\jetified-transport-runtime-3.0.0\AndroidManifest.xml:33:13-132
+225            android:exported="false" />
+225-->[com.google.android.datatransport:transport-runtime:3.0.0] C:\Users\Dell\.gradle\caches\transforms-2\files-2.1\c5692f6811ef7c87c9b9d941d59ba249\jetified-transport-runtime-3.0.0\AndroidManifest.xml:34:13-37
+226    </application>
+227
+228</manifest>

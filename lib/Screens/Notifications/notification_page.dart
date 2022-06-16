@@ -16,9 +16,11 @@ class _NotificationPageState extends State<NotificationPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: kWhiteColor,
-      appBar: DefaultAppBar(
-        title: 'Notification',
-        child: DefaultBackButton(),
+      appBar: AppBar(
+        title: Text('Notification'),
+        leading: BackButton(
+          color: kYellowColor,
+        ),
       ),
       body: FittedBox(
         child: Container(

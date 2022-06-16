@@ -1,31 +1,30 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
-import '/Model/user.dart';
+import '/Model/user.dart' as Us;
 import '/Services/database.dart';
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
   //create user object based on FirebaseUser
-  User _userFromFirebaseUser(FirebaseUser user) {
-    return user != null ? User(uid: user.uid) : null;
+  Us.User _userFromFirebaseUser(User user) {
+    return user != null ? Us.User(uid: user.uid) : null;
   }
 
   // auth change user stream
 
-  Stream<User> get user {
-    return _auth.onAuthStateChanged
-        //.map((FirebaseUser user) => _UserFromFirebaseUser(user));
-        .map((_userFromFirebaseUser));
+  Stream<Us.User> get user {
+    return _auth.authStateChanges().map((_userFromFirebaseUser));
+    //.map((FirebaseUser user) => _UserFromFirebaseUser(user));
   }
 
   //sign with email & pass
 
   Future signInWithEmailAndPassword(String email, String password) async {
     try {
-      AuthResult result = await _auth.signInWithEmailAndPassword(
+      UserCredential result = await _auth.signInWithEmailAndPassword(
           email: email, password: password);
-      FirebaseUser user = result.user;
+      User user = result.user;
 
       return _userFromFirebaseUser(user);
     } catch (e) {

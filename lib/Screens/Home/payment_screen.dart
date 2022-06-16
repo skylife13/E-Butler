@@ -112,7 +112,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
       },
       child: Scaffold(
         body: StreamBuilder<QuerySnapshot>(
-            stream: Firestore.instance
+            stream: FirebaseFirestore.instance
                 .collection('Scheduled Cart')
                 .where(FieldPath.documentId, isEqualTo: user.uid)
                 .snapshots(),
@@ -123,8 +123,8 @@ class _PaymentScreenState extends State<PaymentScreen> {
               }
 
               String time() {
-                snapshotScheduled.data.documents.map((doc) {
-                  for (var i in doc.data.values) {
+                snapshotScheduled.data.docs.map((doc) {
+                  for (var i in doc.data().values) {
                     timeOrdered = i['Time Ordered'];
                     break;
                   }
@@ -207,7 +207,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                     Padding(
                       padding: const EdgeInsets.only(left: 24, right: 24),
                       child: ElevatedButton(
-                          onPressed: snapshotScheduled.data.documents.length > 0
+                          onPressed: snapshotScheduled.data.docs.length > 0
                               ? () {
                                   showDialog(
                                     context: context,
@@ -229,25 +229,26 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                         TextButton(
                                           onPressed: () {
                                             setState(() {
-                                              Firestore.instance
+                                              FirebaseFirestore.instance
                                                   .collection('Scheduled Cart')
-                                                  .document(user.uid)
+                                                  .doc(user.uid)
                                                   .delete();
-                                              Firestore.instance
+                                              FirebaseFirestore.instance
                                                   .collection(
                                                       'Scheduled Status')
-                                                  .document(user.uid)
+                                                  .doc(user.uid)
                                                   .delete();
-                                              snapshotScheduled.data.documents
+                                              snapshotScheduled.data.docs
                                                   .map((doc) {
-                                                for (var i in doc.data.values) {
+                                                for (var i
+                                                    in doc.data().values) {
                                                   timeOrdered =
                                                       i['Time Ordered'];
                                                   break;
                                                 }
-                                                Firestore.instance
+                                                FirebaseFirestore.instance
                                                     .collection(user.uid)
-                                                    .document(timeOrdered)
+                                                    .doc(timeOrdered)
                                                     .delete();
                                               }).toList();
                                               Navigator.of(ctx).pop(true);
@@ -272,8 +273,12 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                   }
                                 },
                           child: _enable
-                              ? Text('Cancel Order for later')
-                              : Text('Order for later')),
+                              ? Text('Cancel Order for later',
+                                  style: TextStyle(color: kYellowColor))
+                              : Text(
+                                  'Order for later',
+                                  style: TextStyle(color: kYellowColor),
+                                )),
                     ),
                     if (_enable)
                       Column(
@@ -326,8 +331,10 @@ class _PaymentScreenState extends State<PaymentScreen> {
                           }
                         },
                         child: _enable
-                            ? const Text('Confirm Order')
-                            : const Text('I have Completed Payment'),
+                            ? const Text('Confirm Order',
+                                style: TextStyle(color: kYellowColor))
+                            : const Text('I have Completed Payment',
+                                style: TextStyle(color: kYellowColor)),
                       ),
                     ),
                     Padding(
@@ -365,10 +372,9 @@ class _PaymentScreenState extends State<PaymentScreen> {
                             ),
                           );
                         },
-                        child: const Text(
-                          'Cancel Purchase',
-                        ),
-                        style: ElevatedButton.styleFrom(primary: Colors.grey),
+                        child: const Text('Cancel Purchase',
+                            style: TextStyle(color: kPrimaryColor)),
+                        style: ElevatedButton.styleFrom(primary: kYellowColor),
                       ),
                     ),
                     const SizedBox(

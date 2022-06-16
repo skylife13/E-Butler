@@ -30,7 +30,7 @@ class _SignInState extends State<SignIn> {
         : Scaffold(
             backgroundColor: kPrimaryColor,
             appBar: AppBar(
-              title: Center(
+              title: const Center(
                 child: Text(
                   'Sign in to BINUS Hotel',
                   style: TextStyle(color: kYellowColor),

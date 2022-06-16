@@ -32,11 +32,16 @@ class _HistoryScreenState extends State<HistoryScreen> {
 
     int roomNumber;
 
-    var streamSnapshot = Firestore.instance.collection(uid).snapshots();
+    var streamSnapshot = FirebaseFirestore.instance.collection(uid).snapshots();
     return Scaffold(
-      appBar: DefaultAppBar(
-        title: 'History',
-        child: DefaultBackButton(),
+      appBar: AppBar(
+        title: const Text(
+          'History',
+          style: TextStyle(color: kYellowColor),
+        ),
+        leading: BackButton(
+          color: kYellowColor,
+        ),
       ),
       body: StreamBuilder<QuerySnapshot>(
         stream: streamSnapshot,
@@ -52,9 +57,9 @@ class _HistoryScreenState extends State<HistoryScreen> {
           quantity = null;
           roomNumber = null;
           return ListView(
-            children: snapshot.data.documents.map(
+            children: snapshot.data.docs.map(
               (doc) {
-                for (var i in doc.data.values) {
+                for (var i in doc.data().values) {
                   roomNumber = i['Room Number'];
                   newTime = i['Time'];
 
@@ -78,7 +83,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
 
                       trailing: Column(
                         children: [
-                          for (var i in doc.data.values)
+                          for (var i in doc.data().values)
                             Text(
                               i['Item'].toString() + ' $quantity x',
                               style: TextStyle(fontSize: 12),
