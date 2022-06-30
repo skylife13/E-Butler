@@ -15,7 +15,7 @@ class ScheduledScreen extends StatefulWidget {
 class _ScheduledScreen extends State<ScheduledScreen> {
   @override
   Widget build(BuildContext context) {
-    final user = Provider.of<User>(context);
+    final user = Provider.of<UserModel>(context);
     String uid = user.uid;
     String timeOrdered;
     int roomNumber;

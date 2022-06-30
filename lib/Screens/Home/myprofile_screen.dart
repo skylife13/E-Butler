@@ -21,7 +21,7 @@ class _State extends State<MyProfile> {
 
   @override
   Widget build(BuildContext context) {
-    final user = Provider.of<User>(context);
+    final user = Provider.of<UserModel>(context);
     final AuthService _auth = AuthService();
     String uid = user.uid;
 

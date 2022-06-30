@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "595507630129",
+    "firebase_url": "https://e-butlerdb-default-rtdb.asia-southeast1.firebasedatabase.app",
     "project_id": "e-butlerdb",
     "storage_bucket": "e-butlerdb.appspot.com"
   },
@@ -10,6 +11,151 @@
         "mobilesdk_app_id": "1:595507630129:android:793ba14af1e71fe71ec510",
         "android_client_info": {
           "package_name": "com.example.ebutler"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "595507630129-7iie8cdu2kuufvm8jt18up7kkuv197b4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAY1dzalBv4Vuzj6_abKBVTsxxilPg3Y5s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "595507630129-7iie8cdu2kuufvm8jt18up7kkuv197b4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:595507630129:android:e9474b3721c8a27d1ec510",
+        "android_client_info": {
+          "package_name": "com.example.ebutleradmin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "595507630129-7iie8cdu2kuufvm8jt18up7kkuv197b4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAY1dzalBv4Vuzj6_abKBVTsxxilPg3Y5s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "595507630129-7iie8cdu2kuufvm8jt18up7kkuv197b4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:595507630129:android:9d29cb7e7c5bc0b61ec510",
+        "android_client_info": {
+          "package_name": "com.example.ebutlersemester7"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "595507630129-7iie8cdu2kuufvm8jt18up7kkuv197b4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAY1dzalBv4Vuzj6_abKBVTsxxilPg3Y5s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "595507630129-7iie8cdu2kuufvm8jt18up7kkuv197b4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:595507630129:android:143398f8b11428541ec510",
+        "android_client_info": {
+          "package_name": "com.example.latihan_scaffold"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "595507630129-7iie8cdu2kuufvm8jt18up7kkuv197b4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAY1dzalBv4Vuzj6_abKBVTsxxilPg3Y5s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "595507630129-7iie8cdu2kuufvm8jt18up7kkuv197b4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:595507630129:android:f60f6f3d5d17be4c1ec510",
+        "android_client_info": {
+          "package_name": "com.example.smarttrolley"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "595507630129-7iie8cdu2kuufvm8jt18up7kkuv197b4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAY1dzalBv4Vuzj6_abKBVTsxxilPg3Y5s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "595507630129-7iie8cdu2kuufvm8jt18up7kkuv197b4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:595507630129:android:e2f63778146f30681ec510",
+        "android_client_info": {
+          "package_name": "com.example.testnotificationproject"
         }
       },
       "oauth_client": [

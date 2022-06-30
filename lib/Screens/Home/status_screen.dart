@@ -5,9 +5,17 @@ import 'package:ebutler/providers/orders.dart' show Orders;
 import 'package:ebutler/widgets/order_item.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:provider/provider.dart';
 
 import '/Model/user.dart';
+
+const AndroidNotificationChannel channel = AndroidNotificationChannel(
+    'high_importance_channel', // id
+    'High Importance Notifications', // title
+    'This channel is used for important notifications.', // description
+    importance: Importance.high,
+    playSound: true);
 
 class StatusScreen extends StatefulWidget {
   const StatusScreen({Key key}) : super(key: key);
@@ -20,7 +28,7 @@ class _StatusScreenState extends State<StatusScreen> {
   @override
   Widget build(BuildContext context) {
     final orderData = Provider.of<Orders>(context);
-    final user = Provider.of<User>(context);
+    final user = Provider.of<UserModel>(context);
     final cart = Provider.of<Cart>(context);
     String uid = user.uid;
     final argument = ModalRoute.of(context).settings.arguments as Arguments;

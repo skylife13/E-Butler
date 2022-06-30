@@ -5,6 +5,7 @@ import 'package:ebutler/Services/statusdatabase.dart';
 import 'package:ebutler/Shared/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
@@ -15,6 +16,16 @@ import '/Model/user.dart';
 import '/providers/orders.dart';
 import '/Services/scheduled.dart';
 import '/Services/scheduledstatus.dart';
+
+const AndroidNotificationChannel channel = AndroidNotificationChannel(
+    'high_importance_channel', // id
+    'High Importance Notifications', // title
+    'This channel is used for important notifications.', // description
+    importance: Importance.high,
+    playSound: true);
+
+final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+    FlutterLocalNotificationsPlugin();
 
 class PaymentScreen extends StatefulWidget {
   const PaymentScreen({Key key}) : super(key: key);
@@ -27,10 +38,51 @@ class PaymentScreen extends StatefulWidget {
 
 class _PaymentScreenState extends State<PaymentScreen> {
   var _enable = false;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    flutterLocalNotificationsPlugin
+        .resolvePlatformSpecificImplementation<
+            AndroidFlutterLocalNotificationsPlugin>()
+        ?.createNotificationChannel(channel);
+  }
+
+  //show notif for "i have completed payment [ORDER SEKARANG]"
+  void showNotificationCompletedPayment() {
+    flutterLocalNotificationsPlugin.show(
+        0,
+        'Binus Hotel',
+        'Thankyou for order! Your order has been sent',
+        NotificationDetails(
+            android: AndroidNotificationDetails(
+                channel.id, channel.name, channel.description,
+                importance: Importance.high,
+                color: Colors.blue,
+                playSound: true,
+                icon: '@mipmap/ic_launcher')));
+  }
+
+  //show notif for "confirm order [Scheduled ORDER]"
+  void showNotificationConfirmOrder() {
+    flutterLocalNotificationsPlugin.show(
+        0,
+        'Binus Hotel',
+        'Thankyou for order! Your order will be processed and sent on time',
+        NotificationDetails(
+            android: AndroidNotificationDetails(
+                channel.id, channel.name, channel.description,
+                importance: Importance.high,
+                color: Colors.blue,
+                playSound: true,
+                icon: '@mipmap/ic_launcher')));
+  }
+
   @override
   Widget build(BuildContext context) {
     final cart = Provider.of<Cart>(context);
-    final user = Provider.of<User>(context);
+    final user = Provider.of<UserModel>(context);
     final argument = ModalRoute.of(context).settings.arguments as Arguments;
     String total = cart.totalAmount.toString();
     String timeOrdered;
@@ -315,6 +367,9 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                 StatusScreen.routeName,
                                 arguments: Arguments(
                                     roomNumberData: argument.roomNumberData));
+
+                            //notification pop for "i have completed payment"
+                            showNotificationCompletedPayment();
                           } else {
                             Provider.of<Orders>(context, listen: false)
                                 .addOrder(
@@ -328,6 +383,9 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                 arguments: Arguments(
                                     roomNumberData: argument.roomNumberData,
                                     scheduleData: argument.scheduleData));
+
+                            //notification pop for "confirm order"
+                            showNotificationConfirmOrder();
                           }
                         },
                         child: _enable

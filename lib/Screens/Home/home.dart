@@ -20,66 +20,65 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: kWhiteColor,
-      appBar: AppBar(
-        elevation: 0.0,
-        automaticallyImplyLeading: false,
-        title: const Text(
-          'BINUS Hotel',
-          style: TextStyle(color: kYellowColor),
-        ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.notifications, color: kYellowColor),
-            onPressed: () =>
-                Navigator.of(context).pushNamed(NotificationList.routeName),
+        backgroundColor: kWhiteColor,
+        appBar: AppBar(
+          elevation: 0.0,
+          automaticallyImplyLeading: false,
+          title: const Text(
+            'BINUS Hotel',
+            style: TextStyle(color: kYellowColor),
           ),
-        ],
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            const StickyLabel(text: "Menu"),
-            Container(
-              height: 220.0,
-              padding: const EdgeInsets.only(top: 14.0),
-              child: GridView.builder(
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 4,
-                  childAspectRatio: 1.5,
-                  mainAxisSpacing: 0.0,
-                  crossAxisSpacing: 0.0,
-                ),
-                itemCount: menuLabel.length,
-                itemBuilder: (context, index) {
-                  return Column(
-                    children: [
-                      IconButton(
-                          icon: Icon(menuIcons[index],
-                              color: kPrimaryColor, size: 34.0),
-                          onPressed: () {
-                            if (index == 0) {
-                              Navigator.of(context)
-                                  .pushNamed(ProductsOverviewScreen.routeName);
-                            }
-                            if (index == 1) {
-                              Navigator.of(context)
-                                  .pushNamed(Information.routeName);
-                            }
-                          }),
-                      Text(
-                        menuLabel[index],
-                        style:
-                            const TextStyle(color: kPrimaryColor, fontSize: 10),
-                      ),
-                    ],
-                  );
-                },
-              ),
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.notifications, color: kYellowColor),
+              onPressed: () =>
+                  Navigator.of(context).pushNamed(NotificationList.routeName),
             ),
           ],
         ),
-      ),
-    );
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              const StickyLabel(text: "Menu"),
+              Container(
+                height: 220.0,
+                padding: const EdgeInsets.only(top: 14.0),
+                child: GridView.builder(
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 4,
+                    childAspectRatio: 1.5,
+                    mainAxisSpacing: 0.0,
+                    crossAxisSpacing: 0.0,
+                  ),
+                  itemCount: menuLabel.length,
+                  itemBuilder: (context, index) {
+                    return Column(
+                      children: [
+                        IconButton(
+                            icon: Icon(menuIcons[index],
+                                color: kPrimaryColor, size: 34.0),
+                            onPressed: () {
+                              if (index == 0) {
+                                Navigator.of(context).pushNamed(
+                                    ProductsOverviewScreen.routeName);
+                              }
+                              if (index == 1) {
+                                Navigator.of(context)
+                                    .pushNamed(Information.routeName);
+                              }
+                            }),
+                        Text(
+                          menuLabel[index],
+                          style: const TextStyle(
+                              color: kPrimaryColor, fontSize: 10),
+                        ),
+                      ],
+                    );
+                  },
+                ),
+              ),
+            ],
+          ),
+        ));
   }
 }
