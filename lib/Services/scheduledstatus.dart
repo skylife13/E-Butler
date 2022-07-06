@@ -1,8 +1,16 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:intl/intl.dart';
 
 class ScheduledStatus {
   final String uid;
   ScheduledStatus({this.uid});
+
+  String date = DateFormat('dd/MM/yyyy').format(
+    DateTime.now(),
+  );
+  String timeOrder = DateFormat('kk:mm').format(
+    DateTime.now(),
+  );
 
   final CollectionReference scheduledStatusCollection =
       FirebaseFirestore.instance.collection('Scheduled Status');
@@ -13,7 +21,8 @@ class ScheduledStatus {
 
   Future updateUserStatus(int roomNumber, String time) async {
     await scheduledStatusCollection.doc(uid).set({
-      'Status': 'Scheduled for $time',
+      'Status': 'Scheduled for $date',
+      'Time': timeOrder,
       'Room Number': roomNumber,
       'User Id': uid
     });
