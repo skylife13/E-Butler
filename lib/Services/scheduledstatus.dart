@@ -5,9 +5,6 @@ class ScheduledStatus {
   final String uid;
   ScheduledStatus({this.uid});
 
-  String date = DateFormat('dd/MM/yyyy').format(
-    DateTime.now(),
-  );
   String timeOrder = DateFormat('kk:mm').format(
     DateTime.now(),
   );
@@ -21,7 +18,7 @@ class ScheduledStatus {
 
   Future updateUserStatus(int roomNumber, String time) async {
     await scheduledStatusCollection.doc(uid).set({
-      'Status': 'Scheduled for $date',
+      'Status': 'Scheduled for $time',
       'Time': timeOrder,
       'Room Number': roomNumber,
       'User Id': uid
