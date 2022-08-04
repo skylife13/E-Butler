@@ -32,32 +32,95 @@ class Information extends StatelessWidget {
         //   ],
         // ),
         floatingActionButton: null,
-        body: StreamBuilder(
-          stream: FirebaseFirestore.instance
-              .collection('Information')
-              .orderBy(FieldPath.documentId)
-              .snapshots(),
-          builder:
-              (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-            if (!snapshot.hasData) {
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
-            }
-            return ListView(
-              children: snapshot.data.docs.map((document) {
-                return Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    for (var i in document.data().values)
-                      Text(
-                        i['title'] + '\n' + i['description'],
-                      ),
-                  ],
-                );
-              }).toList(),
-            );
-          },
+        body: Center(
+          child: ListView(
+            children: [
+              StreamBuilder(
+                stream: FirebaseFirestore.instance
+                    .collection('information')
+                    .doc('Extension')
+                    // .orderBy(FieldPath.documentId)
+                    .snapshots(),
+                builder: (BuildContext context,
+                    AsyncSnapshot<DocumentSnapshot> snapshot) {
+                  if (!snapshot.hasData) {
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  }
+                  return Column(
+                    children: [
+                      Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(snapshot.data['title']),
+                          Text(snapshot.data['description'])
+                        ],
+                      )
+                    ],
+                  );
+                },
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              StreamBuilder(
+                stream: FirebaseFirestore.instance
+                    .collection('information')
+                    .doc('Hotel Information')
+                    // .orderBy(FieldPath.documentId)
+                    .snapshots(),
+                builder: (BuildContext context,
+                    AsyncSnapshot<DocumentSnapshot> snapshot) {
+                  if (!snapshot.hasData) {
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  }
+                  return Column(
+                    children: [
+                      Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(snapshot.data['title']),
+                          Text(snapshot.data['description'])
+                        ],
+                      )
+                    ],
+                  );
+                },
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              StreamBuilder(
+                stream: FirebaseFirestore.instance
+                    .collection('information')
+                    .doc('Outlet Location')
+                    // .orderBy(FieldPath.documentId)
+                    .snapshots(),
+                builder: (BuildContext context,
+                    AsyncSnapshot<DocumentSnapshot> snapshot) {
+                  if (!snapshot.hasData) {
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  }
+                  return Column(
+                    children: [
+                      Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(snapshot.data['title']),
+                          Text(snapshot.data['description'])
+                        ],
+                      )
+                    ],
+                  );
+                },
+              ),
+            ],
+          ),
         ));
   }
 }

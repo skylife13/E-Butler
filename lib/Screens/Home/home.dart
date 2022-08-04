@@ -28,13 +28,13 @@ class _HomeState extends State<Home> {
             'BINUS Hotel',
             style: TextStyle(color: kYellowColor),
           ),
-          actions: [
-            IconButton(
-              icon: const Icon(Icons.notifications, color: kYellowColor),
-              onPressed: () =>
-                  Navigator.of(context).pushNamed(NotificationList.routeName),
-            ),
-          ],
+          // actions: [
+          //   IconButton(
+          //     icon: const Icon(Icons.notifications, color: kYellowColor),
+          //     onPressed: () =>
+          //         Navigator.of(context).pushNamed(NotificationList.routeName),
+          //   ),
+          // ],
         ),
         body: SingleChildScrollView(
           child: Column(
