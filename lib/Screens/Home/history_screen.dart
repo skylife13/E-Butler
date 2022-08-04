@@ -1,9 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:ebutler/Screens/Notifications/components/default_appbar.dart';
-import 'package:ebutler/Screens/Notifications/components/default_backbutton.dart';
 import 'package:ebutler/Shared/constants.dart';
 import 'package:intl/intl.dart';
-
 import '/Model/user.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
@@ -80,7 +77,6 @@ class _HistoryScreenState extends State<HistoryScreen> {
                       leading: Text(
                         'Room No. ' + roomNumber.toString() + '\n' + time,
                       ),
-
                       trailing: Column(
                         children: [
                           for (var i in doc.data().values)
@@ -90,34 +86,9 @@ class _HistoryScreenState extends State<HistoryScreen> {
                             ),
                         ],
                       ),
-
-                      // children: [
-                      //   const Text('Item: '),
-                      //   for (var i in doc.data.values)
-                      //     Text(i['Item'].toString() + ' $quantity x\n'),
-                      //   Text('Room Number: ' + roomNumber.toString()),
-                      //   Text('Date: ' + time + '\n'),
-                      // ],
                     ),
                   ),
                 );
-                // return ListTile(
-                //   // leading: Column(
-                //   children: [
-                //     for (var i in doc.data.values)
-                //     Text(i['Item'].toString()),
-                //     Text(roomNumber.toString()),
-                //     Text(time),
-                //   ],
-                //   // ),
-                //   title: Text('Item: ' + title),
-                //   subtitle: Text('Quantity: $quantity x'),
-                //   trailing: Text('Room Number: ' +
-                //       roomNumber.toString() +
-                //       '\n' +
-                //       'Date:' +
-                //       time),
-                // );
               },
             ).toList(),
           );

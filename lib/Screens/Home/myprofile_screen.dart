@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ebutler/Model/user.dart';
 import 'package:ebutler/Screens/Home/history_screen.dart';
 import 'package:ebutler/Screens/Home/scheduled_screen.dart';
-import 'package:ebutler/Screens/Notifications/components/default_backbutton.dart';
 import 'package:ebutler/Services/auth.dart';
 import 'package:ebutler/Shared/constants.dart';
 import 'package:flutter/material.dart';
@@ -60,14 +59,6 @@ class _State extends State<MyProfile> {
               );
             },
           ),
-
-          // const SizedBox(height: 10),
-          //text "Accounts"
-          // Container(
-          //   alignment: Alignment.topLeft,
-          //   padding: EdgeInsets.all(7),
-          //   child: Text("Account", style: TextStyle(fontSize: 11)),
-          // ),
           Expanded(
               child: ListView.builder(
                   padding: const EdgeInsets.only(top: 22.0),
@@ -96,7 +87,6 @@ class _State extends State<MyProfile> {
                               }
                             })));
                   })),
-
           TextButton.icon(
             icon: const Icon(Icons.exit_to_app, color: kPrimaryColor),
             onPressed: () async {
@@ -107,20 +97,6 @@ class _State extends State<MyProfile> {
               style: TextStyle(color: kDarkColor),
             ),
           ),
-
-          // ListView.builder(
-          //   itemCount: profileList.length,
-          //   itemBuilder: (context, index) {
-          //     ListProfile profile = profileList[index];
-
-          //     return Card(
-          //       child: ListTile(
-          //         title: Text(profile.title),
-          //         trailing: Icon(Icons.arrow_forward),
-          //       ),
-          //     );
-          //   },
-          // ),
         ],
       ),
     );

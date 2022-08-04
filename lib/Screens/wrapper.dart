@@ -1,13 +1,10 @@
 import 'dart:async';
-
 import 'package:ebutler/Screens/Home/bottom_navbar.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-
 import '/Model/user.dart';
 import '/Screens/Authenticate/authenticate.dart';
-
 import 'package:provider/provider.dart';
 
 const AndroidNotificationChannel channel = AndroidNotificationChannel(
@@ -87,11 +84,6 @@ class _WrapperState extends State<Wrapper> {
         showNotification();
       }
       return BottomNavBar(0);
-      // return StreamProvider<List<Product>>.value(
-      //   child: const ProductsOverviewScreen(),
-      //   value: ProductDatabase().productsStream,
-      //   initialData: [],
-      // );
     }
   }
 }

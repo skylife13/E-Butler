@@ -1,8 +1,5 @@
-import 'package:ebutler/Screens/Home/history_screen.dart';
 import 'package:ebutler/Screens/Home/home.dart';
-import 'package:ebutler/Screens/Home/information.dart';
 import 'package:ebutler/Screens/Home/myprofile_screen.dart';
-
 import 'package:ebutler/Shared/constants.dart';
 import 'package:flutter/material.dart';
 
@@ -40,7 +37,6 @@ class _BottomNavBarState extends State<BottomNavBar> {
         selectedItemColor: kYellowColor,
         unselectedItemColor: kLightColor,
         backgroundColor: kPrimaryColor,
-        // showSelectedLabels: true,
         showUnselectedLabels: true,
         type: BottomNavigationBarType.fixed,
         items: const [
@@ -48,15 +44,10 @@ class _BottomNavBarState extends State<BottomNavBar> {
             icon: Icon(Icons.home),
             label: 'Home',
           ),
-
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
             label: 'Account',
           ),
-          // BottomNavigationBarItem(
-          //   icon: Icon(Icons.book),
-          //   label: 'Order',
-          // ),
         ],
       ),
     );

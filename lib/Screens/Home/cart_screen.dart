@@ -2,7 +2,6 @@ import 'package:ebutler/Screens/Home/payment_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-
 import '/Shared/constants.dart';
 import '/providers/cart.dart' show Cart;
 //show buat ngasi tau cm butuh Cart class
@@ -24,7 +23,6 @@ class _CartScreenState extends State<CartScreen> {
   Widget build(BuildContext context) {
     final _formKey = GlobalKey<FormState>();
     final argument = Arguments();
-
     final cart = Provider.of<Cart>(context);
 
     Future<bool> alert() async {
@@ -34,6 +32,7 @@ class _CartScreenState extends State<CartScreen> {
           title: const Text('Are you sure?'),
           content: const Text('You cannot edit your order if you proceed'),
           actions: <Widget>[
+            //kalo pencet "NO"
             ElevatedButton(
               onPressed: () {
                 Navigator.of(ctx).pop(false);
@@ -43,6 +42,7 @@ class _CartScreenState extends State<CartScreen> {
                 style: TextStyle(color: kYellowColor),
               ),
             ),
+            //kalo pencet "YES"
             ElevatedButton(
               onPressed: () {
                 Navigator.of(ctx).pop(true);
@@ -98,6 +98,7 @@ class _CartScreenState extends State<CartScreen> {
                             int.parse(val) > 1199
                         ? 'Please enter room number, and the room number cannot exceed 1199 or less than 200'
                         : null,
+                    //Room Numbernya ga boleh < 200 / > 1199
                   ),
                 ),
                 Card(

@@ -1,12 +1,8 @@
-import 'package:ebutler/Screens/Notifications/components/default_backbutton.dart';
-import 'package:ebutler/Screens/Notifications/components/shopbackbutton.dart';
 import 'package:ebutler/Services/productdatabase.dart';
 import 'package:ebutler/Shared/constants.dart';
 import 'package:ebutler/providers/product.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import '/Services/auth.dart';
 import '/widgets/products_grid.dart';
 import '/providers/cart.dart';
 import '/Screens/Home/cart_screen.dart';
@@ -20,12 +16,12 @@ class ProductsOverviewScreen extends StatefulWidget {
 }
 
 class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
-  // final AuthService _auth = AuthService();
-
   @override
   Widget build(BuildContext context) {
+    //dipanggil provider buat masukin data yang dipesan ke dalam "Cart"
     final cart = Provider.of<Cart>(context, listen: false);
 
+    //kalo tekan return back dIPALING ATAS
     Future<bool> showExitPopup() async {
       return await showDialog(
             //show confirm dialogue
@@ -60,37 +56,6 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
       //if showDialouge had returned null, then return false
     }
 
-    Future<bool> showExitPopupzero() async {
-      return await showDialog(
-            //show confirm dialogue
-            //the return value will be from "Yes" or "No" options
-
-            context: context,
-            builder: (context) => AlertDialog(
-              title: const Text('Exit'),
-              content:
-                  const Text('If you choose yes then the cart will be cleared'),
-              actions: [
-                ElevatedButton(
-                  onPressed: () => Navigator.of(context).pop(false),
-                  //return false when click on "NO"
-                  child: const Text("No,i'll stay"),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.of(context).pushNamed('/');
-                  },
-                  //return true when click on "Yes"
-                  child: const Text('Yes'),
-                ),
-              ],
-            ),
-          ) ??
-          () => Navigator.of(context).pop(true);
-
-      //if showDialouge had returned null, then return false
-    }
-
     return WillPopScope(
       onWillPop: showExitPopup,
       child: StreamProvider<List<Product>>.value(
@@ -106,9 +71,8 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
               color: kYellowColor,
             ),
             backgroundColor: kPrimaryColor,
-
-            // leading: const ShopBackButton(),
             actions: <Widget>[
+              //Quantity jenis barang yang ada di logo "Cart"
               Consumer<Cart>(
                   builder: (_, cart, ch) => Badge(
                         child: ch,
@@ -122,14 +86,9 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
                   ))
             ],
           ),
-          // drawer: const AppDrawer(),
           body: const ProductsGrid(),
         ),
       ),
-
-      // onWillPop: cart.itemCount > 0
-      //     ? () => showExitPopup()
-      //     : () => showExitPopupzero(),
     );
   }
 }

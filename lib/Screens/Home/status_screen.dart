@@ -5,17 +5,8 @@ import 'package:ebutler/providers/orders.dart' show Orders;
 import 'package:ebutler/widgets/order_item.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:provider/provider.dart';
-
 import '/Model/user.dart';
-
-const AndroidNotificationChannel channel = AndroidNotificationChannel(
-    'high_importance_channel', // id
-    'High Importance Notifications', // title
-    'This channel is used for important notifications.', // description
-    importance: Importance.high,
-    playSound: true);
 
 class StatusScreen extends StatefulWidget {
   const StatusScreen({Key key}) : super(key: key);
@@ -120,6 +111,7 @@ class _StatusScreenState extends State<StatusScreen> {
                     image: const AssetImage('assets/11th_floor.png'),
                     fit: BoxFit.fill),
               ),
+            //kalo di collection "Scheduled Cart" == NULL, nampilin collection scheduled Cart
             if (argument.scheduleData == null)
               StreamBuilder<DocumentSnapshot>(
                 stream: FirebaseFirestore.instance
@@ -182,6 +174,7 @@ class _StatusScreenState extends State<StatusScreen> {
                   );
                 },
               ),
+            //kalo di collection "Scheduled Cart" != NULL, nampilin collection status
             if (argument.scheduleData != null)
               StreamBuilder<DocumentSnapshot>(
                 stream: FirebaseFirestore.instance
@@ -228,6 +221,7 @@ class _StatusScreenState extends State<StatusScreen> {
                         ),
                       ElevatedButton(
                         onPressed: () {
+                          // "/" == Homepage
                           Navigator.of(context).pushNamed('/');
 
                           cart.clear();

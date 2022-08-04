@@ -1,13 +1,7 @@
-import 'package:ebutler/Screens/Notifications/components/default_appbar.dart';
-
-import 'package:ebutler/Screens/Notifications/components/default_backbutton2.dart';
-import 'package:ebutler/Services/auth.dart';
 import 'package:ebutler/Shared/constants.dart';
 import 'package:ebutler/providers/cart.dart';
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '/providers/products.dart';
 
 class ProductDetailScreen extends StatefulWidget {
@@ -24,12 +18,8 @@ class ProductDetailScreen extends StatefulWidget {
 class _ProductDetailScreenState extends State<ProductDetailScreen> {
   @override
   Widget build(BuildContext context) {
-    final AuthService _auth = AuthService();
-
     final _formKey = GlobalKey<FormState>();
-
     final cart = Provider.of<Cart>(context, listen: false);
-
     final productId = ModalRoute.of(context).settings.arguments as String;
     final loadedProduct = Provider.of<Products>(
       context,

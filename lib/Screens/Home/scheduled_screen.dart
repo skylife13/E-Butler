@@ -2,7 +2,6 @@ import 'package:ebutler/Shared/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:provider/provider.dart';
-
 import '/Model/user.dart';
 
 class ScheduledScreen extends StatefulWidget {
